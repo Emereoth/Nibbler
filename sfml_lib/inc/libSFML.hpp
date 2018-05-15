@@ -4,7 +4,7 @@
 #include "../SFML/include/SFML/Window.hpp"
 #include "../../inc/Api.class.hpp"
 
-class Graphics : public test {
+class Graphics : public Api {
 
 	public:
 

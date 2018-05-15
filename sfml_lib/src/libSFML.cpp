@@ -1,5 +1,6 @@
 #include "../inc/libSFML.hpp"
 #include <iostream>
+
 void				Graphics::openWindow(size_t w, size_t h)
 {
 	window.create(sf::VideoMode(w, h), "test nibbler");

@@ -6,15 +6,15 @@
 int main()
 {
 	void		*lol;
-	test		*(*mdr)();
+	Api		*(*mdr)();
 
 	lol = dlopen("sfml_lib/sfml.so", RTLD_NOW);
 	if (!lol)
 		std::cerr << dlerror() << std::endl;
-	mdr = (test *(*)())dlsym(lol, "create");
+	mdr = (Api *(*)())dlsym(lol, "create");
 	if (!mdr)
 		std::cerr << dlerror() << std::endl;
-	test		*ptdr = mdr();
-	ptdr->openWindow(800, 600);
+	Api		*ptdr = mdr();
+	ptdr->openWindow(1920, 1080);
     return 0;
 }

@@ -3,7 +3,7 @@
 
 #include <stdio.h>
 
-class test {
+class Api {
 
 	public:
 
