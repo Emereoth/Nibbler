@@ -2,6 +2,8 @@ CC = clang++
 NAME = snake
 HPATH = inc/
 SFML = sfml_lib
+SDL = sdl_lib
+OPENGL = openGL_lib
 LINK_DYLIB = -Wl,-rpath $(SFML)/SFML/lib
 CFLAGS = -Wall -Werror -Wextra
 CPATH = src/
@@ -28,19 +30,25 @@ $(OPATH)%.o: $(CPATH)%.cpp $(HFILES)
 
 clean:
 	make -C $(SFML) clean
+	make -C $(SDL) clean
+	make -C $(OPENGL) clean
 	rm -rf $(OBJ)
 
 fclean: clean
 	make -C $(SFML) fclean
+	make -C $(SDL) fclean
+	make -C $(OPENGL) fclean
 	rm -rf $(NAME)
 
 install:
 	@make -C sfml_lib install
 	@make -C openGL_lib install
+	@make -C sdl_lib install
 
 remove:
 	make -C openGL_lib remove
 	make -C sfml_lib remove
+	make -C sdl_lib uninstall
 
 re: remove install fclean all
 

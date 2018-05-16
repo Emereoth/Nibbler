@@ -6,12 +6,12 @@
 /*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/16 15:53:55 by acottier          #+#    #+#             */
-/*   Updated: 2018/05/16 16:01:38 by acottier         ###   ########.fr       */
+/*   Updated: 2018/05/16 18:13:51 by acottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBSDL_HPP
-# define LIBSDL_CPP
+# define LIBSDL_HPP
 
 #include "../SDL/include/SDL.h"
 #include "../../inc/Api.class.hpp"
@@ -29,7 +29,7 @@ class Graphics : public Api
 
 extern "C"
 {
-	Grpahics		*create(void);
+	Graphics		*create(void);
 	void			del(Graphics *lol);
 }
 

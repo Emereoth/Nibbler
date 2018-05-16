@@ -1,13 +1,10 @@
 CC = clang++
 NAME = SDL.so
-# HPATH = inc/ SDL/include
 DYLIB = -shared -fPIC
-# LIBGRAPH = -LSDL/lib -lSDL-graphics -lSDL-window -lSDL-system -lSDL-audio
+LIBGRAPH = -I./SDL/include -L./SDL/lib -lSDL2
 CFLAGS = -Wall -Werror -Wextra
-LIBFLAGS = -I./SDL/include -L./SDL/lib
 CPATH = src/
 OPATH = obj/
-# INC = $(addprefix -I, $(HPATH))
 CFILES = libSDL.cpp
 
 OFILES = $(CFILES:.cpp=.o)
@@ -21,7 +18,7 @@ OBJ = $(addprefix $(OPATH), $(OFILES))
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(DYLIB) $(LIBGRAPH) $(OBJ) -o $(NAME)
+	$(CC) $(CFLAGS) $(DYLIB) $(LIBGRAPH) $(OBJ) -o $(NAME) 
 
 $(OPATH)%.o: $(CPATH)%.cpp $(HFILES)
 	$(CC) $(CFLAGS) $(INC) $< -c -o $@
