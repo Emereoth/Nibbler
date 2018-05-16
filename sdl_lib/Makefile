@@ -1,12 +1,13 @@
 CC = clang++
 NAME = SDL.so
-HPATH = inc/ SDL/include
+# HPATH = inc/ SDL/include
 DYLIB = -shared -fPIC
-LIBGRAPH = -LSDL/lib -lSDL-graphics -lSDL-window -lSDL-system -lSDL-audio
+# LIBGRAPH = -LSDL/lib -lSDL-graphics -lSDL-window -lSDL-system -lSDL-audio
 CFLAGS = -Wall -Werror -Wextra
+LIBFLAGS = -I./SDL/include -L./SDL/lib
 CPATH = src/
 OPATH = obj/
-INC = $(addprefix -I, $(HPATH))
+# INC = $(addprefix -I, $(HPATH))
 CFILES = libSDL.cpp
 
 OFILES = $(CFILES:.cpp=.o)
@@ -15,7 +16,7 @@ HFILES = inc/libSDL.hpp
 
 OBJ = $(addprefix $(OPATH), $(OFILES))
 
-.PHONY: all clean fclean re install
+.PHONY: all clean fclean re install uninstall reinstall
 
 all: $(NAME)
 
@@ -37,4 +38,10 @@ install:
 	@wget https://libsdl.org/release/SDL2-2.0.8.tar.gz
 	@tar -xf SDL2-2.0.8.tar.gz
 	@rm -rf SDL2-2.0.8.tar.gz
-	@cd SDL2-2.0.8 && ./configure --prefix=${PWD}/SDL2-2.0.8 && make && make install
+	@mv SDL2-2.0.8 SDL
+	@cd SDL && ./configure --prefix=${PWD}/SDL && make && make install
+
+uninstall:
+	@rm -rf SDL
+
+reinstall: uninstall install
