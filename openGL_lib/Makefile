@@ -23,6 +23,7 @@ $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) $(DYLIB) $(LIBGRAPH) $(OBJ) GLFW/src/libglfw3.a -o $(NAME)
 
 $(OPATH)%.o: $(CPATH)%.cpp $(HFILES)
+	@mkdir -p $(OPATH)
 	$(CC) $(CFLAGS) $(INC) $< -c -o $@
 
 clean:
