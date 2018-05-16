@@ -6,13 +6,14 @@
 /*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/14 14:34:38 by rvievill          #+#    #+#             */
-/*   Updated: 2018/05/15 13:32:51 by rvievill         ###   ########.fr       */
+/*   Updated: 2018/05/16 15:24:37 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBOPENGL_HPP
 # define LIBOPENGL_HPP
 
+# include <GL/glew.h>
 # include <GLFW/glfw3.h>
 # include "../../inc/Api.class.hpp"
 

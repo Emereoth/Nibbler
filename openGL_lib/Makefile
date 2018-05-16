@@ -1,8 +1,8 @@
 CC = clang++
 NAME = openGL.so
-HPATH = inc/ GLFW/include
+HPATH = inc/ GLFW/include /Users/rvievill/.brew/include
 DYLIB = -shared -fPIC
-LIBGRAPH = -framework openGL -framework Cocoa -framework CoreVideo -LGLFW
+LIBGRAPH = -framework openGL -framework Cocoa -framework IOKit -framework CoreVideo -L ~/.brew/lib/ -lGLEW
 CFLAGS = -Wall -Werror -Wextra
 CPATH = src/
 OPATH = obj/
@@ -20,7 +20,7 @@ OBJ = $(addprefix $(OPATH), $(OFILES))
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(DYLIB) $(LIBGRAPH) $(OBJ) -o $(NAME)
+	$(CC) $(CFLAGS) $(DYLIB) $(LIBGRAPH) $(OBJ) GLFW/src/libglfw3.a -o $(NAME)
 
 $(OPATH)%.o: $(CPATH)%.cpp $(HFILES)
 	$(CC) $(CFLAGS) $(INC) $< -c -o $@
@@ -37,6 +37,7 @@ install:
 	@tar -xf glfw-3.2.1.zip
 	@rm -rf glfw-3.2.1.zip
 	@mv glfw-3.2.1 GLFW
+	@cd GLFW && cmake . && make
 
 remove:
 	@rm -rf GLFW

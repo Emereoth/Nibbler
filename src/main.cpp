@@ -8,7 +8,7 @@ int main()
 	void		*lol;
 	Api		*(*mdr)();
 
-	lol = dlopen("sfml_lib/sfml.so", RTLD_NOW);
+	lol = dlopen("openGL_lib/openGL.so", RTLD_NOW);
 	if (!lol)
 		std::cerr << dlerror() << std::endl;
 	mdr = (Api *(*)())dlsym(lol, "create");
