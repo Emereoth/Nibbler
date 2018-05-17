@@ -3,6 +3,9 @@
 
 #include <stdio.h>
 
+# define WIDTH_WINDOW 1920
+# define HEIGHT_WINDOW 1080
+
 class Api {
 
 	public:

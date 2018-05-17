@@ -5,7 +5,7 @@ SFML = sfml_lib
 SDL = sdl_lib
 OPENGL = openGL_lib
 LINK_DYLIB = -Wl,-rpath $(SFML)/SFML/lib
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -std=c++11
 CPATH = src/
 OPATH = obj/
 INC = $(addprefix -I, $(HPATH))
@@ -24,6 +24,7 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	make -C $(SFML)
 	make -C $(SDL)
+	make -C $(OPENGL)
 	$(CC) $(CFLAGS) $(LINK_DYLIB) $(OBJ) -o $(NAME)
 
 $(OPATH)%.o: $(CPATH)%.cpp $(HFILES)

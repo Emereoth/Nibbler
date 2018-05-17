@@ -6,7 +6,7 @@
 /*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/14 17:26:49 by rvievill          #+#    #+#             */
-/*   Updated: 2018/05/16 17:50:45 by rvievill         ###   ########.fr       */
+/*   Updated: 2018/05/17 11:48:00 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void				Graphics::openWindow(size_t w, size_t h)
 	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE); // Pour rendre MacOS heureux ; ne devrait pas être nécessaire
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 	GLFWwindow* window; // (Dans le code source qui accompagne, cette variable est globale)
-	window = glfwCreateWindow( w, h, "Nibbler", NULL, NULL);
+	window = glfwCreateWindow( w, h, "Nibbler (OpenGL)", NULL, NULL);
 	if (window == NULL)
 	{
     	std::cerr << "Failed to open GLFW window." << std::endl;
@@ -51,7 +51,6 @@ void				Graphics::openWindow(size_t w, size_t h)
 		const char* name = glfwGetJoystickName(GLFW_JOYSTICK_1);
 		std::cout << "name joystick => " << name << std::endl;
 	}
-	PlaySound("sound.mp3", NULL, SND_ASYNC|SND_FILENAME|SND_LOOP);
 	while(glfwWindowShouldClose(window) == 0 )
 	{
     	glfwSwapBuffers(window);

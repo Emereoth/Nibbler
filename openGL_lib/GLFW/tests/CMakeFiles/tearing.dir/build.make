@@ -34,19 +34,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /Users/acottier/.brew/Cellar/cmake/3.11.1/bin/cmake
+CMAKE_COMMAND = /Users/rvievill/.brew/Cellar/cmake/3.11.1/bin/cmake
 
 # The command to remove a file.
-RM = /Users/acottier/.brew/Cellar/cmake/3.11.1/bin/cmake -E remove -f
+RM = /Users/rvievill/.brew/Cellar/cmake/3.11.1/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/acottier/Nibbler/openGL_lib/GLFW
+CMAKE_SOURCE_DIR = /Users/rvievill/nibbler/openGL_lib/GLFW
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/acottier/Nibbler/openGL_lib/GLFW
+CMAKE_BINARY_DIR = /Users/rvievill/nibbler/openGL_lib/GLFW
 
 # Include any dependencies generated for this target.
 include tests/CMakeFiles/tearing.dir/depend.make
@@ -59,42 +59,42 @@ include tests/CMakeFiles/tearing.dir/flags.make
 
 tests/CMakeFiles/tearing.dir/tearing.c.o: tests/CMakeFiles/tearing.dir/flags.make
 tests/CMakeFiles/tearing.dir/tearing.c.o: tests/tearing.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/acottier/Nibbler/openGL_lib/GLFW/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object tests/CMakeFiles/tearing.dir/tearing.c.o"
-	cd /Users/acottier/Nibbler/openGL_lib/GLFW/tests && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/tearing.dir/tearing.c.o   -c /Users/acottier/Nibbler/openGL_lib/GLFW/tests/tearing.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/rvievill/nibbler/openGL_lib/GLFW/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object tests/CMakeFiles/tearing.dir/tearing.c.o"
+	cd /Users/rvievill/nibbler/openGL_lib/GLFW/tests && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/tearing.dir/tearing.c.o   -c /Users/rvievill/nibbler/openGL_lib/GLFW/tests/tearing.c
 
 tests/CMakeFiles/tearing.dir/tearing.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/tearing.dir/tearing.c.i"
-	cd /Users/acottier/Nibbler/openGL_lib/GLFW/tests && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/acottier/Nibbler/openGL_lib/GLFW/tests/tearing.c > CMakeFiles/tearing.dir/tearing.c.i
+	cd /Users/rvievill/nibbler/openGL_lib/GLFW/tests && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/rvievill/nibbler/openGL_lib/GLFW/tests/tearing.c > CMakeFiles/tearing.dir/tearing.c.i
 
 tests/CMakeFiles/tearing.dir/tearing.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/tearing.dir/tearing.c.s"
-	cd /Users/acottier/Nibbler/openGL_lib/GLFW/tests && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/acottier/Nibbler/openGL_lib/GLFW/tests/tearing.c -o CMakeFiles/tearing.dir/tearing.c.s
+	cd /Users/rvievill/nibbler/openGL_lib/GLFW/tests && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/rvievill/nibbler/openGL_lib/GLFW/tests/tearing.c -o CMakeFiles/tearing.dir/tearing.c.s
 
 tests/CMakeFiles/tearing.dir/__/deps/getopt.c.o: tests/CMakeFiles/tearing.dir/flags.make
 tests/CMakeFiles/tearing.dir/__/deps/getopt.c.o: deps/getopt.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/acottier/Nibbler/openGL_lib/GLFW/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object tests/CMakeFiles/tearing.dir/__/deps/getopt.c.o"
-	cd /Users/acottier/Nibbler/openGL_lib/GLFW/tests && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/tearing.dir/__/deps/getopt.c.o   -c /Users/acottier/Nibbler/openGL_lib/GLFW/deps/getopt.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/rvievill/nibbler/openGL_lib/GLFW/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object tests/CMakeFiles/tearing.dir/__/deps/getopt.c.o"
+	cd /Users/rvievill/nibbler/openGL_lib/GLFW/tests && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/tearing.dir/__/deps/getopt.c.o   -c /Users/rvievill/nibbler/openGL_lib/GLFW/deps/getopt.c
 
 tests/CMakeFiles/tearing.dir/__/deps/getopt.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/tearing.dir/__/deps/getopt.c.i"
-	cd /Users/acottier/Nibbler/openGL_lib/GLFW/tests && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/acottier/Nibbler/openGL_lib/GLFW/deps/getopt.c > CMakeFiles/tearing.dir/__/deps/getopt.c.i
+	cd /Users/rvievill/nibbler/openGL_lib/GLFW/tests && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/rvievill/nibbler/openGL_lib/GLFW/deps/getopt.c > CMakeFiles/tearing.dir/__/deps/getopt.c.i
 
 tests/CMakeFiles/tearing.dir/__/deps/getopt.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/tearing.dir/__/deps/getopt.c.s"
-	cd /Users/acottier/Nibbler/openGL_lib/GLFW/tests && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/acottier/Nibbler/openGL_lib/GLFW/deps/getopt.c -o CMakeFiles/tearing.dir/__/deps/getopt.c.s
+	cd /Users/rvievill/nibbler/openGL_lib/GLFW/tests && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/rvievill/nibbler/openGL_lib/GLFW/deps/getopt.c -o CMakeFiles/tearing.dir/__/deps/getopt.c.s
 
 tests/CMakeFiles/tearing.dir/__/deps/glad.c.o: tests/CMakeFiles/tearing.dir/flags.make
 tests/CMakeFiles/tearing.dir/__/deps/glad.c.o: deps/glad.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/acottier/Nibbler/openGL_lib/GLFW/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object tests/CMakeFiles/tearing.dir/__/deps/glad.c.o"
-	cd /Users/acottier/Nibbler/openGL_lib/GLFW/tests && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/tearing.dir/__/deps/glad.c.o   -c /Users/acottier/Nibbler/openGL_lib/GLFW/deps/glad.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/rvievill/nibbler/openGL_lib/GLFW/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object tests/CMakeFiles/tearing.dir/__/deps/glad.c.o"
+	cd /Users/rvievill/nibbler/openGL_lib/GLFW/tests && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/tearing.dir/__/deps/glad.c.o   -c /Users/rvievill/nibbler/openGL_lib/GLFW/deps/glad.c
 
 tests/CMakeFiles/tearing.dir/__/deps/glad.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/tearing.dir/__/deps/glad.c.i"
-	cd /Users/acottier/Nibbler/openGL_lib/GLFW/tests && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/acottier/Nibbler/openGL_lib/GLFW/deps/glad.c > CMakeFiles/tearing.dir/__/deps/glad.c.i
+	cd /Users/rvievill/nibbler/openGL_lib/GLFW/tests && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/rvievill/nibbler/openGL_lib/GLFW/deps/glad.c > CMakeFiles/tearing.dir/__/deps/glad.c.i
 
 tests/CMakeFiles/tearing.dir/__/deps/glad.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/tearing.dir/__/deps/glad.c.s"
-	cd /Users/acottier/Nibbler/openGL_lib/GLFW/tests && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/acottier/Nibbler/openGL_lib/GLFW/deps/glad.c -o CMakeFiles/tearing.dir/__/deps/glad.c.s
+	cd /Users/rvievill/nibbler/openGL_lib/GLFW/tests && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/rvievill/nibbler/openGL_lib/GLFW/deps/glad.c -o CMakeFiles/tearing.dir/__/deps/glad.c.s
 
 # Object files for target tearing
 tearing_OBJECTS = \
@@ -111,8 +111,8 @@ tests/tearing.app/Contents/MacOS/tearing: tests/CMakeFiles/tearing.dir/__/deps/g
 tests/tearing.app/Contents/MacOS/tearing: tests/CMakeFiles/tearing.dir/build.make
 tests/tearing.app/Contents/MacOS/tearing: src/libglfw3.a
 tests/tearing.app/Contents/MacOS/tearing: tests/CMakeFiles/tearing.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/acottier/Nibbler/openGL_lib/GLFW/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking C executable tearing.app/Contents/MacOS/tearing"
-	cd /Users/acottier/Nibbler/openGL_lib/GLFW/tests && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/tearing.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/rvievill/nibbler/openGL_lib/GLFW/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking C executable tearing.app/Contents/MacOS/tearing"
+	cd /Users/rvievill/nibbler/openGL_lib/GLFW/tests && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/tearing.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 tests/CMakeFiles/tearing.dir/build: tests/tearing.app/Contents/MacOS/tearing
@@ -120,10 +120,10 @@ tests/CMakeFiles/tearing.dir/build: tests/tearing.app/Contents/MacOS/tearing
 .PHONY : tests/CMakeFiles/tearing.dir/build
 
 tests/CMakeFiles/tearing.dir/clean:
-	cd /Users/acottier/Nibbler/openGL_lib/GLFW/tests && $(CMAKE_COMMAND) -P CMakeFiles/tearing.dir/cmake_clean.cmake
+	cd /Users/rvievill/nibbler/openGL_lib/GLFW/tests && $(CMAKE_COMMAND) -P CMakeFiles/tearing.dir/cmake_clean.cmake
 .PHONY : tests/CMakeFiles/tearing.dir/clean
 
 tests/CMakeFiles/tearing.dir/depend:
-	cd /Users/acottier/Nibbler/openGL_lib/GLFW && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/acottier/Nibbler/openGL_lib/GLFW /Users/acottier/Nibbler/openGL_lib/GLFW/tests /Users/acottier/Nibbler/openGL_lib/GLFW /Users/acottier/Nibbler/openGL_lib/GLFW/tests /Users/acottier/Nibbler/openGL_lib/GLFW/tests/CMakeFiles/tearing.dir/DependInfo.cmake --color=$(COLOR)
+	cd /Users/rvievill/nibbler/openGL_lib/GLFW && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/rvievill/nibbler/openGL_lib/GLFW /Users/rvievill/nibbler/openGL_lib/GLFW/tests /Users/rvievill/nibbler/openGL_lib/GLFW /Users/rvievill/nibbler/openGL_lib/GLFW/tests /Users/rvievill/nibbler/openGL_lib/GLFW/tests/CMakeFiles/tearing.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : tests/CMakeFiles/tearing.dir/depend
 

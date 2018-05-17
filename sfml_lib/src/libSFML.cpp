@@ -3,7 +3,7 @@
 
 void				Graphics::openWindow(size_t w, size_t h)
 {
-	window.create(sf::VideoMode(w, h), "test nibbler");
+	window.create(sf::VideoMode(w, h), "Nibbler (SFML)");
 	while (window.isOpen())
 	{
 		sf::Event event;

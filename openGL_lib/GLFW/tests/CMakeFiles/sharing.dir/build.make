@@ -34,19 +34,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /Users/acottier/.brew/Cellar/cmake/3.11.1/bin/cmake
+CMAKE_COMMAND = /Users/rvievill/.brew/Cellar/cmake/3.11.1/bin/cmake
 
 # The command to remove a file.
-RM = /Users/acottier/.brew/Cellar/cmake/3.11.1/bin/cmake -E remove -f
+RM = /Users/rvievill/.brew/Cellar/cmake/3.11.1/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/acottier/Nibbler/openGL_lib/GLFW
+CMAKE_SOURCE_DIR = /Users/rvievill/nibbler/openGL_lib/GLFW
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/acottier/Nibbler/openGL_lib/GLFW
+CMAKE_BINARY_DIR = /Users/rvievill/nibbler/openGL_lib/GLFW
 
 # Include any dependencies generated for this target.
 include tests/CMakeFiles/sharing.dir/depend.make
@@ -59,29 +59,29 @@ include tests/CMakeFiles/sharing.dir/flags.make
 
 tests/CMakeFiles/sharing.dir/sharing.c.o: tests/CMakeFiles/sharing.dir/flags.make
 tests/CMakeFiles/sharing.dir/sharing.c.o: tests/sharing.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/acottier/Nibbler/openGL_lib/GLFW/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object tests/CMakeFiles/sharing.dir/sharing.c.o"
-	cd /Users/acottier/Nibbler/openGL_lib/GLFW/tests && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/sharing.dir/sharing.c.o   -c /Users/acottier/Nibbler/openGL_lib/GLFW/tests/sharing.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/rvievill/nibbler/openGL_lib/GLFW/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object tests/CMakeFiles/sharing.dir/sharing.c.o"
+	cd /Users/rvievill/nibbler/openGL_lib/GLFW/tests && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/sharing.dir/sharing.c.o   -c /Users/rvievill/nibbler/openGL_lib/GLFW/tests/sharing.c
 
 tests/CMakeFiles/sharing.dir/sharing.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/sharing.dir/sharing.c.i"
-	cd /Users/acottier/Nibbler/openGL_lib/GLFW/tests && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/acottier/Nibbler/openGL_lib/GLFW/tests/sharing.c > CMakeFiles/sharing.dir/sharing.c.i
+	cd /Users/rvievill/nibbler/openGL_lib/GLFW/tests && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/rvievill/nibbler/openGL_lib/GLFW/tests/sharing.c > CMakeFiles/sharing.dir/sharing.c.i
 
 tests/CMakeFiles/sharing.dir/sharing.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/sharing.dir/sharing.c.s"
-	cd /Users/acottier/Nibbler/openGL_lib/GLFW/tests && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/acottier/Nibbler/openGL_lib/GLFW/tests/sharing.c -o CMakeFiles/sharing.dir/sharing.c.s
+	cd /Users/rvievill/nibbler/openGL_lib/GLFW/tests && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/rvievill/nibbler/openGL_lib/GLFW/tests/sharing.c -o CMakeFiles/sharing.dir/sharing.c.s
 
 tests/CMakeFiles/sharing.dir/__/deps/glad.c.o: tests/CMakeFiles/sharing.dir/flags.make
 tests/CMakeFiles/sharing.dir/__/deps/glad.c.o: deps/glad.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/acottier/Nibbler/openGL_lib/GLFW/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object tests/CMakeFiles/sharing.dir/__/deps/glad.c.o"
-	cd /Users/acottier/Nibbler/openGL_lib/GLFW/tests && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/sharing.dir/__/deps/glad.c.o   -c /Users/acottier/Nibbler/openGL_lib/GLFW/deps/glad.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/rvievill/nibbler/openGL_lib/GLFW/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object tests/CMakeFiles/sharing.dir/__/deps/glad.c.o"
+	cd /Users/rvievill/nibbler/openGL_lib/GLFW/tests && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/sharing.dir/__/deps/glad.c.o   -c /Users/rvievill/nibbler/openGL_lib/GLFW/deps/glad.c
 
 tests/CMakeFiles/sharing.dir/__/deps/glad.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/sharing.dir/__/deps/glad.c.i"
-	cd /Users/acottier/Nibbler/openGL_lib/GLFW/tests && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/acottier/Nibbler/openGL_lib/GLFW/deps/glad.c > CMakeFiles/sharing.dir/__/deps/glad.c.i
+	cd /Users/rvievill/nibbler/openGL_lib/GLFW/tests && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/rvievill/nibbler/openGL_lib/GLFW/deps/glad.c > CMakeFiles/sharing.dir/__/deps/glad.c.i
 
 tests/CMakeFiles/sharing.dir/__/deps/glad.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/sharing.dir/__/deps/glad.c.s"
-	cd /Users/acottier/Nibbler/openGL_lib/GLFW/tests && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/acottier/Nibbler/openGL_lib/GLFW/deps/glad.c -o CMakeFiles/sharing.dir/__/deps/glad.c.s
+	cd /Users/rvievill/nibbler/openGL_lib/GLFW/tests && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/rvievill/nibbler/openGL_lib/GLFW/deps/glad.c -o CMakeFiles/sharing.dir/__/deps/glad.c.s
 
 # Object files for target sharing
 sharing_OBJECTS = \
@@ -96,8 +96,8 @@ tests/sharing.app/Contents/MacOS/sharing: tests/CMakeFiles/sharing.dir/__/deps/g
 tests/sharing.app/Contents/MacOS/sharing: tests/CMakeFiles/sharing.dir/build.make
 tests/sharing.app/Contents/MacOS/sharing: src/libglfw3.a
 tests/sharing.app/Contents/MacOS/sharing: tests/CMakeFiles/sharing.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/acottier/Nibbler/openGL_lib/GLFW/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking C executable sharing.app/Contents/MacOS/sharing"
-	cd /Users/acottier/Nibbler/openGL_lib/GLFW/tests && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/sharing.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/rvievill/nibbler/openGL_lib/GLFW/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking C executable sharing.app/Contents/MacOS/sharing"
+	cd /Users/rvievill/nibbler/openGL_lib/GLFW/tests && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/sharing.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 tests/CMakeFiles/sharing.dir/build: tests/sharing.app/Contents/MacOS/sharing
@@ -105,10 +105,10 @@ tests/CMakeFiles/sharing.dir/build: tests/sharing.app/Contents/MacOS/sharing
 .PHONY : tests/CMakeFiles/sharing.dir/build
 
 tests/CMakeFiles/sharing.dir/clean:
-	cd /Users/acottier/Nibbler/openGL_lib/GLFW/tests && $(CMAKE_COMMAND) -P CMakeFiles/sharing.dir/cmake_clean.cmake
+	cd /Users/rvievill/nibbler/openGL_lib/GLFW/tests && $(CMAKE_COMMAND) -P CMakeFiles/sharing.dir/cmake_clean.cmake
 .PHONY : tests/CMakeFiles/sharing.dir/clean
 
 tests/CMakeFiles/sharing.dir/depend:
-	cd /Users/acottier/Nibbler/openGL_lib/GLFW && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/acottier/Nibbler/openGL_lib/GLFW /Users/acottier/Nibbler/openGL_lib/GLFW/tests /Users/acottier/Nibbler/openGL_lib/GLFW /Users/acottier/Nibbler/openGL_lib/GLFW/tests /Users/acottier/Nibbler/openGL_lib/GLFW/tests/CMakeFiles/sharing.dir/DependInfo.cmake --color=$(COLOR)
+	cd /Users/rvievill/nibbler/openGL_lib/GLFW && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/rvievill/nibbler/openGL_lib/GLFW /Users/rvievill/nibbler/openGL_lib/GLFW/tests /Users/rvievill/nibbler/openGL_lib/GLFW /Users/rvievill/nibbler/openGL_lib/GLFW/tests /Users/rvievill/nibbler/openGL_lib/GLFW/tests/CMakeFiles/sharing.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : tests/CMakeFiles/sharing.dir/depend
 

@@ -10,35 +10,35 @@ The output was:
 
 Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
 
-The C compiler identification is AppleClang, found in "/Users/acottier/Nibbler/openGL_lib/GLFW/CMakeFiles/3.11.1/CompilerIdC/a.out"
+The C compiler identification is AppleClang, found in "/Users/rvievill/nibbler/openGL_lib/GLFW/CMakeFiles/3.11.1/CompilerIdC/a.out"
 
 Determining if the C compiler works passed with the following output:
-Change Dir: /Users/acottier/Nibbler/openGL_lib/GLFW/CMakeFiles/CMakeTmp
+Change Dir: /Users/rvievill/nibbler/openGL_lib/GLFW/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_82ced/fast"
-/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_82ced.dir/build.make CMakeFiles/cmTC_82ced.dir/build
-Building C object CMakeFiles/cmTC_82ced.dir/testCCompiler.c.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc    -o CMakeFiles/cmTC_82ced.dir/testCCompiler.c.o   -c /Users/acottier/Nibbler/openGL_lib/GLFW/CMakeFiles/CMakeTmp/testCCompiler.c
-Linking C executable cmTC_82ced
-/Users/acottier/.brew/Cellar/cmake/3.11.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_82ced.dir/link.txt --verbose=1
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_82ced.dir/testCCompiler.c.o  -o cmTC_82ced 
+Run Build Command:"/usr/bin/make" "cmTC_c008e/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_c008e.dir/build.make CMakeFiles/cmTC_c008e.dir/build
+Building C object CMakeFiles/cmTC_c008e.dir/testCCompiler.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc    -o CMakeFiles/cmTC_c008e.dir/testCCompiler.c.o   -c /Users/rvievill/nibbler/openGL_lib/GLFW/CMakeFiles/CMakeTmp/testCCompiler.c
+Linking C executable cmTC_c008e
+/Users/rvievill/.brew/Cellar/cmake/3.11.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c008e.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_c008e.dir/testCCompiler.c.o  -o cmTC_c008e 
 
 
 Detecting C compiler ABI info compiled with the following output:
-Change Dir: /Users/acottier/Nibbler/openGL_lib/GLFW/CMakeFiles/CMakeTmp
+Change Dir: /Users/rvievill/nibbler/openGL_lib/GLFW/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_f72c2/fast"
-/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_f72c2.dir/build.make CMakeFiles/cmTC_f72c2.dir/build
-Building C object CMakeFiles/cmTC_f72c2.dir/CMakeCCompilerABI.c.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc    -o CMakeFiles/cmTC_f72c2.dir/CMakeCCompilerABI.c.o   -c /Users/acottier/.brew/Cellar/cmake/3.11.1/share/cmake/Modules/CMakeCCompilerABI.c
-Linking C executable cmTC_f72c2
-/Users/acottier/.brew/Cellar/cmake/3.11.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f72c2.dir/link.txt --verbose=1
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -Wl,-search_paths_first -Wl,-headerpad_max_install_names  -v -Wl,-v CMakeFiles/cmTC_f72c2.dir/CMakeCCompilerABI.c.o  -o cmTC_f72c2 
+Run Build Command:"/usr/bin/make" "cmTC_6da57/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_6da57.dir/build.make CMakeFiles/cmTC_6da57.dir/build
+Building C object CMakeFiles/cmTC_6da57.dir/CMakeCCompilerABI.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc    -o CMakeFiles/cmTC_6da57.dir/CMakeCCompilerABI.c.o   -c /Users/rvievill/.brew/Cellar/cmake/3.11.1/share/cmake/Modules/CMakeCCompilerABI.c
+Linking C executable cmTC_6da57
+/Users/rvievill/.brew/Cellar/cmake/3.11.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6da57.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -Wl,-search_paths_first -Wl,-headerpad_max_install_names  -v -Wl,-v CMakeFiles/cmTC_6da57.dir/CMakeCCompilerABI.c.o  -o cmTC_6da57 
 Apple LLVM version 9.0.0 (clang-900.0.39.2)
 Target: x86_64-apple-darwin16.7.0
 Thread model: posix
 InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld" -demangle -lto_library /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libLTO.dylib -dynamic -arch x86_64 -macosx_version_min 10.12.0 -o cmTC_f72c2 -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTC_f72c2.dir/CMakeCCompilerABI.c.o -lSystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/lib/darwin/libclang_rt.osx.a
+ "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld" -demangle -lto_library /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libLTO.dylib -dynamic -arch x86_64 -macosx_version_min 10.12.0 -o cmTC_6da57 -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTC_6da57.dir/CMakeCCompilerABI.c.o -lSystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/lib/darwin/libclang_rt.osx.a
 @(#)PROGRAM:ld  PROJECT:ld64-305
 configured to support archs: armv6 armv7 armv7s arm64 i386 x86_64 x86_64h armv6m armv7k armv7m armv7em (tvOS)
 Library search paths:
@@ -51,20 +51,20 @@ Framework search paths:
 
 Parsed C implicit link information from above output:
   link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
-  ignore line: [Change Dir: /Users/acottier/Nibbler/openGL_lib/GLFW/CMakeFiles/CMakeTmp]
+  ignore line: [Change Dir: /Users/rvievill/nibbler/openGL_lib/GLFW/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_f72c2/fast"]
-  ignore line: [/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_f72c2.dir/build.make CMakeFiles/cmTC_f72c2.dir/build]
-  ignore line: [Building C object CMakeFiles/cmTC_f72c2.dir/CMakeCCompilerABI.c.o]
-  ignore line: [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc    -o CMakeFiles/cmTC_f72c2.dir/CMakeCCompilerABI.c.o   -c /Users/acottier/.brew/Cellar/cmake/3.11.1/share/cmake/Modules/CMakeCCompilerABI.c]
-  ignore line: [Linking C executable cmTC_f72c2]
-  ignore line: [/Users/acottier/.brew/Cellar/cmake/3.11.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f72c2.dir/link.txt --verbose=1]
-  ignore line: [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -Wl,-search_paths_first -Wl,-headerpad_max_install_names  -v -Wl,-v CMakeFiles/cmTC_f72c2.dir/CMakeCCompilerABI.c.o  -o cmTC_f72c2 ]
+  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_6da57/fast"]
+  ignore line: [/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_6da57.dir/build.make CMakeFiles/cmTC_6da57.dir/build]
+  ignore line: [Building C object CMakeFiles/cmTC_6da57.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc    -o CMakeFiles/cmTC_6da57.dir/CMakeCCompilerABI.c.o   -c /Users/rvievill/.brew/Cellar/cmake/3.11.1/share/cmake/Modules/CMakeCCompilerABI.c]
+  ignore line: [Linking C executable cmTC_6da57]
+  ignore line: [/Users/rvievill/.brew/Cellar/cmake/3.11.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6da57.dir/link.txt --verbose=1]
+  ignore line: [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -Wl,-search_paths_first -Wl,-headerpad_max_install_names  -v -Wl,-v CMakeFiles/cmTC_6da57.dir/CMakeCCompilerABI.c.o  -o cmTC_6da57 ]
   ignore line: [Apple LLVM version 9.0.0 (clang-900.0.39.2)]
   ignore line: [Target: x86_64-apple-darwin16.7.0]
   ignore line: [Thread model: posix]
   ignore line: [InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin]
-  link line: [ "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld" -demangle -lto_library /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libLTO.dylib -dynamic -arch x86_64 -macosx_version_min 10.12.0 -o cmTC_f72c2 -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTC_f72c2.dir/CMakeCCompilerABI.c.o -lSystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/lib/darwin/libclang_rt.osx.a]
+  link line: [ "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld" -demangle -lto_library /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libLTO.dylib -dynamic -arch x86_64 -macosx_version_min 10.12.0 -o cmTC_6da57 -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTC_6da57.dir/CMakeCCompilerABI.c.o -lSystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/lib/darwin/libclang_rt.osx.a]
     arg [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld] ==> ignore
     arg [-demangle] ==> ignore
     arg [-lto_library] ==> ignore, skip following value
@@ -75,11 +75,11 @@ Parsed C implicit link information from above output:
     arg [-macosx_version_min] ==> ignore
     arg [10.12.0] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTC_f72c2] ==> ignore
+    arg [cmTC_6da57] ==> ignore
     arg [-search_paths_first] ==> ignore
     arg [-headerpad_max_install_names] ==> ignore
     arg [-v] ==> ignore
-    arg [CMakeFiles/cmTC_f72c2.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [CMakeFiles/cmTC_6da57.dir/CMakeCCompilerABI.c.o] ==> ignore
     arg [-lSystem] ==> lib [System]
     arg [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/lib/darwin/libclang_rt.osx.a] ==> lib [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/lib/darwin/libclang_rt.osx.a]
   Library search paths: [;/usr/lib;/usr/local/lib]
@@ -98,15 +98,15 @@ Parsed C implicit link information from above output:
 
 
 Detecting C [-std=c11] compiler features compiled with the following output:
-Change Dir: /Users/acottier/Nibbler/openGL_lib/GLFW/CMakeFiles/CMakeTmp
+Change Dir: /Users/rvievill/nibbler/openGL_lib/GLFW/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_84481/fast"
-/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_84481.dir/build.make CMakeFiles/cmTC_84481.dir/build
-Building C object CMakeFiles/cmTC_84481.dir/feature_tests.c.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -std=c11 -o CMakeFiles/cmTC_84481.dir/feature_tests.c.o   -c /Users/acottier/Nibbler/openGL_lib/GLFW/CMakeFiles/feature_tests.c
-Linking C executable cmTC_84481
-/Users/acottier/.brew/Cellar/cmake/3.11.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_84481.dir/link.txt --verbose=1
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_84481.dir/feature_tests.c.o  -o cmTC_84481 
+Run Build Command:"/usr/bin/make" "cmTC_cad46/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_cad46.dir/build.make CMakeFiles/cmTC_cad46.dir/build
+Building C object CMakeFiles/cmTC_cad46.dir/feature_tests.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -std=c11 -o CMakeFiles/cmTC_cad46.dir/feature_tests.c.o   -c /Users/rvievill/nibbler/openGL_lib/GLFW/CMakeFiles/feature_tests.c
+Linking C executable cmTC_cad46
+/Users/rvievill/.brew/Cellar/cmake/3.11.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_cad46.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_cad46.dir/feature_tests.c.o  -o cmTC_cad46 
 
 
     Feature record: C_FEATURE:1c_function_prototypes
@@ -116,15 +116,15 @@ Linking C executable cmTC_84481
 
 
 Detecting C [-std=c99] compiler features compiled with the following output:
-Change Dir: /Users/acottier/Nibbler/openGL_lib/GLFW/CMakeFiles/CMakeTmp
+Change Dir: /Users/rvievill/nibbler/openGL_lib/GLFW/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_2051d/fast"
-/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_2051d.dir/build.make CMakeFiles/cmTC_2051d.dir/build
-Building C object CMakeFiles/cmTC_2051d.dir/feature_tests.c.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -std=c99 -o CMakeFiles/cmTC_2051d.dir/feature_tests.c.o   -c /Users/acottier/Nibbler/openGL_lib/GLFW/CMakeFiles/feature_tests.c
-Linking C executable cmTC_2051d
-/Users/acottier/.brew/Cellar/cmake/3.11.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2051d.dir/link.txt --verbose=1
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_2051d.dir/feature_tests.c.o  -o cmTC_2051d 
+Run Build Command:"/usr/bin/make" "cmTC_62da4/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_62da4.dir/build.make CMakeFiles/cmTC_62da4.dir/build
+Building C object CMakeFiles/cmTC_62da4.dir/feature_tests.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -std=c99 -o CMakeFiles/cmTC_62da4.dir/feature_tests.c.o   -c /Users/rvievill/nibbler/openGL_lib/GLFW/CMakeFiles/feature_tests.c
+Linking C executable cmTC_62da4
+/Users/rvievill/.brew/Cellar/cmake/3.11.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_62da4.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_62da4.dir/feature_tests.c.o  -o cmTC_62da4 
 
 
     Feature record: C_FEATURE:1c_function_prototypes
@@ -134,15 +134,15 @@ Linking C executable cmTC_2051d
 
 
 Detecting C [-std=c90] compiler features compiled with the following output:
-Change Dir: /Users/acottier/Nibbler/openGL_lib/GLFW/CMakeFiles/CMakeTmp
+Change Dir: /Users/rvievill/nibbler/openGL_lib/GLFW/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_22d14/fast"
-/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_22d14.dir/build.make CMakeFiles/cmTC_22d14.dir/build
-Building C object CMakeFiles/cmTC_22d14.dir/feature_tests.c.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -std=c90 -o CMakeFiles/cmTC_22d14.dir/feature_tests.c.o   -c /Users/acottier/Nibbler/openGL_lib/GLFW/CMakeFiles/feature_tests.c
-Linking C executable cmTC_22d14
-/Users/acottier/.brew/Cellar/cmake/3.11.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_22d14.dir/link.txt --verbose=1
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_22d14.dir/feature_tests.c.o  -o cmTC_22d14 
+Run Build Command:"/usr/bin/make" "cmTC_6d1a9/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_6d1a9.dir/build.make CMakeFiles/cmTC_6d1a9.dir/build
+Building C object CMakeFiles/cmTC_6d1a9.dir/feature_tests.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -std=c90 -o CMakeFiles/cmTC_6d1a9.dir/feature_tests.c.o   -c /Users/rvievill/nibbler/openGL_lib/GLFW/CMakeFiles/feature_tests.c
+Linking C executable cmTC_6d1a9
+/Users/rvievill/.brew/Cellar/cmake/3.11.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6d1a9.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_6d1a9.dir/feature_tests.c.o  -o cmTC_6d1a9 
 
 
     Feature record: C_FEATURE:1c_function_prototypes
@@ -150,29 +150,29 @@ Linking C executable cmTC_22d14
     Feature record: C_FEATURE:0c_static_assert
     Feature record: C_FEATURE:0c_variadic_macros
 Determining if the include file pthread.h exists passed with the following output:
-Change Dir: /Users/acottier/Nibbler/openGL_lib/GLFW/CMakeFiles/CMakeTmp
+Change Dir: /Users/rvievill/nibbler/openGL_lib/GLFW/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_f1d3d/fast"
-/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_f1d3d.dir/build.make CMakeFiles/cmTC_f1d3d.dir/build
-Building C object CMakeFiles/cmTC_f1d3d.dir/CheckIncludeFile.c.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc    -o CMakeFiles/cmTC_f1d3d.dir/CheckIncludeFile.c.o   -c /Users/acottier/Nibbler/openGL_lib/GLFW/CMakeFiles/CMakeTmp/CheckIncludeFile.c
-Linking C executable cmTC_f1d3d
-/Users/acottier/.brew/Cellar/cmake/3.11.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f1d3d.dir/link.txt --verbose=1
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_f1d3d.dir/CheckIncludeFile.c.o  -o cmTC_f1d3d 
+Run Build Command:"/usr/bin/make" "cmTC_33bc1/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_33bc1.dir/build.make CMakeFiles/cmTC_33bc1.dir/build
+Building C object CMakeFiles/cmTC_33bc1.dir/CheckIncludeFile.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc    -o CMakeFiles/cmTC_33bc1.dir/CheckIncludeFile.c.o   -c /Users/rvievill/nibbler/openGL_lib/GLFW/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_33bc1
+/Users/rvievill/.brew/Cellar/cmake/3.11.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_33bc1.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_33bc1.dir/CheckIncludeFile.c.o  -o cmTC_33bc1 
 
 
 Determining if the pthread_create exist passed with the following output:
-Change Dir: /Users/acottier/Nibbler/openGL_lib/GLFW/CMakeFiles/CMakeTmp
+Change Dir: /Users/rvievill/nibbler/openGL_lib/GLFW/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_97042/fast"
-/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_97042.dir/build.make CMakeFiles/cmTC_97042.dir/build
-Building C object CMakeFiles/cmTC_97042.dir/CheckSymbolExists.c.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc    -o CMakeFiles/cmTC_97042.dir/CheckSymbolExists.c.o   -c /Users/acottier/Nibbler/openGL_lib/GLFW/CMakeFiles/CMakeTmp/CheckSymbolExists.c
-Linking C executable cmTC_97042
-/Users/acottier/.brew/Cellar/cmake/3.11.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_97042.dir/link.txt --verbose=1
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_97042.dir/CheckSymbolExists.c.o  -o cmTC_97042 
+Run Build Command:"/usr/bin/make" "cmTC_38a3c/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_38a3c.dir/build.make CMakeFiles/cmTC_38a3c.dir/build
+Building C object CMakeFiles/cmTC_38a3c.dir/CheckSymbolExists.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc    -o CMakeFiles/cmTC_38a3c.dir/CheckSymbolExists.c.o   -c /Users/rvievill/nibbler/openGL_lib/GLFW/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_38a3c
+/Users/rvievill/.brew/Cellar/cmake/3.11.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_38a3c.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_38a3c.dir/CheckSymbolExists.c.o  -o cmTC_38a3c 
 
-File /Users/acottier/Nibbler/openGL_lib/GLFW/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+File /Users/rvievill/nibbler/openGL_lib/GLFW/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
 /* */
 #include <pthread.h>
 

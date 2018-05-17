@@ -6,5 +6,5 @@ C_FLAGS = -fPIC   -Wall
 
 C_DEFINES = -D_GLFW_USE_CONFIG_H
 
-C_INCLUDES = -I/Users/acottier/Nibbler/openGL_lib/GLFW/include -I/Users/acottier/Nibbler/openGL_lib/GLFW/src 
+C_INCLUDES = -I/Users/rvievill/nibbler/openGL_lib/GLFW/include -I/Users/rvievill/nibbler/openGL_lib/GLFW/src 
 
