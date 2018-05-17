@@ -41,9 +41,9 @@ fclean: clean
 	rm -rf $(NAME)
 
 install:
-	@make -C sfml_lib install
-	@make -C openGL_lib install
-	@make -C sdl_lib install
+	make -C sfml_lib install
+	make -C openGL_lib install
+	cd sdl_lib && make install
 
 remove:
 	make -C openGL_lib remove

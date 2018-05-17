@@ -33,13 +33,13 @@ fclean: clean
 	rm -rf $(NAME)
 
 install:
-	@wget https://www.sfml-dev.org/files/SFML-2.4.2-osx-clang.tar.gz
-	@tar -xf SFML-2.4.2-osx-clang.tar.gz
-	@mv SFML-2.4.2-osx-clang SFML
-	@cp -r SFML/extlibs/* SFML/Frameworks/
-	@rm -rf SFML-2.4.2-osx-clang.tar.gz
+	wget https://www.sfml-dev.org/files/SFML-2.4.2-osx-clang.tar.gz
+	tar -xf SFML-2.4.2-osx-clang.tar.gz
+	mv SFML-2.4.2-osx-clang SFML
+	cp -r SFML/extlibs/* SFML/Frameworks/
+	rm -rf SFML-2.4.2-osx-clang.tar.gz
 
 remove:
-	@rm -rf SFML
+	rm -rf SFML
 
 re: remove install fclean all

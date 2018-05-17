@@ -6,7 +6,7 @@
 /*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/16 15:53:55 by acottier          #+#    #+#             */
-/*   Updated: 2018/05/16 18:13:51 by acottier         ###   ########.fr       */
+/*   Updated: 2018/05/16 19:07:55 by acottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,4 @@ extern "C"
 	Graphics		*create(void);
 	void			del(Graphics *lol);
 }
-
 #endif

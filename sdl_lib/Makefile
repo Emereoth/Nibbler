@@ -32,13 +32,12 @@ fclean: clean
 re: fclean all
 
 install:
-	@wget https://libsdl.org/release/SDL2-2.0.8.tar.gz
-	@tar -xf SDL2-2.0.8.tar.gz
-	@rm -rf SDL2-2.0.8.tar.gz
-	@mv SDL2-2.0.8 SDL
-	@cd SDL && ./configure --prefix=${PWD}/SDL && make && make install
+	wget https://libsdl.org/release/SDL2-2.0.8.tar.gz
+	tar -xf SDL2-2.0.8.tar.gz
+	rm -rf SDL2-2.0.8.tar.gz
+	pwd && mv SDL2-2.0.8 SDL && cd SDL && ./configure --prefix=${PWD}/SDL && make && make install
 
 uninstall:
-	@rm -rf SDL
+	rm -rf SDL
 
 reinstall: uninstall install
