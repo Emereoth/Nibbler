@@ -23,6 +23,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	make -C $(SFML)
+	make -C $(SDL)
 	$(CC) $(CFLAGS) $(LINK_DYLIB) $(OBJ) -o $(NAME)
 
 $(OPATH)%.o: $(CPATH)%.cpp $(HFILES)
@@ -50,5 +51,7 @@ remove:
 	make -C sfml_lib remove
 	make -C sdl_lib uninstall
 
-re: remove install fclean all
+re: fclean all
+
+rebuild: remove install
 
