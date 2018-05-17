@@ -2,16 +2,17 @@
 # define SFMLTEST_HPP
 
 #include "../SFML/include/SFML/Window.hpp"
+#include "../SFML/include/SFML/Graphics.hpp"
 #include "../../inc/Api.class.hpp"
 
 class Graphics : public Api {
 
 	public:
 
-		sf::Window			window;
+		sf::RenderWindow			window;
 		virtual ~Graphics(void);
 
-		void				openWindow(size_t w, size_t h);
+		void				run(size_t w, size_t h);
 
 };
 

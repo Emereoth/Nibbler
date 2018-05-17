@@ -1,6 +1,6 @@
 CC = clang++
 NAME = openGL.so
-HPATH = inc/ GLFW/include /Users/rvievill/.brew/include
+HPATH = inc/ GLFW/include $$HOME/.brew/include
 DYLIB = -shared -fPIC
 LIBGRAPH = -framework openGL -framework Cocoa -framework IOKit -framework CoreVideo -L ~/.brew/lib/ -lGLEW
 CFLAGS = -Wall -Werror -Wextra

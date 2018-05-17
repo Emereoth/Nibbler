@@ -21,7 +21,7 @@ int main(int ac, char **av)
 		if (!mdr)
 			std::cerr << dlerror() << std::endl;
 		Api		*ptdr = mdr();
-		ptdr->openWindow(WIDTH_WINDOW, HEIGHT_WINDOW);
+		ptdr->run(WIDTH_WINDOW, HEIGHT_WINDOW);
 	}
 	catch (std::exception &e)
 	{

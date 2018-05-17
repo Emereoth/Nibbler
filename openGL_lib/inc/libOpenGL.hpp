@@ -6,7 +6,7 @@
 /*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/14 14:34:38 by rvievill          #+#    #+#             */
-/*   Updated: 2018/05/16 15:24:37 by rvievill         ###   ########.fr       */
+/*   Updated: 2018/05/17 17:12:31 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class Graphics : public Api {
 		Graphics(void);
 		virtual ~Graphics(void);
 
-		void				openWindow(size_t w, size_t h);
+		void				run(size_t w, size_t h);
 
 };
 

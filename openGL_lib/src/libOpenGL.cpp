@@ -6,7 +6,7 @@
 /*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/14 17:26:49 by rvievill          #+#    #+#             */
-/*   Updated: 2018/05/17 11:48:00 by rvievill         ###   ########.fr       */
+/*   Updated: 2018/05/17 17:12:50 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ Graphics::Graphics(void)
 	
 }
 
-void				Graphics::openWindow(size_t w, size_t h)
+void				Graphics::run(size_t w, size_t h)
 {
 	if (!glfwInit())
 	{
