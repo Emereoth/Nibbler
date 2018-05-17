@@ -1,30 +1,44 @@
 #include "../inc/libSFML.hpp"
 #include <iostream>
 
-void				Graphics::run(size_t w, size_t h)
-{
-	window.create(sf::VideoMode(w, h), "Nibbler (SFML)");
-	while (window.isOpen())
-	{
-		sf::Event event;
-        while (window.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
-                window.close();
-        }
-		window.clear(sf::Color::Black);
-		sf::RectangleShape square(sf::Vector2f(50, 50));
-		sf::Texture	textureSnake;
-		textureSnake.loadFromFile("./texture/headRight.png");
-		square.setTexture(&textureSnake);
-		window.draw(square);
-		window.display();
-	}
-}
-
 Graphics::~Graphics(void)
 {
 
+}
+
+void				Graphics::run(size_t w, size_t h)
+{
+	sf::Music music;
+	music.openFromFile("./music/music.wav");
+	music.setLoop(true);
+	music.play();
+	openWindow(w, h);
+}
+
+void				Graphics::openWindow(size_t w, size_t h)
+{
+	_window.create(sf::VideoMode(w, h), "Nibbler (SFML)");
+
+	sf::RectangleShape square(sf::Vector2f(SIZE_SQUARE, SIZE_SQUARE));
+	sf::Texture	textureSnake;
+	textureSnake.loadFromFile("./texture/headRight.png");
+	square.setTexture(&textureSnake);
+	square.setOrigin(SIZE_SQUARE, 0);
+    square.setPosition(SIZE_SQUARE, 0);
+	_window.setFramerateLimit(60);
+	while (_window.isOpen())
+	{
+		sf::Event event;
+        while (_window.pollEvent(event))
+        {
+            if (event.type == sf::Event::Closed)
+                _window.close();
+        }
+		square.move(1, 0);
+		_window.clear(sf::Color::Black);
+		_window.draw(square);
+		_window.display();
+	}
 }
 
 Graphics			*create(void)
