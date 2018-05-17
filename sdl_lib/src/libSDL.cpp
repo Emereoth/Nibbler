@@ -3,30 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   libSDL.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/16 15:53:54 by acottier          #+#    #+#             */
-/*   Updated: 2018/05/17 15:24:44 by rvievill         ###   ########.fr       */
+/*   Updated: 2018/05/17 18:32:17 by acottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../SDL/include/SDL.h"
 #include "../inc/libSDL.hpp"
 #include <iostream>
 
-void		Graphics::openWindow(size_t w, size_t h)
+void		Graphics::run(size_t w, size_t h)
 {
 	SDL_Window	*win;
 	SDL_Event	currentEvent;
 
-	if (SDL_Init(SDL_INIT_VIDEO))
-		std::cout << "lol" << std::endl;
+	if (SDL_Init(SDL_INIT_VIDEO) < 0)
+	{
+		std::cerr << "SDL init error :" << SDL_GetError() << std::endl;
+		return ;
+	}
 	win = SDL_CreateWindow("Nibbler (SDL)", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, w, h, SDL_WINDOW_MOUSE_FOCUS);
 	while (win)
 	{
 		while (SDL_PollEvent(&currentEvent))
 		{
 			SDL_PumpEvents();
+			drawImage("../test.png", win);
 			if (currentEvent.type == SDL_WINDOWEVENT && currentEvent.window.event == SDL_WINDOWEVENT_CLOSE)
 			{
 				SDL_DestroyWindow(win);
@@ -35,6 +38,20 @@ void		Graphics::openWindow(size_t w, size_t h)
 		}
 	}
 	SDL_Quit();
+}
+
+Graphics::drawImage(std::string const & path, SDL_Window * win)
+{
+	int imgFlags = IMG_INIT_PNG;
+    if( !( IMG_Init( imgFlags ) & imgFlags ) )
+    {
+        printf( "SDL_image could not initialize! SDL_image Error: %s\n", IMG_GetError() );
+    }
+    else
+    {
+        //Get window surface
+        gScreenSurface = SDL_GetWindowSurface( gWindow );
+    }
 }
 
 Graphics::Graphics(void)

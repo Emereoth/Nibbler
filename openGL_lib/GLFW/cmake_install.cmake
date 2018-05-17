@@ -1,8 +1,8 @@
-# Install script for directory: /Users/rvievill/nibbler/openGL_lib/GLFW
+# Install script for directory: /Users/acottier/Nibbler/openGL_lib/GLFW
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/Users/rvievill/.brew")
+  set(CMAKE_INSTALL_PREFIX "/Users/acottier/.brew")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -33,13 +33,13 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE DIRECTORY FILES "/Users/rvievill/nibbler/openGL_lib/GLFW/include/GLFW" FILES_MATCHING REGEX "/glfw3\\.h$" REGEX "/glfw3native\\.h$")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE DIRECTORY FILES "/Users/acottier/Nibbler/openGL_lib/GLFW/include/GLFW" FILES_MATCHING REGEX "/glfw3\\.h$" REGEX "/glfw3native\\.h$")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/glfw3" TYPE FILE FILES
-    "/Users/rvievill/nibbler/openGL_lib/GLFW/src/glfw3Config.cmake"
-    "/Users/rvievill/nibbler/openGL_lib/GLFW/src/glfw3ConfigVersion.cmake"
+    "/Users/acottier/Nibbler/openGL_lib/GLFW/src/glfw3Config.cmake"
+    "/Users/acottier/Nibbler/openGL_lib/GLFW/src/glfw3ConfigVersion.cmake"
     )
 endif()
 
@@ -47,7 +47,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/cmake/glfw3/glfw3Targets.cmake")
     file(DIFFERENT EXPORT_FILE_CHANGED FILES
          "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/cmake/glfw3/glfw3Targets.cmake"
-         "/Users/rvievill/nibbler/openGL_lib/GLFW/CMakeFiles/Export/lib/cmake/glfw3/glfw3Targets.cmake")
+         "/Users/acottier/Nibbler/openGL_lib/GLFW/CMakeFiles/Export/lib/cmake/glfw3/glfw3Targets.cmake")
     if(EXPORT_FILE_CHANGED)
       file(GLOB OLD_CONFIG_FILES "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/cmake/glfw3/glfw3Targets-*.cmake")
       if(OLD_CONFIG_FILES)
@@ -56,21 +56,21 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
       endif()
     endif()
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/glfw3" TYPE FILE FILES "/Users/rvievill/nibbler/openGL_lib/GLFW/CMakeFiles/Export/lib/cmake/glfw3/glfw3Targets.cmake")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/glfw3" TYPE FILE FILES "/Users/acottier/Nibbler/openGL_lib/GLFW/CMakeFiles/Export/lib/cmake/glfw3/glfw3Targets.cmake")
   if("${CMAKE_INSTALL_CONFIG_NAME}" MATCHES "^()$")
-    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/glfw3" TYPE FILE FILES "/Users/rvievill/nibbler/openGL_lib/GLFW/CMakeFiles/Export/lib/cmake/glfw3/glfw3Targets-noconfig.cmake")
+    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/glfw3" TYPE FILE FILES "/Users/acottier/Nibbler/openGL_lib/GLFW/CMakeFiles/Export/lib/cmake/glfw3/glfw3Targets-noconfig.cmake")
   endif()
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/Users/rvievill/nibbler/openGL_lib/GLFW/src/glfw3.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/Users/acottier/Nibbler/openGL_lib/GLFW/src/glfw3.pc")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/Users/rvievill/nibbler/openGL_lib/GLFW/src/cmake_install.cmake")
-  include("/Users/rvievill/nibbler/openGL_lib/GLFW/examples/cmake_install.cmake")
-  include("/Users/rvievill/nibbler/openGL_lib/GLFW/tests/cmake_install.cmake")
+  include("/Users/acottier/Nibbler/openGL_lib/GLFW/src/cmake_install.cmake")
+  include("/Users/acottier/Nibbler/openGL_lib/GLFW/examples/cmake_install.cmake")
+  include("/Users/acottier/Nibbler/openGL_lib/GLFW/tests/cmake_install.cmake")
 
 endif()
 
@@ -82,5 +82,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/Users/rvievill/nibbler/openGL_lib/GLFW/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/Users/acottier/Nibbler/openGL_lib/GLFW/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
