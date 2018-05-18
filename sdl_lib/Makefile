@@ -1,11 +1,12 @@
 CC = clang++
 NAME = SDL.so
 DYLIB = -shared -fPIC
-LIBGRAPH = -I./SDL/include -L./SDL/lib -lSDL2
-CFLAGS = -Wall -Werror -Wextra
+LIBGRAPH = -I./SDL/include -L./SDL/lib -lSDL2 -lSDL2_image -lSDL2_mixer
+CFLAGS = -Wall -Werror -Wextra -std=c++11
 CPATH = src/
 OPATH = obj/
 CFILES = libSDL.cpp
+INCPATH = SDL/include
 
 OFILES = $(CFILES:.cpp=.o)
 
@@ -40,7 +41,13 @@ install:
 	tar -xf SDL2_image-2.0.3.tar.gz
 	rm -rf SDL2_image-2.0.3.tar.gz
 	mv SDL2_image-2.0.3 SDL_Image && cd SDL_Image && ./configure --prefix=${PWD}/SDL && make && make install
-	cp SDL/include/SDL.h SDL/include/SDL_version.h SDL/include/begin_code.h SDL/include/close_code.h SDL_Image
+	cp $(INCPATH)/SDL.h $(INCPATH)/SDL_version.h $(INCPATH)/begin_code.h $(INCPATH)/close_code.h SDL_Image
+	wget https://www.libsdl.org/projects/SDL_mixer/release/SDL2_mixer-2.0.2.tar.gz
+	tar -xf SDL2_mixer-2.0.2.tar.gz
+	rm -rf SDL2_mixer-2.0.2.tar.gz
+	mv SDL2_mixer-2.0.2 SDL_Mixer && cd SDL_Mixer && ./configure --prefix=${PWD}/SDL && make && make install
+	cp $(INCPATH)/SDL_stdinc.h $(INCPATH)/rwops.h $(INCPATH)/audio.h $(INCPATH)/endian.h $(INCPATH)/SDL_version.h
+		$(INCPATH)/begin_code.h $(INCPATH)/close_code.h SDL_Mixer
 
 uninstall:
 	rm -rf SDL
