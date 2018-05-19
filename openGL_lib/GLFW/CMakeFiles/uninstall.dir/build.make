@@ -34,19 +34,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /Users/rvievill/.brew/Cellar/cmake/3.11.1/bin/cmake
+CMAKE_COMMAND = /Users/acottier/.brew/Cellar/cmake/3.11.1/bin/cmake
 
 # The command to remove a file.
-RM = /Users/rvievill/.brew/Cellar/cmake/3.11.1/bin/cmake -E remove -f
+RM = /Users/acottier/.brew/Cellar/cmake/3.11.1/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/rvievill/nibbler/openGL_lib/GLFW
+CMAKE_SOURCE_DIR = /Users/acottier/Nibbler/openGL_lib/GLFW
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/rvievill/nibbler/openGL_lib/GLFW
+CMAKE_BINARY_DIR = /Users/acottier/Nibbler/openGL_lib/GLFW
 
 # Utility rule file for uninstall.
 
@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /Users/rvievill/nibbler/openGL_lib/GLFW
 include CMakeFiles/uninstall.dir/progress.make
 
 CMakeFiles/uninstall:
-	/Users/rvievill/.brew/Cellar/cmake/3.11.1/bin/cmake -P /Users/rvievill/nibbler/openGL_lib/GLFW/cmake_uninstall.cmake
+	/Users/acottier/.brew/Cellar/cmake/3.11.1/bin/cmake -P /Users/acottier/Nibbler/openGL_lib/GLFW/cmake_uninstall.cmake
 
 uninstall: CMakeFiles/uninstall
 uninstall: CMakeFiles/uninstall.dir/build.make
@@ -71,6 +71,6 @@ CMakeFiles/uninstall.dir/clean:
 .PHONY : CMakeFiles/uninstall.dir/clean
 
 CMakeFiles/uninstall.dir/depend:
-	cd /Users/rvievill/nibbler/openGL_lib/GLFW && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/rvievill/nibbler/openGL_lib/GLFW /Users/rvievill/nibbler/openGL_lib/GLFW /Users/rvievill/nibbler/openGL_lib/GLFW /Users/rvievill/nibbler/openGL_lib/GLFW /Users/rvievill/nibbler/openGL_lib/GLFW/CMakeFiles/uninstall.dir/DependInfo.cmake --color=$(COLOR)
+	cd /Users/acottier/Nibbler/openGL_lib/GLFW && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/acottier/Nibbler/openGL_lib/GLFW /Users/acottier/Nibbler/openGL_lib/GLFW /Users/acottier/Nibbler/openGL_lib/GLFW /Users/acottier/Nibbler/openGL_lib/GLFW /Users/acottier/Nibbler/openGL_lib/GLFW/CMakeFiles/uninstall.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/uninstall.dir/depend
 
