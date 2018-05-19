@@ -1,9 +1,9 @@
 CC = clang++
 NAME = openGL.so
-HPATH = inc/ GLFW/include $$HOME/.brew/include
+HPATH = inc/ GLFW/include $$HOME/.brew/include SOIL2/incs
 DYLIB = -shared -fPIC
 LIBGRAPH = -framework openGL -framework Cocoa -framework IOKit -framework CoreVideo -L ~/.brew/lib/ -lGLEW
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -std=c++11
 CPATH = src/
 OPATH = obj/
 INC = $(addprefix -I, $(HPATH))
@@ -20,7 +20,7 @@ OBJ = $(addprefix $(OPATH), $(OFILES))
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(DYLIB) $(LIBGRAPH) $(OBJ) GLFW/src/libglfw3.a -o $(NAME)
+	$(CC) $(CFLAGS) $(DYLIB) $(LIBGRAPH) $(OBJ) GLFW/src/libglfw3.a  SOIL2/libSOIL2.a -o $(NAME)
 
 $(OPATH)%.o: $(CPATH)%.cpp $(HFILES)
 	@mkdir -p $(OPATH)
@@ -30,7 +30,6 @@ clean:
 	rm -rf $(OBJ)
 
 fclean: clean
-	rm -rf SFML
 	rm -rf $(NAME)
 
 install:
@@ -39,8 +38,11 @@ install:
 	rm -rf glfw-3.2.1.zip
 	mv glfw-3.2.1 GLFW
 	cd GLFW && cmake . && make
+	git clone https://github.com/alelievr/SOIL2.git
+	cd SOIL2 && make
 
 remove:
 	rm -rf GLFW
+	rm -rf SOIL2
 
-re: remove install fclean all
+re: fclean all

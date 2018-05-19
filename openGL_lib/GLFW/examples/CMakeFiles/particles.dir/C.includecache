@@ -6,17 +6,17 @@
 
 #IncludeRegexTransform: 
 
-/Users/acottier/Nibbler/openGL_lib/GLFW/deps/getopt.c
+/Users/rvievill/nibbler/openGL_lib/GLFW/deps/getopt.c
 getopt.h
-/Users/acottier/Nibbler/openGL_lib/GLFW/deps/getopt.h
+/Users/rvievill/nibbler/openGL_lib/GLFW/deps/getopt.h
 stddef.h
 -
 string.h
 -
 
-/Users/acottier/Nibbler/openGL_lib/GLFW/deps/getopt.h
+/Users/rvievill/nibbler/openGL_lib/GLFW/deps/getopt.h
 
-/Users/acottier/Nibbler/openGL_lib/GLFW/deps/glad.c
+/Users/rvievill/nibbler/openGL_lib/GLFW/deps/glad.c
 stdio.h
 -
 stdlib.h
@@ -26,9 +26,9 @@ string.h
 glad/glad.h
 -
 
-/Users/acottier/Nibbler/openGL_lib/GLFW/deps/tinycthread.c
+/Users/rvievill/nibbler/openGL_lib/GLFW/deps/tinycthread.c
 tinycthread.h
-/Users/acottier/Nibbler/openGL_lib/GLFW/deps/tinycthread.h
+/Users/rvievill/nibbler/openGL_lib/GLFW/deps/tinycthread.h
 stdlib.h
 -
 signal.h
@@ -46,7 +46,7 @@ process.h
 sys/timeb.h
 -
 
-/Users/acottier/Nibbler/openGL_lib/GLFW/deps/tinycthread.h
+/Users/rvievill/nibbler/openGL_lib/GLFW/deps/tinycthread.h
 time.h
 -
 sys/time.h
@@ -56,7 +56,7 @@ pthread.h
 windows.h
 -
 
-/Users/acottier/Nibbler/openGL_lib/GLFW/examples/particles.c
+/Users/rvievill/nibbler/openGL_lib/GLFW/examples/particles.c
 stdlib.h
 -
 stdio.h

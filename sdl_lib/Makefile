@@ -46,11 +46,11 @@ install:
 	tar -xf SDL2_mixer-2.0.2.tar.gz
 	rm -rf SDL2_mixer-2.0.2.tar.gz
 	mv SDL2_mixer-2.0.2 SDL_Mixer && cd SDL_Mixer && ./configure --prefix=${PWD}/SDL && make && make install
-	cp $(INCPATH)/SDL_stdinc.h $(INCPATH)/rwops.h $(INCPATH)/audio.h $(INCPATH)/endian.h $(INCPATH)/SDL_version.h
-		$(INCPATH)/begin_code.h $(INCPATH)/close_code.h SDL_Mixer
+	cp $(INCPATH)/SDL_stdinc.h $(INCPATH)/SDL_rwops.h $(INCPATH)/SDL_audio.h $(INCPATH)/SDL_endian.h $(INCPATH)/SDL_version.h $(INCPATH)/begin_code.h $(INCPATH)/close_code.h SDL_Mixer
 
 uninstall:
 	rm -rf SDL
 	rm -rf SDL_Image
+	rm -rf SDL_Mixer
 
 reinstall: uninstall install

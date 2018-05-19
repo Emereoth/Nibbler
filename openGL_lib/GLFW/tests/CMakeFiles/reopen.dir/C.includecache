@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/Users/acottier/Nibbler/openGL_lib/GLFW/deps/glad.c
+/Users/rvievill/nibbler/openGL_lib/GLFW/deps/glad.c
 stdio.h
 -
 stdlib.h
@@ -16,7 +16,7 @@ string.h
 glad/glad.h
 -
 
-/Users/acottier/Nibbler/openGL_lib/GLFW/tests/reopen.c
+/Users/rvievill/nibbler/openGL_lib/GLFW/tests/reopen.c
 glad/glad.h
 -
 GLFW/glfw3.h

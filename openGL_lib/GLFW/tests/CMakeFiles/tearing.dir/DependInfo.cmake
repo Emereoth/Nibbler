@@ -4,9 +4,9 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/Users/acottier/Nibbler/openGL_lib/GLFW/deps/getopt.c" "/Users/acottier/Nibbler/openGL_lib/GLFW/tests/CMakeFiles/tearing.dir/__/deps/getopt.c.o"
-  "/Users/acottier/Nibbler/openGL_lib/GLFW/deps/glad.c" "/Users/acottier/Nibbler/openGL_lib/GLFW/tests/CMakeFiles/tearing.dir/__/deps/glad.c.o"
-  "/Users/acottier/Nibbler/openGL_lib/GLFW/tests/tearing.c" "/Users/acottier/Nibbler/openGL_lib/GLFW/tests/CMakeFiles/tearing.dir/tearing.c.o"
+  "/Users/rvievill/nibbler/openGL_lib/GLFW/deps/getopt.c" "/Users/rvievill/nibbler/openGL_lib/GLFW/tests/CMakeFiles/tearing.dir/__/deps/getopt.c.o"
+  "/Users/rvievill/nibbler/openGL_lib/GLFW/deps/glad.c" "/Users/rvievill/nibbler/openGL_lib/GLFW/tests/CMakeFiles/tearing.dir/__/deps/glad.c.o"
+  "/Users/rvievill/nibbler/openGL_lib/GLFW/tests/tearing.c" "/Users/rvievill/nibbler/openGL_lib/GLFW/tests/CMakeFiles/tearing.dir/tearing.c.o"
   )
 set(CMAKE_C_COMPILER_ID "Clang")
 
@@ -18,7 +18,7 @@ set(CMAKE_C_TARGET_INCLUDE_PATH
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/Users/acottier/Nibbler/openGL_lib/GLFW/src/CMakeFiles/glfw.dir/DependInfo.cmake"
+  "/Users/rvievill/nibbler/openGL_lib/GLFW/src/CMakeFiles/glfw.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

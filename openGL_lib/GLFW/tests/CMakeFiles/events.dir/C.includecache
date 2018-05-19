@@ -6,17 +6,17 @@
 
 #IncludeRegexTransform: 
 
-/Users/acottier/Nibbler/openGL_lib/GLFW/deps/getopt.c
+/Users/rvievill/nibbler/openGL_lib/GLFW/deps/getopt.c
 getopt.h
-/Users/acottier/Nibbler/openGL_lib/GLFW/deps/getopt.h
+/Users/rvievill/nibbler/openGL_lib/GLFW/deps/getopt.h
 stddef.h
 -
 string.h
 -
 
-/Users/acottier/Nibbler/openGL_lib/GLFW/deps/getopt.h
+/Users/rvievill/nibbler/openGL_lib/GLFW/deps/getopt.h
 
-/Users/acottier/Nibbler/openGL_lib/GLFW/deps/glad.c
+/Users/rvievill/nibbler/openGL_lib/GLFW/deps/glad.c
 stdio.h
 -
 stdlib.h
@@ -26,7 +26,7 @@ string.h
 glad/glad.h
 -
 
-/Users/acottier/Nibbler/openGL_lib/GLFW/tests/events.c
+/Users/rvievill/nibbler/openGL_lib/GLFW/tests/events.c
 glad/glad.h
 -
 GLFW/glfw3.h
@@ -42,7 +42,7 @@ string.h
 locale.h
 -
 getopt.h
-/Users/acottier/Nibbler/openGL_lib/GLFW/tests/getopt.h
+/Users/rvievill/nibbler/openGL_lib/GLFW/tests/getopt.h
 
 deps/KHR/khrplatform.h
 stdint.h

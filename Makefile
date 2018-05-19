@@ -5,11 +5,13 @@ SFML = sfml_lib
 SDL = sdl_lib
 OPENGL = openGL_lib
 LINK_DYLIB = -Wl,-rpath $(SFML)/SFML/lib
-CFLAGS = -Wall -Werror -Wextra -std=c++11
+CFLAGS = -Wall -Werror -Wextra -std=c++11 -g
 CPATH = src/
 OPATH = obj/
 INC = $(addprefix -I, $(HPATH))
-CFILES = main.cpp
+CFILES =	main.cpp		\
+			Map.class.cpp	\
+			Preset.class.cpp
 
 OFILES = $(CFILES:.cpp=.o)
 

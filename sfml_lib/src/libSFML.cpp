@@ -25,7 +25,7 @@ void				Graphics::openWindow(size_t w, size_t h)
 	square.setTexture(&textureSnake);
 	square.setOrigin(SIZE_SQUARE, 0);
     square.setPosition(SIZE_SQUARE, 0);
-	_window.setFramerateLimit(60);
+	_window.setFramerateLimit(100);
 	while (_window.isOpen())
 	{
 		sf::Event event;

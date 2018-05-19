@@ -34,19 +34,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /Users/acottier/.brew/Cellar/cmake/3.11.1/bin/cmake
+CMAKE_COMMAND = /Users/rvievill/.brew/Cellar/cmake/3.11.1/bin/cmake
 
 # The command to remove a file.
-RM = /Users/acottier/.brew/Cellar/cmake/3.11.1/bin/cmake -E remove -f
+RM = /Users/rvievill/.brew/Cellar/cmake/3.11.1/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/acottier/Nibbler/openGL_lib/GLFW
+CMAKE_SOURCE_DIR = /Users/rvievill/nibbler/openGL_lib/GLFW
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/acottier/Nibbler/openGL_lib/GLFW
+CMAKE_BINARY_DIR = /Users/rvievill/nibbler/openGL_lib/GLFW
 
 # Include any dependencies generated for this target.
 include tests/CMakeFiles/monitors.dir/depend.make
@@ -59,42 +59,42 @@ include tests/CMakeFiles/monitors.dir/flags.make
 
 tests/CMakeFiles/monitors.dir/monitors.c.o: tests/CMakeFiles/monitors.dir/flags.make
 tests/CMakeFiles/monitors.dir/monitors.c.o: tests/monitors.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/acottier/Nibbler/openGL_lib/GLFW/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object tests/CMakeFiles/monitors.dir/monitors.c.o"
-	cd /Users/acottier/Nibbler/openGL_lib/GLFW/tests && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/monitors.dir/monitors.c.o   -c /Users/acottier/Nibbler/openGL_lib/GLFW/tests/monitors.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/rvievill/nibbler/openGL_lib/GLFW/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object tests/CMakeFiles/monitors.dir/monitors.c.o"
+	cd /Users/rvievill/nibbler/openGL_lib/GLFW/tests && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/monitors.dir/monitors.c.o   -c /Users/rvievill/nibbler/openGL_lib/GLFW/tests/monitors.c
 
 tests/CMakeFiles/monitors.dir/monitors.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/monitors.dir/monitors.c.i"
-	cd /Users/acottier/Nibbler/openGL_lib/GLFW/tests && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/acottier/Nibbler/openGL_lib/GLFW/tests/monitors.c > CMakeFiles/monitors.dir/monitors.c.i
+	cd /Users/rvievill/nibbler/openGL_lib/GLFW/tests && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/rvievill/nibbler/openGL_lib/GLFW/tests/monitors.c > CMakeFiles/monitors.dir/monitors.c.i
 
 tests/CMakeFiles/monitors.dir/monitors.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/monitors.dir/monitors.c.s"
-	cd /Users/acottier/Nibbler/openGL_lib/GLFW/tests && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/acottier/Nibbler/openGL_lib/GLFW/tests/monitors.c -o CMakeFiles/monitors.dir/monitors.c.s
+	cd /Users/rvievill/nibbler/openGL_lib/GLFW/tests && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/rvievill/nibbler/openGL_lib/GLFW/tests/monitors.c -o CMakeFiles/monitors.dir/monitors.c.s
 
 tests/CMakeFiles/monitors.dir/__/deps/getopt.c.o: tests/CMakeFiles/monitors.dir/flags.make
 tests/CMakeFiles/monitors.dir/__/deps/getopt.c.o: deps/getopt.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/acottier/Nibbler/openGL_lib/GLFW/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object tests/CMakeFiles/monitors.dir/__/deps/getopt.c.o"
-	cd /Users/acottier/Nibbler/openGL_lib/GLFW/tests && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/monitors.dir/__/deps/getopt.c.o   -c /Users/acottier/Nibbler/openGL_lib/GLFW/deps/getopt.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/rvievill/nibbler/openGL_lib/GLFW/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object tests/CMakeFiles/monitors.dir/__/deps/getopt.c.o"
+	cd /Users/rvievill/nibbler/openGL_lib/GLFW/tests && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/monitors.dir/__/deps/getopt.c.o   -c /Users/rvievill/nibbler/openGL_lib/GLFW/deps/getopt.c
 
 tests/CMakeFiles/monitors.dir/__/deps/getopt.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/monitors.dir/__/deps/getopt.c.i"
-	cd /Users/acottier/Nibbler/openGL_lib/GLFW/tests && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/acottier/Nibbler/openGL_lib/GLFW/deps/getopt.c > CMakeFiles/monitors.dir/__/deps/getopt.c.i
+	cd /Users/rvievill/nibbler/openGL_lib/GLFW/tests && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/rvievill/nibbler/openGL_lib/GLFW/deps/getopt.c > CMakeFiles/monitors.dir/__/deps/getopt.c.i
 
 tests/CMakeFiles/monitors.dir/__/deps/getopt.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/monitors.dir/__/deps/getopt.c.s"
-	cd /Users/acottier/Nibbler/openGL_lib/GLFW/tests && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/acottier/Nibbler/openGL_lib/GLFW/deps/getopt.c -o CMakeFiles/monitors.dir/__/deps/getopt.c.s
+	cd /Users/rvievill/nibbler/openGL_lib/GLFW/tests && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/rvievill/nibbler/openGL_lib/GLFW/deps/getopt.c -o CMakeFiles/monitors.dir/__/deps/getopt.c.s
 
 tests/CMakeFiles/monitors.dir/__/deps/glad.c.o: tests/CMakeFiles/monitors.dir/flags.make
 tests/CMakeFiles/monitors.dir/__/deps/glad.c.o: deps/glad.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/acottier/Nibbler/openGL_lib/GLFW/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object tests/CMakeFiles/monitors.dir/__/deps/glad.c.o"
-	cd /Users/acottier/Nibbler/openGL_lib/GLFW/tests && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/monitors.dir/__/deps/glad.c.o   -c /Users/acottier/Nibbler/openGL_lib/GLFW/deps/glad.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/rvievill/nibbler/openGL_lib/GLFW/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object tests/CMakeFiles/monitors.dir/__/deps/glad.c.o"
+	cd /Users/rvievill/nibbler/openGL_lib/GLFW/tests && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/monitors.dir/__/deps/glad.c.o   -c /Users/rvievill/nibbler/openGL_lib/GLFW/deps/glad.c
 
 tests/CMakeFiles/monitors.dir/__/deps/glad.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/monitors.dir/__/deps/glad.c.i"
-	cd /Users/acottier/Nibbler/openGL_lib/GLFW/tests && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/acottier/Nibbler/openGL_lib/GLFW/deps/glad.c > CMakeFiles/monitors.dir/__/deps/glad.c.i
+	cd /Users/rvievill/nibbler/openGL_lib/GLFW/tests && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/rvievill/nibbler/openGL_lib/GLFW/deps/glad.c > CMakeFiles/monitors.dir/__/deps/glad.c.i
 
 tests/CMakeFiles/monitors.dir/__/deps/glad.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/monitors.dir/__/deps/glad.c.s"
-	cd /Users/acottier/Nibbler/openGL_lib/GLFW/tests && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/acottier/Nibbler/openGL_lib/GLFW/deps/glad.c -o CMakeFiles/monitors.dir/__/deps/glad.c.s
+	cd /Users/rvievill/nibbler/openGL_lib/GLFW/tests && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/rvievill/nibbler/openGL_lib/GLFW/deps/glad.c -o CMakeFiles/monitors.dir/__/deps/glad.c.s
 
 # Object files for target monitors
 monitors_OBJECTS = \
@@ -111,8 +111,8 @@ tests/monitors: tests/CMakeFiles/monitors.dir/__/deps/glad.c.o
 tests/monitors: tests/CMakeFiles/monitors.dir/build.make
 tests/monitors: src/libglfw3.a
 tests/monitors: tests/CMakeFiles/monitors.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/acottier/Nibbler/openGL_lib/GLFW/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking C executable monitors"
-	cd /Users/acottier/Nibbler/openGL_lib/GLFW/tests && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/monitors.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/rvievill/nibbler/openGL_lib/GLFW/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking C executable monitors"
+	cd /Users/rvievill/nibbler/openGL_lib/GLFW/tests && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/monitors.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 tests/CMakeFiles/monitors.dir/build: tests/monitors
@@ -120,10 +120,10 @@ tests/CMakeFiles/monitors.dir/build: tests/monitors
 .PHONY : tests/CMakeFiles/monitors.dir/build
 
 tests/CMakeFiles/monitors.dir/clean:
-	cd /Users/acottier/Nibbler/openGL_lib/GLFW/tests && $(CMAKE_COMMAND) -P CMakeFiles/monitors.dir/cmake_clean.cmake
+	cd /Users/rvievill/nibbler/openGL_lib/GLFW/tests && $(CMAKE_COMMAND) -P CMakeFiles/monitors.dir/cmake_clean.cmake
 .PHONY : tests/CMakeFiles/monitors.dir/clean
 
 tests/CMakeFiles/monitors.dir/depend:
-	cd /Users/acottier/Nibbler/openGL_lib/GLFW && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/acottier/Nibbler/openGL_lib/GLFW /Users/acottier/Nibbler/openGL_lib/GLFW/tests /Users/acottier/Nibbler/openGL_lib/GLFW /Users/acottier/Nibbler/openGL_lib/GLFW/tests /Users/acottier/Nibbler/openGL_lib/GLFW/tests/CMakeFiles/monitors.dir/DependInfo.cmake --color=$(COLOR)
+	cd /Users/rvievill/nibbler/openGL_lib/GLFW && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/rvievill/nibbler/openGL_lib/GLFW /Users/rvievill/nibbler/openGL_lib/GLFW/tests /Users/rvievill/nibbler/openGL_lib/GLFW /Users/rvievill/nibbler/openGL_lib/GLFW/tests /Users/rvievill/nibbler/openGL_lib/GLFW/tests/CMakeFiles/monitors.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : tests/CMakeFiles/monitors.dir/depend
 

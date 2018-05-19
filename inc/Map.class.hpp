@@ -6,12 +6,19 @@
 /*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/19 14:50:15 by rvievill          #+#    #+#             */
-/*   Updated: 2018/05/19 15:22:54 by rvievill         ###   ########.fr       */
+/*   Updated: 2018/05/19 19:01:45 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MAP_HPP
 # define MAP_HPP
+
+#include <iostream>
+#include <fstream>
+#include <array>
+#include <vector>
+#include <unistd.h>
+#include "../inc/Preset.class.hpp"
 
 class Map {
 
@@ -20,21 +27,22 @@ class Map {
 		explicit Map(void);
 		~Map(void);
 
-		void				placeItem(void);
-		void				displayMap(void) const;
+		void								placeItem(void);
+		void								displayMap(void) const;
 
-		int					map[63][63];
+		int									map[62][63];
 
 	private:
 
-		explicit 			Map(const Map &src);
-		Map					&operator=(const Map &rhs);
-		
-		std::array<int, 2>	generateItem(int zoneStart[2], bool preset) const;
-		void				generatePreset(void);
-		void				generateRand(void);
+		explicit 							Map(const Map &src) = delete;
+		Map									&operator=(const Map &rhs) = delete;
 
-		int					_obstacle[19][29];
+		std::array<int, 2>					generateItem(int zoneStart[2], bool preset);
+		void								generatePreset(void);
+		void								generateRand(void);
+		void								updateMap(std::array<int, 2> start);
+
+		std::vector<std::vector<int>>		_obstacle;
 };
 
 #endif

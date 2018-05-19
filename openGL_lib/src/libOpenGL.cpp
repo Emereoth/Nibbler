@@ -6,7 +6,7 @@
 /*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/14 17:26:49 by rvievill          #+#    #+#             */
-/*   Updated: 2018/05/17 17:12:50 by rvievill         ###   ########.fr       */
+/*   Updated: 2018/05/19 12:13:59 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,11 @@ void				Graphics::run(size_t w, size_t h)
 	    std::cerr << "Failed to initialize GLEW\n" << std::endl;
 		return ;
 	}
-	glfwWindowHint(GLFW_SAMPLES, 4); // 4x antialiasing
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3); // On veut OpenGL 3.3
+	glfwWindowHint(GLFW_SAMPLES, 4);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE); // Pour rendre MacOS heureux ; ne devrait pas être nécessaire
+	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-	GLFWwindow* window; // (Dans le code source qui accompagne, cette variable est globale)
 	window = glfwCreateWindow( w, h, "Nibbler (OpenGL)", NULL, NULL);
 	if (window == NULL)
 	{
@@ -39,7 +38,6 @@ void				Graphics::run(size_t w, size_t h)
 		return ;
 	}
 	glfwMakeContextCurrent(window);
-	// glewExperimental = true; // Nécessaire dans le profil de base
 	if (glewInit() != GLEW_OK) {
 		std::cerr << "Failed to initialize GLEW\n" << std::endl;
 		return ;
@@ -54,7 +52,7 @@ void				Graphics::run(size_t w, size_t h)
 	while(glfwWindowShouldClose(window) == 0 )
 	{
     	glfwSwapBuffers(window);
-    	glfwWaitEvents();
+    	glfwPollEvents();
 		int state = glfwGetKey(window, GLFW_KEY_DOWN);
 		if (state == GLFW_PRESS)
 			std::cout << "key press" << std::endl;

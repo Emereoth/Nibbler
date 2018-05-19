@@ -1,4 +1,4 @@
-prefix=/Users/acottier/.brew
+prefix=/Users/rvievill/.brew
 exec_prefix=${prefix}
 includedir=${prefix}/include
 libdir=${exec_prefix}/lib

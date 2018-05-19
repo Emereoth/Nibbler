@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Preset.class.cpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/19 15:25:10 by acottier          #+#    #+#             */
-/*   Updated: 2018/05/19 18:18:45 by acottier         ###   ########.fr       */
+/*   Updated: 2018/05/19 18:32:33 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,10 @@ Preset::~Preset(void)
 {
 }
 
-std::vector<std::vector<int>>	Preset::type1(void) const
+std::vector<std::vector<int>>	Preset::type1(void)
 {
 	int					size;
-	unsigned int		seed;
 
-	read(open("/dev/urandom", O_RDONLY), &seed, sizeof(seed));
-	srand(seed);
 	size = (rand() % 6) + 1;
 	std::cout << "size: " << size << std::endl;
 	std::vector<std::vector<int>>	obstacle;
