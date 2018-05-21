@@ -6,6 +6,7 @@
 /*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/19 15:18:11 by acottier          #+#    #+#             */
+/*   Updated: 2018/05/21 13:43:10 by acottier         ###   ########.fr       */
 /*   Updated: 2018/05/19 18:32:06 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -24,10 +25,8 @@ class Preset
 		~Preset(void);
 
 		static std::vector<std::vector<int>>		type1(void);
-		// std::vector<std::vector<int>>	type2(void) const;
-		// std::vector<std::vector<int>>	type3(void) const;
-		// std::vector<std::vector<int>>	type4(void) const;
-		// std::vector<std::vector<int>>	type5(void) const;
+		static std::vector<std::vector<int>>		type2(void);
+		static std::vector<std::vector<int>>		type3(void);
 
 	private:
 
