@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Map.class.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/19 14:50:15 by rvievill          #+#    #+#             */
-/*   Updated: 2018/05/19 19:01:45 by rvievill         ###   ########.fr       */
+/*   Updated: 2018/05/21 15:11:29 by acottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include <vector>
 #include <unistd.h>
 #include "../inc/Preset.class.hpp"
+#include "../inc/Snake.class.hpp"
 
 class Map {
 
@@ -41,6 +42,7 @@ class Map {
 		void								generatePreset(void);
 		void								generateRand(void);
 		void								updateMap(std::array<int, 2> start);
+		bool								checkCollision(std::list<data &> snake) const;
 
 		std::vector<std::vector<int>>		_obstacle;
 };
