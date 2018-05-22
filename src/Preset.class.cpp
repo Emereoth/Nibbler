@@ -6,11 +6,7 @@
 /*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/19 15:25:10 by acottier          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2018/05/21 12:04:39 by acottier         ###   ########.fr       */
-=======
-/*   Updated: 2018/05/19 18:32:33 by rvievill         ###   ########.fr       */
->>>>>>> 390948fda3e0e5258a2e26b9a024de0cad0d346b
+/*   Updated: 2018/05/21 13:45:43 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +25,7 @@ Preset::~Preset(void)
 std::vector<std::vector<int>>	Preset::type1(void)
 {
 	int								size;
-	unsigned int					seed;
 	std::vector<std::vector<int>>	obstacle;
-	int					size;
 
 	size = (rand() % 6) + 1;
 	std::cout << "size: " << size << std::endl;
@@ -56,10 +50,9 @@ std::vector<std::vector<int>>	Preset::type1(void)
 	return (obstacle);
 }
 
-std::vector<std::vector<int>>	Preset::type2(void) const
+std::vector<std::vector<int>>	Preset::type2(void)
 {
 	int								size;
-	unsigned int					seed;
 	std::vector<std::vector<int>>	obstacle;
 
 	size = (rand() % 6) + 1;
@@ -81,10 +74,9 @@ std::vector<std::vector<int>>	Preset::type2(void) const
 	return (obstacle);
 }
 
-std::vector<std::vector<int>>	Preset::type3(void) const
+std::vector<std::vector<int>>	Preset::type3(void)
 {
 	int								size;
-	unsigned int					seed;
 	std::vector<std::vector<int>>	obstacle;
 
 	size = (rand() % 5) + 1;

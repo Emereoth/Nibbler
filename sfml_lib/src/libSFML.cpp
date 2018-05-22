@@ -9,7 +9,7 @@ Graphics::~Graphics(void)
 void				Graphics::run(size_t w, size_t h)
 {
 	sf::Music music;
-	music.openFromFile("./music/music.wav");
+	music.openFromFile("./music/tetris.wav");
 	music.setLoop(true);
 	music.play();
 	openWindow(w, h);
@@ -26,13 +26,15 @@ void				Graphics::openWindow(size_t w, size_t h)
 	square.setOrigin(SIZE_SQUARE, 0);
     square.setPosition(SIZE_SQUARE, 0);
 	_window.setFramerateLimit(100);
+	_window.setKeyRepeatEnabled(false);
 	while (_window.isOpen())
 	{
 		sf::Event event;
         while (_window.pollEvent(event))
         {
             if (event.type == sf::Event::Closed)
-                _window.close();
+				_window.close();
+	        while (_window.pollEvent(event));
         }
 		square.move(1, 0);
 		_window.clear(sf::Color::Black);

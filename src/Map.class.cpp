@@ -6,7 +6,7 @@
 /*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/19 15:19:36 by rvievill          #+#    #+#             */
-/*   Updated: 2018/05/19 19:35:05 by rvievill         ###   ########.fr       */
+/*   Updated: 2018/05/21 13:48:14 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,14 @@ std::array<int, 2>	Map::generateItem(int zoneStart[2], bool preset)
 
 void				Map::generatePreset(void)
 {
-	_obstacle = Preset::type1();
+	int				random = rand() % 3 + 1;
+
+	if (random == 1)
+		_obstacle = Preset::type1();
+	if (random == 2)
+		_obstacle = Preset::type2();
+	if (random == 3)
+		_obstacle = Preset::type3();
 }
 
 void				Map::generateRand(void)

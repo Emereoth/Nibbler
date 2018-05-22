@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Snake.class.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/21 15:16:06 by acottier          #+#    #+#             */
-/*   Updated: 2018/05/21 15:22:43 by acottier         ###   ########.fr       */
+/*   Updated: 2018/05/21 18:42:34 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,54 @@ void				Snake::grow(void)
 	// TODO SHIT
 }
 
-void				Snake::updatePos(void)
+void				Snake::updatePos(int key)
 {
-	// TODO SHIT
+	std::list<data &>::iterator		it = _snake.begin();
+	unsigned char					prevOrigin = (*it).origin;
+
+	while (it != _snake.end())
+	{
+		if (it == _snake.begin())
+		{
+
+		}
+		else if (*it == _snake.back())
+		{
+
+		}
+		else
+		{
+			
+		}
+	}
+	updateExtremity(key, it);
+}
+
+void				Snake::updateExtremity(int key, std::list<data &>::iterator it)
+{
+	if ( it == _snake.begin() && key && (*it).destination + key != 4 && (*it).destination + key != 9)
+		(*it).destination = (*it).origin = key;
+	switch ((*it).origin)
+	{
+		case (UP) :
+		{
+			(*it).pos[1]--;
+			break ;
+		}
+		case (DOWN) :
+		{
+			(*it).pos[1]++;
+			break ;
+		}
+		case (RIGHT) :
+		{
+			(*it).pos[0]++;
+			break ;
+		}
+		case (LEFT) :
+		{
+			(*it).pos[0]--;
+			break;
+		}
+	}
 }
