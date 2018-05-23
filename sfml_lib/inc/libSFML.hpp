@@ -16,7 +16,7 @@ class Graphics : public AGraphics {
 		void				openWindow(void) override;
 		bool				isOpen(void) const override;
 		key					keyPress(void) override;
-		void				draw(void) override;
+		void				draw(Map map) override;
 
 		libName				name;
 
@@ -29,7 +29,7 @@ class Graphics : public AGraphics {
 
 		sf::RenderWindow						_window;
 		sf::Event								_event;
-		std::map<sprite, std::string>		_spriteMap[16];
+		std::map<sprite, std::string>			_spriteMap;
 
 };
 

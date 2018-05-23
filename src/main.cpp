@@ -15,19 +15,20 @@ int main(int ac, char **av)
 		// read(open("/dev/urandom", O_RDONLY), &seed, sizeof(seed));
 		// srand(seed);
 		// test.placeItem();
-		std::string		opt(manageOpt::getOpt(ac, av));
-		std::string		optPath(manageOpt::getPathLib(opt));
+		std::string			opt(manageOpt::getOpt(ac, av));
+		std::string			optPath(manageOpt::getPathLib(opt));
 
-		void		*entryPoint;
-		AGraphics			*(*func)();
+		void				*entryPoint;
+		AGraphics			*(*func)(size_t, size_t, size_t);
 
+		std::cout << optPath << std::endl;
 		entryPoint = dlopen(optPath.c_str(), RTLD_NOW);
 		if (!entryPoint)
 			std::cerr << dlerror() << std::endl;
-		func = (AGraphics *(*)())dlsym(entryPoint, "create");
+		func = (AGraphics *(*)(size_t, size_t, size_t))dlsym(entryPoint, "create");
 		if (!func)
 			std::cerr << dlerror() << std::endl;
-		AGraphics		*lib = func();
+		AGraphics		*lib = func(1920, 1080, 1080 / 60);
 		lib->openWindow();
 		while (lib->isOpen())
 		{

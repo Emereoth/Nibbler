@@ -6,7 +6,7 @@
 /*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/14 14:34:38 by rvievill          #+#    #+#             */
-/*   Updated: 2018/05/23 14:43:10 by rvievill         ###   ########.fr       */
+/*   Updated: 2018/05/23 16:45:24 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ class Graphics : public AGraphics {
 		void				openWindow(void) override;
 		bool				isOpen(void) const override;
 		key					keyPress(void) override;
-		void				draw(void) override;
+		void				draw(Map map) override;
 
 		libName				name;
 
@@ -44,7 +44,7 @@ class Graphics : public AGraphics {
 };
 
 extern "C" {
-	Graphics				*create(void);
+	Graphics				*create(size_t width, size_t height, size_t squareSize);
 	void					del(Graphics *entry);
 }
 

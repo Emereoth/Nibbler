@@ -6,16 +6,18 @@
 /*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/14 17:26:49 by rvievill          #+#    #+#             */
-/*   Updated: 2018/05/23 14:43:36 by rvievill         ###   ########.fr       */
+/*   Updated: 2018/05/23 16:47:36 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/libOpenGL.hpp"
 #include <iostream>
 
-Graphcis::Graphics(size_t width, size_t height, size_t squareSize) : _width(width), _height(height), _squareSize(squareSize), name(OPENGL)
+Graphics::Graphics(size_t width, size_t height, size_t squareSize) : name(libName::OPENGL)
 {
-	
+	 _width = width;
+	 _height = height;
+	 _squareSize = squareSize;
 }
 
 void				Graphics::openWindow(void)
@@ -55,9 +57,9 @@ key					Graphics::keyPress(void)
 	return (key::NO);
 }
 
-void				Graphics::draw(void)
+void				Graphics::draw(Map map)
 {
-
+	(void)map;
 }
 
 Graphics::~Graphics(void)
@@ -65,9 +67,9 @@ Graphics::~Graphics(void)
 	return ;
 }
 
-Graphics			*create(void)
+Graphics			*create(size_t width, size_t height, size_t squareSize)
 {
-	return new Graphics;
+	return new Graphics(width, height, squareSize);
 }
 
 void				del(Graphics *entry)

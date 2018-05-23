@@ -6,7 +6,7 @@ Graphics::Graphics(size_t width, size_t height, size_t squareSize) : name(libNam
 	_width = width;
 	_height = height;
 	_squareSize = squareSize;
-	_spriteMap[16] =
+	_spriteMap =
 	{
 		{sprite::HEAD_UP, "./texture/headUp.png"},
 		{sprite::HEAD_DOWN, "./texture/headDown.png"},
@@ -49,9 +49,9 @@ key					Graphics::keyPress(void)
 	return (key::NO);
 }
 
-void				Graphics::draw(void)
+void				Graphics::draw(Map map)
 {
-
+	(void)map;
 }
 
 void				Graphics::runSound(void) const

@@ -1,5 +1,5 @@
 CC = clang++
-NAME = snake
+NAME = nibbler
 HPATH = inc/
 SFML = sfml_lib
 SDL = sdl_lib

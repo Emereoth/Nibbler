@@ -6,16 +6,11 @@
 /*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/19 15:19:36 by rvievill          #+#    #+#             */
-/*   Updated: 2018/05/23 16:18:34 by rvievill         ###   ########.fr       */
+/*   Updated: 2018/05/23 16:26:33 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/Map.class.hpp"
-
-Map::Map(void)
-{
-
-}
 
 Map::Map(Snake &snake) : _snake(snake)
 {
