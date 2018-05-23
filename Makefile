@@ -5,7 +5,7 @@ SFML = sfml_lib
 SDL = sdl_lib
 OPENGL = openGL_lib
 LINK_DYLIB = -Wl,-rpath $(SFML)/SFML/lib
-CFLAGS = -Wall -Werror -Wextra -std=c++14 -g
+CFLAGS = -Wall -Werror -Wextra -std=c++11 -g
 CPATH = src/
 OPATH = obj/
 INC = $(addprefix -I, $(HPATH))

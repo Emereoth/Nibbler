@@ -16,7 +16,27 @@ enum class	key
 	DOWN,
 	ONE,
 	TWO,
-	THREE
+	THREE,
+	ESCAPE
+};
+
+enum class	sprite
+{
+	HEAD_UP,
+	HEAD_DOWN,
+	HEAD_LEFT,
+	HEAD_RIGHT,
+	BODY_H,
+	BODY_V,
+	TAIL_UP,
+	TAIL_DOWN,
+	TAIL_LEFT,
+	TAIL_RIGHT,
+	BODY_UP_LEFT,
+	BODY_UP_RIGHT,
+	BODY_DOWN_LEFT,
+	BODY_DOWN_RIGHT,
+	WALL
 };
 
 enum class	libName
@@ -30,7 +50,7 @@ class AGraphics {
 
 	public:
 
-		virtual void			openWindow(size_t w, size_t h) = 0;
+		virtual void			openWindow(void) = 0;
 		virtual bool			isOpen(void) const = 0;
 		virtual key				keyPress(void) = 0;
 		virtual void			draw(void) = 0;
