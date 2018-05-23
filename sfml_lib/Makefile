@@ -3,7 +3,7 @@ NAME = sfml.so
 HPATH = inc/ SFML/include
 DYLIB = -shared -fPIC
 LIBGRAPH = -LSFML/lib -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
-CFLAGS = -Wall -Werror -Wextra -std=c++11
+CFLAGS = -Wall -Werror -Wextra -std=c++14
 CPATH = src/
 OPATH = obj/
 INC = $(addprefix -I, $(HPATH))

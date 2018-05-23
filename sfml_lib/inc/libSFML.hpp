@@ -11,16 +11,25 @@ class Graphics : public Api {
 	private:
 
 		sf::RenderWindow			_window;
+		sf::Event					_event;
 
 	public:
 
+		explicit Graphics(void);
+		Graphics(Graphics const &src) = delete;
 		virtual ~Graphics(void);
 
-		void				run(size_t w, size_t h) override;
+		void				openWindow(size_t w, size_t h) override;
+		bool				isOpen(void) const override;
+		key					keyPress(void) override;
+		void				draw(void) override;
+
+		libName	name;
 
 	private:
 
-		void				openWindow(size_t w, size_t h);
+		Graphics			&operator=(Graphics const &rhs) = delete;
+		void				runSound(void) const;
 
 };
 

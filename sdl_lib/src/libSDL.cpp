@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   libSDL.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/16 15:53:54 by acottier          #+#    #+#             */
-/*   Updated: 2018/05/18 15:40:36 by acottier         ###   ########.fr       */
+/*   Updated: 2018/05/22 17:07:46 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/libSDL.hpp"
 #include <iostream>
 
-void			Graphics::run(size_t w, size_t h)
+void			Graphics::openWindow(size_t w, size_t h)
 {
 	SDL_Window	*win;
 	SDL_Surface	*newSurface = NULL;
@@ -64,6 +64,20 @@ void			Graphics::setMusic()
 	}
 	Mix_FadeInChannel(-1, soundtrack, -1, 500);
 
+}
+
+bool			Graphics::isOpen(void) const
+{
+	return (_window ? true : false);
+}
+
+key				Graphics::keyPress(void)
+{
+	return (key::NO); // TODO
+}
+
+void			Graphics::draw(void)
+{
 }
 
 void			Graphics::loop(SDL_Window * win)

@@ -9,12 +9,12 @@ int main(int ac, char **av)
 {
 	try
 	{
-		Map					test;
-		unsigned int		seed;
+		// Map					test;
+		// unsigned int		seed;
 
-		read(open("/dev/urandom", O_RDONLY), &seed, sizeof(seed));
-		srand(seed);
-		test.placeItem();
+		// read(open("/dev/urandom", O_RDONLY), &seed, sizeof(seed));
+		// srand(seed);
+		// test.placeItem();
 		std::string		opt(manageOpt::getOpt(ac, av));
 		std::string		lib(manageOpt::getPathLib(opt));
 
@@ -29,7 +29,11 @@ int main(int ac, char **av)
 		if (!mdr)
 			std::cerr << dlerror() << std::endl;
 		Api		*ptdr = mdr();
-		ptdr->run(WIDTH_WINDOW, HEIGHT_WINDOW);
+		ptdr->openWindow(WIDTH_WINDOW, HEIGHT_WINDOW);
+		while (ptdr->isOpen())
+		{
+
+		}
 	}
 	catch (std::exception &e)
 	{
