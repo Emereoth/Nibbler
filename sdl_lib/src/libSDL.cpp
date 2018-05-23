@@ -6,7 +6,7 @@
 /*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/16 15:53:54 by acottier          #+#    #+#             */
-/*   Updated: 2018/05/23 16:12:37 by acottier         ###   ########.fr       */
+/*   Updated: 2018/05/23 16:16:29 by acottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,9 @@ key				Graphics::keyPress(void)
 	return (key::NO);
 }
 
-void			Graphics::draw(void)
+void			Graphics::draw(Map map)
 {
+	(void)map;
 }
 
 // void			Graphics::loop(SDL_Window * win)
