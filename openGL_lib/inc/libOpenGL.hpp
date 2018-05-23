@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libOpenGL.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/14 14:34:38 by rvievill          #+#    #+#             */
-/*   Updated: 2018/05/23 14:26:21 by acottier         ###   ########.fr       */
+/*   Updated: 2018/05/23 14:43:10 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,20 +22,22 @@ class Graphics : public AGraphics {
 
 	public:
 
-		Graphics(void);
-		Graphics(Graphics const &src);
+		explicit Graphics(size_t width, size_t height, size_t squareSize);
 		virtual ~Graphics(void);
 
-		Graphics			&operator=(Graphics const &rhs);
 
-		void				openWindow(size_t w, size_t h);
-		bool				isOpen(void) const;
-		key					keyPress(void);
-		void				draw(void);
+		void				openWindow(void) override;
+		bool				isOpen(void) const override;
+		key					keyPress(void) override;
+		void				draw(void) override;
 
 		libName				name;
 
 	private:
+
+		Graphics(void) = default;
+		Graphics(Graphics const &src) = default;
+		Graphics			&operator=(Graphics const &rhs) = default;
 
 		GLFWwindow			*_window;
 

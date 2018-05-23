@@ -6,19 +6,19 @@
 /*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/14 17:26:49 by rvievill          #+#    #+#             */
-/*   Updated: 2018/05/22 17:13:08 by rvievill         ###   ########.fr       */
+/*   Updated: 2018/05/23 14:43:36 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/libOpenGL.hpp"
 #include <iostream>
 
-Graphics::Graphics(void) : name(libName::OPENGL)
+Graphcis::Graphics(size_t width, size_t height, size_t squareSize) : _width(width), _height(height), _squareSize(squareSize), name(OPENGL)
 {
 	
 }
 
-void				Graphics::openWindow(size_t w, size_t h)
+void				Graphics::openWindow(void)
 {
 	if (!glfwInit())
 	{
@@ -30,7 +30,7 @@ void				Graphics::openWindow(size_t w, size_t h)
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-	_window = glfwCreateWindow( w, h, "Nibbler (OpenGL)", NULL, NULL);
+	_window = glfwCreateWindow(_width, _height, "Nibbler (OpenGL)", NULL, NULL);
 	if (_window == NULL)
 	{
     	std::cerr << "Failed to open GLFW _window." << std::endl;
@@ -43,12 +43,6 @@ void				Graphics::openWindow(size_t w, size_t h)
 		return ;
 	}
 	glfwSetInputMode(_window, GLFW_STICKY_KEYS, GL_TRUE);
-	int present = glfwJoystickPresent(GLFW_JOYSTICK_1);
-	if (present)
-	{
-		const char* name = glfwGetJoystickName(GLFW_JOYSTICK_1);
-		std::cout << "name joystick => " << name << std::endl;
-	}
 }
 
 bool				Graphics::isOpen(void) const

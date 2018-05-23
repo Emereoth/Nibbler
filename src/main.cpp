@@ -16,23 +16,22 @@ int main(int ac, char **av)
 		// srand(seed);
 		// test.placeItem();
 		std::string		opt(manageOpt::getOpt(ac, av));
-		std::string		lib(manageOpt::getPathLib(opt));
+		std::string		optPath(manageOpt::getPathLib(opt));
 
-		void		*lol;
-		Api		*(*mdr)();
+		void		*entryPoint;
+		AGraphics			*(*func)();
 
-		std::cout << lib.c_str() << std::endl;
-		lol = dlopen(lib.c_str(), RTLD_NOW);
-		if (!lol)
+		entryPoint = dlopen(optPath.c_str(), RTLD_NOW);
+		if (!entryPoint)
 			std::cerr << dlerror() << std::endl;
-		mdr = (Api *(*)())dlsym(lol, "create");
-		if (!mdr)
+		func = (AGraphics *(*)())dlsym(entryPoint, "create");
+		if (!func)
 			std::cerr << dlerror() << std::endl;
-		Api		*ptdr = mdr();
-		ptdr->openWindow(WIDTH_WINDOW, HEIGHT_WINDOW);
-		while (ptdr->isOpen())
+		AGraphics		*lib = func();
+		lib->openWindow();
+		while (lib->isOpen())
 		{
-
+			lib->keyPress();
 		}
 	}
 	catch (std::exception &e)

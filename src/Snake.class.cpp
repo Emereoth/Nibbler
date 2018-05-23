@@ -6,13 +6,13 @@
 /*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/21 15:16:06 by acottier          #+#    #+#             */
-/*   Updated: 2018/05/21 18:42:34 by rvievill         ###   ########.fr       */
+/*   Updated: 2018/05/23 16:17:55 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/Snake.class.hpp"
 
-Snake::Snake()
+Snake::Snake(void)
 {
 }
 

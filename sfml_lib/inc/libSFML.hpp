@@ -8,34 +8,34 @@
 
 class Graphics : public AGraphics {
 
-	private:
-
-		sf::RenderWindow			_window;
-		sf::Event					_event;
-
 	public:
 
-		explicit Graphics(void);
-		Graphics(Graphics const &src) = delete;
-		virtual ~Graphics(void);
+		explicit Graphics(size_t width, size_t height, size_t squareSize);
+		virtual ~Graphics(void);	
 
-		void				openWindow(size_t w, size_t h) override;
+		void				openWindow(void) override;
 		bool				isOpen(void) const override;
 		key					keyPress(void) override;
 		void				draw(void) override;
 
-		libName	name;
+		libName				name;
 
 	private:
 
-		Graphics			&operator=(Graphics const &rhs) = delete;
+		Graphics(void) = default;
+		Graphics(Graphics const &src) = default;
+		Graphics			&operator=(Graphics const &rhs) = default;
 		void				runSound(void) const;
+
+		sf::RenderWindow						_window;
+		sf::Event								_event;
+		std::map<sprite, std::string>		_spriteMap[16];
 
 };
 
 extern "C" {
 
-	Graphics				*create(void);
+	Graphics				*create(size_t width, size_t height, size_t squareSize);
 	void					del(Graphics *lol);
 
 }

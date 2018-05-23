@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Map.class.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/19 14:50:15 by rvievill          #+#    #+#             */
-/*   Updated: 2018/05/21 15:11:29 by acottier         ###   ########.fr       */
+/*   Updated: 2018/05/23 16:18:18 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ class Map {
 
 	public:
 
-		explicit Map(void);
+		explicit Map(Snake &snake);
 		~Map(void);
 
 		void								placeItem(void);
@@ -35,6 +35,7 @@ class Map {
 
 	private:
 
+		explicit 							Map(void);
 		explicit 							Map(const Map &src) = delete;
 		Map									&operator=(const Map &rhs) = delete;
 
@@ -45,6 +46,7 @@ class Map {
 		bool								checkCollision(std::list<data &> snake) const;
 
 		std::vector<std::vector<int>>		_obstacle;
+		Snake								&_snake;
 };
 
 #endif
