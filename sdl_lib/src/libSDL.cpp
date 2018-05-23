@@ -6,7 +6,7 @@
 /*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/16 15:53:54 by acottier          #+#    #+#             */
-/*   Updated: 2018/05/23 16:16:29 by acottier         ###   ########.fr       */
+/*   Updated: 2018/05/23 16:42:43 by acottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,21 +71,26 @@ bool			Graphics::isOpen(void) const
 
 key				Graphics::keyPress(void)
 {
+	key				res;
 	SDL_Event		currentEvent;
-	// std::map<SDLKEY, key>	eventMap =
-	// {
-	// 	{, key::ESCAPE}
-	// 	{, key::LEFT},
-	// 	{, key::RIGHT},
-	// 	{, key::UP},
-	// 	{, key::DOWN},
-	// 	{, key::ONE},
-	// 	{, key::TWO},
-	// 	{, key::THREE}
-	// };
-
+	std::map<SDL_Keycode, key>	eventMap =
+	{
+		{SDLK_ESCAPE, key::ESCAPE},
+		{SDLK_LEFT, key::LEFT},
+		{SDLK_RIGHT, key::RIGHT},
+		{SDLK_UP, key::UP},
+		{SDLK_DOWN, key::DOWN},
+		{SDLK_1, key::ONE},
+		{SDLK_2, key::TWO},
+		{SDLK_3, key::THREE}
+	};
+	
 	SDL_PollEvent(&currentEvent);
-	return (key::NO);
+	res = key::NO;
+	if (SDL_KEYDOWN && eventMap.find(currentEvent.key.keysym.sym) != eventMap.end())
+		res = eventMap[currentEvent.key.keysym.sym];
+	// TODO :: PURGE EVENT QUEUE
+	return (res);
 }
 
 void			Graphics::draw(Map map)

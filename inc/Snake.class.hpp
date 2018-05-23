@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Snake.class.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/21 14:17:24 by acottier          #+#    #+#             */
-/*   Updated: 2018/05/21 18:07:25 by rvievill         ###   ########.fr       */
+/*   Updated: 2018/05/23 16:36:06 by acottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ enum	 snakeCombinedOrientation
 	DOWN_RIGHT
 };
 
-typedef struct data
+struct snakeInfo
 {
 	std::array<int, 2>								pos;
 	unsigned char									origin;
@@ -55,17 +55,17 @@ class Snake
 		explicit Snake(void);
 		virtual ~Snake(void);
 
-		std::list<data &>	getSnake(void) const;
-		void				grow(void);
-		void				updatePos(int key = 0);
+		std::list<snakeInfo>	getSnake(void) const;
+		void					grow(void);
+		void					updatePos(int key = 0);
 
 	private:
 	
 		Snake(const Snake &) = delete;
 		Snake &operator=(const Snake &) = delete;
-		void				updateExtremity(int key, std::list<data &>::iterator it);
+		void				updateExtremity(int key, std::list<snakeInfo>::iterator it);
 
-		std::list<data &>	_snake;
+		std::list<snakeInfo>	_snake;
 
 };
 

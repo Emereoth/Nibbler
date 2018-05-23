@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Map.class.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/19 14:50:15 by rvievill          #+#    #+#             */
-/*   Updated: 2018/05/23 16:18:18 by rvievill         ###   ########.fr       */
+/*   Updated: 2018/05/23 16:36:25 by acottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ class Map {
 		void								generatePreset(void);
 		void								generateRand(void);
 		void								updateMap(std::array<int, 2> start);
-		bool								checkCollision(std::list<data &> snake) const;
+		bool								checkCollision(std::list<snakeInfo> snake) const;
 
 		std::vector<std::vector<int>>		_obstacle;
 		Snake								&_snake;
