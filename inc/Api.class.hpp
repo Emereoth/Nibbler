@@ -2,6 +2,7 @@
 # define ITEST_HPP
 
 #include <stdio.h>
+#include "Map.class.hpp"
 
 # define WIDTH_WINDOW 1920
 # define HEIGHT_WINDOW 1080
@@ -54,7 +55,7 @@ class AGraphics {
 		virtual void			openWindow(void) = 0;
 		virtual bool			isOpen(void) const = 0;
 		virtual key				keyPress(void) = 0;
-		virtual void			draw(void) = 0;
+		virtual void			draw(Map map) = 0;
 
 	protected:
 		
