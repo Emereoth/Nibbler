@@ -26,7 +26,7 @@ enum class	libName
 	OPENGL
 };
 
-class Api {
+class AGraphics {
 
 	public:
 
@@ -34,6 +34,13 @@ class Api {
 		virtual bool			isOpen(void) const = 0;
 		virtual key				keyPress(void) = 0;
 		virtual void			draw(void) = 0;
+
+	protected:
+		
+		size_t					_height;
+		size_t					_width;
+		size_t					_squareSize;
+
 };
 
 #endif

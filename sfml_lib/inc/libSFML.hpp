@@ -6,7 +6,7 @@
 #include <../SFML/include/SFML/Audio.hpp>
 #include "../../inc/Api.class.hpp"
 
-class Graphics : public Api {
+class Graphics : public AGraphics {
 
 	private:
 
