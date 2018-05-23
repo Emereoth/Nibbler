@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   libSDL.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/16 15:53:54 by acottier          #+#    #+#             */
-/*   Updated: 2018/05/22 17:07:46 by rvievill         ###   ########.fr       */
+/*   Updated: 2018/05/23 16:12:37 by acottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/libSDL.hpp"
 #include <iostream>
 
-void			Graphics::openWindow(size_t w, size_t h)
+void			Graphics::openWindow()
 {
 	SDL_Window	*win;
 	SDL_Surface	*newSurface = NULL;
@@ -24,7 +24,7 @@ void			Graphics::openWindow(size_t w, size_t h)
 		std::cerr << "SDL init error :" << SDL_GetError() << std::endl;
 		return ;
 	}
-	win = SDL_CreateWindow("Nibbler (SDL)", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, w, h, SDL_WINDOW_MOUSE_FOCUS);
+	win = SDL_CreateWindow("Nibbler (SDL)", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, _width, _height, SDL_WINDOW_MOUSE_FOCUS);
 	newSurface = drawImage((char *)"../texture/headUp.png", win);
 	dst.x = 0;
 	dst.y = 0;
@@ -33,11 +33,9 @@ void			Graphics::openWindow(size_t w, size_t h)
 	if (SDL_BlitScaled(newSurface, NULL, SDL_GetWindowSurface(win), &dst)!= 0)
 		std::cerr << "SDL blit transfer error: " << SDL_GetError() << std::endl;
 	setMusic();
-	loop(win);
-	SDL_Quit();
 }
 
-void			Graphics::setMusic()
+void			Graphics::setMusic() const
 {
 	Mix_Chunk	*soundtrack;
 	// SDL_AudioSpec	*audio;
@@ -73,31 +71,45 @@ bool			Graphics::isOpen(void) const
 
 key				Graphics::keyPress(void)
 {
-	return (key::NO); // TODO
+	SDL_Event		currentEvent;
+	// std::map<SDLKEY, key>	eventMap =
+	// {
+	// 	{, key::ESCAPE}
+	// 	{, key::LEFT},
+	// 	{, key::RIGHT},
+	// 	{, key::UP},
+	// 	{, key::DOWN},
+	// 	{, key::ONE},
+	// 	{, key::TWO},
+	// 	{, key::THREE}
+	// };
+
+	SDL_PollEvent(&currentEvent);
+	return (key::NO);
 }
 
 void			Graphics::draw(void)
 {
 }
 
-void			Graphics::loop(SDL_Window * win)
-{
-	SDL_Event	currentEvent;
+// void			Graphics::loop(SDL_Window * win)
+// {
+// 	SDL_Event	currentEvent;
 
-	while (win)
-	{
-		while (SDL_PollEvent(&currentEvent))
-		{
-			SDL_UpdateWindowSurface(win);
-			SDL_PumpEvents();
-			if (currentEvent.type == SDL_WINDOWEVENT && currentEvent.window.event == SDL_WINDOWEVENT_CLOSE)
-			{
-				SDL_DestroyWindow(win);
-				win = NULL;
-			}
-		}
-	}
-}
+// 	while (win)
+// 	{
+// 		while (SDL_PollEvent(&currentEvent))
+// 		{
+// 			SDL_UpdateWindowSurface(win);
+// 			SDL_PumpEvents();
+// 			if (currentEvent.type == SDL_WINDOWEVENT && currentEvent.window.event == SDL_WINDOWEVENT_CLOSE)
+// 			{
+// 				SDL_DestroyWindow(win);
+// 				win = NULL;
+// 			}
+// 		}
+// 	}
+// }
 
 SDL_Surface		*Graphics::drawImage(char * const path, SDL_Window * win)
 {
@@ -135,6 +147,39 @@ SDL_Surface		*Graphics::drawImage(char * const path, SDL_Window * win)
 	}
 }
 
+Graphics::Graphics(size_t height, size_t width, size_t squareSize)
+{
+	int imgFlags = IMG_INIT_PNG;
+	
+	if( !(IMG_Init(imgFlags) & imgFlags ))
+	{
+		std::cerr << "SDL_Image init fail: " << IMG_GetError() << std::endl;
+		return ;
+	}
+	_surfaceMap = 
+	{
+		{ sprite::HEAD_UP , IMG_Load("../texture/headUp.png") } ,
+		{ sprite::HEAD_DOWN , IMG_Load("../texture/headDown.png") } ,
+		{ sprite::HEAD_LEFT , IMG_Load("../texture/headLeft.png") } ,
+		{ sprite::HEAD_RIGHT , IMG_Load("../texture/headRight.png") } ,
+		{ sprite::BODY_H , IMG_Load("../texture/bodyH.png") } ,
+		{ sprite::BODY_V , IMG_Load("../texture/bodyV.png") } ,
+		{ sprite::TAIL_UP , IMG_Load("../texture/tailUp.png") } ,
+		{ sprite::TAIL_DOWN , IMG_Load("../texture/tailDown.png") } ,
+		{ sprite::TAIL_LEFT , IMG_Load("../texture/tailLeft.png") } ,
+		{ sprite::TAIL_RIGHT , IMG_Load("../texture/tailRight.png") } ,
+		{ sprite::BODY_UP_LEFT , IMG_Load("../texture/bodyUpLeft.png") } ,
+		{ sprite::BODY_UP_RIGHT , IMG_Load("../texture/bodyUpRight.png") } ,
+		{ sprite::BODY_DOWN_LEFT , IMG_Load("../texture/bodyDownLeft.png") } ,
+		{ sprite::BODY_DOWN_RIGHT , IMG_Load("../texture/bodydownRight.png") } ,
+		{ sprite::WALL , IMG_Load("../texture/wall.png") } ,
+		{ sprite::FOOD , IMG_Load("../texture/food.png") }
+	};
+	_height = height;
+	_width = width;
+	_squareSize = squareSize;
+}
+
 Graphics::Graphics(void)
 {
 }
@@ -143,9 +188,9 @@ Graphics::~Graphics(void)
 {
 }
 
-Graphics			*create(void)
+Graphics			*create(size_t height, size_t width, size_t squareSize)
 {
-	return new Graphics;
+	return new Graphics(height, width, squareSize);
 }
 
 void				del(Graphics *test)
