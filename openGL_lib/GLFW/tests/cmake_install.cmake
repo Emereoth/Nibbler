@@ -1,8 +1,8 @@
-# Install script for directory: /Users/rvievill/nibbler/openGL_lib/GLFW/tests
+# Install script for directory: /Users/acottier/Nibbler/openGL_lib/GLFW/tests
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/Users/rvievill/.brew")
+  set(CMAKE_INSTALL_PREFIX "/Users/acottier/.brew")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 

@@ -62,7 +62,6 @@ class AGraphics {
 		size_t					_height;
 		size_t					_width;
 		size_t					_squareSize;
-
 };
 
 #endif

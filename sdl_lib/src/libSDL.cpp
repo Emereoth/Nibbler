@@ -6,7 +6,7 @@
 /*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/16 15:53:54 by acottier          #+#    #+#             */
-/*   Updated: 2018/05/23 16:42:43 by acottier         ###   ########.fr       */
+/*   Updated: 2018/05/23 17:35:43 by acottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,7 +153,7 @@ SDL_Surface		*Graphics::drawImage(char * const path, SDL_Window * win)
 	}
 }
 
-Graphics::Graphics(size_t height, size_t width, size_t squareSize)
+Graphics::Graphics(size_t height, size_t width, size_t squareSize) : name(libName::SDL)
 {
 	int imgFlags = IMG_INIT_PNG;
 	

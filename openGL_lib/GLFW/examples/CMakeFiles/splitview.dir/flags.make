@@ -6,5 +6,5 @@ C_FLAGS =
 
 C_DEFINES = 
 
-C_INCLUDES = -I/Users/rvievill/nibbler/openGL_lib/GLFW/deps -I/Users/rvievill/nibbler/openGL_lib/GLFW/include 
+C_INCLUDES = -I/Users/acottier/Nibbler/openGL_lib/GLFW/deps -I/Users/acottier/Nibbler/openGL_lib/GLFW/include 
 

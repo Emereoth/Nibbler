@@ -10,10 +10,10 @@ int main(int ac, char **av)
 	try
 	{
 		// Map					test;
-		// unsigned int		seed;
+		unsigned int			seed;
 
-		// read(open("/dev/urandom", O_RDONLY), &seed, sizeof(seed));
-		// srand(seed);
+		read(open("/dev/urandom", O_RDONLY), &seed, sizeof(seed));
+		srand(seed);
 		// test.placeItem();
 		std::string			opt(manageOpt::getOpt(ac, av));
 		std::string			optPath(manageOpt::getPathLib(opt));
@@ -21,10 +21,12 @@ int main(int ac, char **av)
 		void				*entryPoint;
 		AGraphics			*(*func)(size_t, size_t, size_t);
 
-		std::cout << optPath << std::endl;
 		entryPoint = dlopen(optPath.c_str(), RTLD_NOW);
 		if (!entryPoint)
+		{
 			std::cerr << dlerror() << std::endl;
+			return (-1);
+		}
 		func = (AGraphics *(*)(size_t, size_t, size_t))dlsym(entryPoint, "create");
 		if (!func)
 			std::cerr << dlerror() << std::endl;
