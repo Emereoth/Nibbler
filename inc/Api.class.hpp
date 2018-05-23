@@ -36,7 +36,8 @@ enum class	sprite
 	BODY_UP_RIGHT,
 	BODY_DOWN_LEFT,
 	BODY_DOWN_RIGHT,
-	WALL
+	WALL,
+	FOOD
 };
 
 enum class	libName
