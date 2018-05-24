@@ -6,7 +6,7 @@
 /*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/14 17:26:49 by rvievill          #+#    #+#             */
-/*   Updated: 2018/05/23 16:47:36 by rvievill         ###   ########.fr       */
+/*   Updated: 2018/05/24 16:59:42 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,61 @@ bool				Graphics::isOpen(void) const
 
 key					Graphics::keyPress(void)
 {
+	glfwPollEvents();
 	return (key::NO);
 }
 
-void				Graphics::draw(Map map)
+void				Graphics::draw(Map &map)
 {
+	GLuint texture;
+	GLenum internFormat(0);
+	GLenum format(0);
+	int width, height, bpp;
+
+	glGenTextures(1, &texture);                                        // Generation de l'iD
+	glBindTexture(GL_TEXTURE_2D,
+				  texture);                                // Verouillage, obligatoire pour modification du GLuint
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);    // Les textures proche sont lissées
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);    // Les textures éloignées sont lissées
+	texture = SOIL_load_OGL_texture(
+		"./texture/wall.png",
+        SOIL_LOAD_RGB,
+        SOIL_CREATE_NEW_ID,
+        SOIL_FLAG_INVERT_Y
+	);
+	glTexImage2D(GL_TEXTURE_2D, 0, internFormat, width, height, 0, format, GL_UNSIGNED_BYTE, data);
+	glGenerateMipmap(GL_TEXTURE_2D);
+	stbi_image_free(data);                                                // Liberation memoire
+	glBindTexture(GL_TEXTURE_2D, 0);
+
+
+	//////////////////////////////////////////////
+	glBindTexture(GL_TEXTURE_2D, texture);
+	t_coordd start = {};
+	start.x = ((0 * 2.0) / _width) - 1.0;
+	start.y = ((0 * 2.0) / _height) - 1.0;
+
+	t_coordd end = {};
+	end.x = (((0 + _squareSize) * 2.0) / _width) - 1.0;
+	end.y = (((0 + _squareSize) * 2.0) / _height) - 1.0;
+
+	glBegin(GL_QUADS);
+	glTexCoord2d(0, 0);
+	glVertex2d(start.x, -end.y);    // bottom Left Corner
+	glTexCoord2d(0, 1);
+	glVertex2d(start.x, -start.y);    // upper Left Corner
+	glTexCoord2d(1, 1);
+	glVertex2d(end.x, -start.y);    // upper Right Corner
+	glTexCoord2d(1, 0);
+	glVertex2d(end.x, -end.y);        // bottom Right Corner
+	glEnd();
+	glBindTexture(GL_TEXTURE_2D, 0);
 	(void)map;
+	(void)bpp;
+	(void)width;
+	(void)height;
+	(void)format;
+	(void)internFormat;
 }
 
 Graphics::~Graphics(void)
@@ -67,7 +116,7 @@ Graphics::~Graphics(void)
 	return ;
 }
 
-Graphics			*create(size_t width, size_t height, size_t squareSize)
+Graphics			*create(size_t width, size_t height, float squareSize)
 {
 	return new Graphics(width, height, squareSize);
 }

@@ -6,7 +6,7 @@
 /*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/14 14:34:38 by rvievill          #+#    #+#             */
-/*   Updated: 2018/05/23 16:45:24 by rvievill         ###   ########.fr       */
+/*   Updated: 2018/05/24 16:55:06 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,12 @@
 # include <GLFW/glfw3.h>
 #include <SOIL2.h>
 # include "../../inc/Api.class.hpp"
+
+struct			t_coordd
+{
+	double		x;
+	double		y;
+};
 
 class Graphics : public AGraphics {
 
@@ -29,7 +35,7 @@ class Graphics : public AGraphics {
 		void				openWindow(void) override;
 		bool				isOpen(void) const override;
 		key					keyPress(void) override;
-		void				draw(Map map) override;
+		void				draw(Map &map) override;
 
 		libName				name;
 
@@ -44,7 +50,7 @@ class Graphics : public AGraphics {
 };
 
 extern "C" {
-	Graphics				*create(size_t width, size_t height, size_t squareSize);
+	Graphics				*create(size_t width, size_t height, float squareSize);
 	void					del(Graphics *entry);
 }
 

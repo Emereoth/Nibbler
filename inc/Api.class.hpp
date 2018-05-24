@@ -55,13 +55,13 @@ class AGraphics {
 		virtual void			openWindow(void) = 0;
 		virtual bool			isOpen(void) const = 0;
 		virtual key				keyPress(void) = 0;
-		virtual void			draw(Map map) = 0;
+		virtual void			draw(Map &map) = 0;
 
 	protected:
 		
 		size_t					_height;
 		size_t					_width;
-		size_t					_squareSize;
+		float					_squareSize;
 };
 
 #endif

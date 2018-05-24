@@ -9,6 +9,16 @@
 		"new": "cpp",
 		"stdexcept": "cpp",
 		"typeinfo": "cpp",
-		"algorithm": "cpp"
+		"algorithm": "cpp",
+		"bitset": "cpp",
+		"array": "cpp",
+		"deque": "cpp",
+		"iterator": "cpp",
+		"list": "cpp",
+		"map": "cpp",
+		"set": "cpp",
+		"string": "cpp",
+		"string_view": "cpp",
+		"vector": "cpp"
 	}
 }

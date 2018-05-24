@@ -10,13 +10,13 @@ class Graphics : public AGraphics {
 
 	public:
 
-		explicit Graphics(size_t width, size_t height, size_t squareSize);
+		explicit Graphics(size_t width, size_t height, float squareSize);
 		virtual ~Graphics(void);	
 
 		void				openWindow(void) override;
 		bool				isOpen(void) const override;
 		key					keyPress(void) override;
-		void				draw(Map map) override;
+		void				draw(Map &map) override;
 
 		libName				name;
 
@@ -25,17 +25,18 @@ class Graphics : public AGraphics {
 		Graphics(void) = default;
 		Graphics(Graphics const &src) = default;
 		Graphics			&operator=(Graphics const &rhs) = default;
-		void				runSound(void) const;
+		void				runSound(void);
 
 		sf::RenderWindow						_window;
 		sf::Event								_event;
 		std::map<sprite, std::string>			_spriteMap;
+		sf::Music 								_music;
 
 };
 
 extern "C" {
 
-	Graphics				*create(size_t width, size_t height, size_t squareSize);
+	Graphics				*create(size_t width, size_t height, float squareSize);
 	void					del(Graphics *lol);
 
 }

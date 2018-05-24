@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libSDL.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/16 15:53:55 by acottier          #+#    #+#             */
-/*   Updated: 2018/05/23 16:47:26 by acottier         ###   ########.fr       */
+/*   Updated: 2018/05/24 12:28:09 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ class Graphics : public AGraphics
 		SDL_Surface	*drawImage(char * const path, SDL_Window * win);
 		bool		isOpen(void) const override;
 		key			keyPress(void) override;
-		void		draw(Map map) override;
+		void		draw(Map &map) override;
 		void		setMusic(void) const;
 		
 		libName		name;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libSDL.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/16 15:53:54 by acottier          #+#    #+#             */
-/*   Updated: 2018/05/23 17:35:43 by acottier         ###   ########.fr       */
+/*   Updated: 2018/05/24 16:13:36 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ key				Graphics::keyPress(void)
 	return (res);
 }
 
-void			Graphics::draw(Map map)
+void			Graphics::draw(Map &map)
 {
 	(void)map;
 }
@@ -194,7 +194,7 @@ Graphics::~Graphics(void)
 {
 }
 
-Graphics			*create(size_t height, size_t width, size_t squareSize)
+Graphics			*create(float height, float width, float squareSize)
 {
 	return new Graphics(height, width, squareSize);
 }

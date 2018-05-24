@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Snake.class.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/21 14:17:24 by acottier          #+#    #+#             */
-/*   Updated: 2018/05/23 16:36:06 by acottier         ###   ########.fr       */
+/*   Updated: 2018/05/24 12:56:38 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,13 @@ struct snakeInfo
 	unsigned char									origin;
 	unsigned char									destination;
 	bool											grow;
-	std::map<snakeCombinedOrientation, std::string>	spriteMap = 
-	{
-		{UP_LEFT , "upleft.png"},
-		{UP_RIGHT , "upright.png"},
-		{DOWN_LEFT , "downleft.png"},
-		{DOWN_RIGHT , "downright.png"}
-	};
+	// std::map<snakeCombinedOrientation, std::string>	spriteMap = 
+	// {
+	// 	{UP_LEFT, "upleft.png"},
+	// 	{UP_RIGHT, "upright.png"},
+	// 	{DOWN_LEFT, "downleft.png"},
+	// 	{DOWN_RIGHT, "downright.png"}
+	// };
 };
 
 class Snake

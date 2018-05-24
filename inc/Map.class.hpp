@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Map.class.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/19 14:50:15 by rvievill          #+#    #+#             */
-/*   Updated: 2018/05/23 16:36:25 by acottier         ###   ########.fr       */
+/*   Updated: 2018/05/24 16:24:14 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,17 @@ class Map {
 
 	public:
 
-		explicit Map(Snake &snake);
+		explicit 							Map(void);
+		explicit							Map(Snake &snake);
 		~Map(void);
 
 		void								placeItem(void);
 		void								displayMap(void) const;
 
-		int									map[62][63];
+		int									map[62][62];
 
 	private:
 
-		explicit 							Map(void);
 		explicit 							Map(const Map &src) = delete;
 		Map									&operator=(const Map &rhs) = delete;
 

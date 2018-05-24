@@ -6,7 +6,7 @@
 /*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/21 15:16:06 by acottier          #+#    #+#             */
-/*   Updated: 2018/05/23 16:17:55 by rvievill         ###   ########.fr       */
+/*   Updated: 2018/05/24 12:56:26 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ Snake::~Snake()
 {
 }
 
-std::list<data &>	Snake::getSnake(void) const
+std::list<snakeInfo>	Snake::getSnake(void) const
 {
 	return (_snake);
 }
@@ -32,19 +32,21 @@ void				Snake::grow(void)
 
 void				Snake::updatePos(int key)
 {
-	std::list<data &>::iterator		it = _snake.begin();
-	unsigned char					prevOrigin = (*it).origin;
+	std::list<snakeInfo>::iterator		it = _snake.begin();
+	std::list<snakeInfo>::iterator		end = _snake.end();
+	unsigned char						prevOrigin = (*it).origin;
 
-	while (it != _snake.end())
+	(void)prevOrigin;
+	while (it != end)
 	{
 		if (it == _snake.begin())
 		{
 
 		}
-		else if (*it == _snake.back())
-		{
+		// else if (*it == _snake.back())
+		// {
 
-		}
+		// }
 		else
 		{
 			
@@ -53,7 +55,7 @@ void				Snake::updatePos(int key)
 	updateExtremity(key, it);
 }
 
-void				Snake::updateExtremity(int key, std::list<data &>::iterator it)
+void				Snake::updateExtremity(int key, std::list<snakeInfo>::iterator it)
 {
 	if ( it == _snake.begin() && key && (*it).destination + key != 4 && (*it).destination + key != 9)
 		(*it).destination = (*it).origin = key;

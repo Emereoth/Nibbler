@@ -9,9 +9,10 @@ CFLAGS = -Wall -Werror -Wextra -std=c++11 -g
 CPATH = src/
 OPATH = obj/
 INC = $(addprefix -I, $(HPATH))
-CFILES =	main.cpp		\
-			Map.class.cpp	\
-			Preset.class.cpp
+CFILES =	main.cpp			\
+			Map.class.cpp		\
+			Preset.class.cpp	\
+			Snake.class.cpp
 
 OFILES = $(CFILES:.cpp=.o)
 

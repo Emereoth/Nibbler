@@ -1,10 +1,10 @@
 #include "../inc/libSFML.hpp"
 #include <iostream>
 
-Graphics::Graphics(size_t width, size_t height, size_t squareSize) : name(libName::SFML)
+Graphics::Graphics(size_t width, size_t height, float squareSize) : name(libName::SFML)
 {
-	_width = width;
 	_height = height;
+	_width = width;
 	_squareSize = squareSize;
 	_spriteMap =
 	{
@@ -36,6 +36,7 @@ void				Graphics::openWindow(void)
 {
 	_window.create(sf::VideoMode(_width, _height), "Nibbler (SFML)");
 	_window.setKeyRepeatEnabled(false);
+	runSound();
 }
 
 bool				Graphics::isOpen(void) const
@@ -49,20 +50,45 @@ key					Graphics::keyPress(void)
 	return (key::NO);
 }
 
-void				Graphics::draw(Map map)
+void				Graphics::draw(Map &map)
 {
-	(void)map;
+	float			spaceAroundX = (_width / 2) - (_squareSize * 31);
+
+	for (size_t y = 0; y < 62; y++)
+	{
+		for(size_t x = 0; x < 62; x++)
+		{
+			if (map.map[y][x] == '1')
+			{
+				float			width = spaceAroundX + (x * _squareSize);
+				float			height = y * _squareSize;
+				sf::Sprite		sprite;
+				sf::Texture		tex;
+
+				tex.setSmooth(true);
+				tex.loadFromFile(_spriteMap[sprite::WALL]);	
+				sprite.setTexture(tex);
+				sprite.setPosition(width, height);
+
+				float			widthSprite = sprite.getLocalBounds().width;
+				float			heightSprite = sprite.getLocalBounds().height;
+
+				sprite.setScale(_squareSize / widthSprite, _squareSize / heightSprite);
+				_window.draw(sprite);
+			}
+		}
+	}
+	_window.display();
 }
 
-void				Graphics::runSound(void) const
+void				Graphics::runSound(void)
 {
-	sf::Music music;
-	music.openFromFile("./music/tetris.wav");
-	music.setLoop(true);
-	music.play();
+	_music.openFromFile("./music/tetris.wav");
+	_music.setLoop(true);
+	_music.play();
 }
 
-Graphics			*create(size_t width, size_t height, size_t squareSize)
+Graphics			*create(size_t width, size_t height, float squareSize)
 {
 	return new Graphics(width, height, squareSize);
 }
