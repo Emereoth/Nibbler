@@ -6,7 +6,7 @@
 /*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/17 14:58:27 by rvievill          #+#    #+#             */
-/*   Updated: 2018/05/17 15:14:46 by rvievill         ###   ########.fr       */
+/*   Updated: 2018/05/28 13:12:41 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,12 +70,11 @@ namespace manageOpt {
 		std::cmatch		match;
 		std::regex		reg("(^--)([a-z]+)(=)([a-z]+)(.*)");
 
-		if (ac > 2)
-			throw Error::tooManyArguments();
 		if (ac == 2)
 		{
 			if (std::regex_match(av[1], match, reg))
 			{
+				std::cout << "lol => " << match[2] << std::endl;
 				if (match[2].str().compare("lib"))
 					throw Error::optBadFormat();
 				return (match[4].str());

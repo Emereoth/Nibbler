@@ -6,7 +6,7 @@
 /*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/14 14:34:38 by rvievill          #+#    #+#             */
-/*   Updated: 2018/05/24 16:55:06 by rvievill         ###   ########.fr       */
+/*   Updated: 2018/05/28 17:25:16 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ class Graphics : public AGraphics {
 		bool				isOpen(void) const override;
 		key					keyPress(void) override;
 		void				draw(Map &map) override;
+		void				closeWindow(void) override;
 
 		libName				name;
 

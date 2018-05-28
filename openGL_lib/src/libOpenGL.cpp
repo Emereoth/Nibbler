@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libOpenGL.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/14 17:26:49 by rvievill          #+#    #+#             */
-/*   Updated: 2018/05/26 14:47:18 by acottier         ###   ########.fr       */
+/*   Updated: 2018/05/28 17:25:57 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,11 @@ void				Graphics::draw(Map &map)
 Graphics::~Graphics(void)
 {
 	return ;
+}
+
+void				Graphics::closeWindow(void)
+{
+	glfwDestroyWindow(_window);
 }
 
 Graphics			*create(size_t width, size_t height, float squareSize)

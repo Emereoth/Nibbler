@@ -88,6 +88,11 @@ void				Graphics::runSound(void)
 	_music.play();
 }
 
+void				Graphics::closeWindow(void)
+{
+	_window.close();
+}
+
 Graphics			*create(size_t width, size_t height, float squareSize)
 {
 	return new Graphics(width, height, squareSize);

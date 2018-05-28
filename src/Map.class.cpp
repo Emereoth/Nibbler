@@ -6,11 +6,12 @@
 /*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/19 15:19:36 by rvievill          #+#    #+#             */
-/*   Updated: 2018/05/23 16:26:33 by rvievill         ###   ########.fr       */
+/*   Updated: 2018/05/28 16:02:52 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/Map.class.hpp"
+#include <random>
 
 Map::Map(Snake &snake) : _snake(snake)
 {
@@ -116,14 +117,20 @@ void				Map::generateRand(void)
 	size_t				yRand;
 	std::vector<int> 	temp;
 
-	xRand = rand() % 8 + 3;
-	yRand = rand() % 8 + 3;
+	std::random_device rd;  //Will be used to obtain a seed for the random number engine
+	std::mt19937 gen(rd()); //Standard mersenne_twister_engine seeded with rd()
+	std::uniform_int_distribution<> dis(1, 11);
+	xRand = dis(gen);
+	yRand = dis(gen);
 	// std::cout << "Taille x obstacle random " << xRand << std::endl;
 	// std::cout << "Taille y obstacle random " << yRand << std::endl;
 	for (size_t i = 0; i < xRand; i++)
 	{
 		for (size_t j = 0; j < yRand; j++)
-			temp.push_back(rand() % 2);
+		{
+			std::uniform_int_distribution<> dis(0, 1);
+			temp.push_back(dis(gen));
+		}
 			// temp.push_back((rand() % 2) == 0 ? 2 : 1);
 		_obstacle.push_back(temp);
 		temp.clear();
