@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libSDL.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/16 15:53:54 by acottier          #+#    #+#             */
-/*   Updated: 2018/05/24 16:13:36 by rvievill         ###   ########.fr       */
+/*   Updated: 2018/05/26 15:05:11 by acottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 void			Graphics::openWindow()
 {
-	SDL_Window	*win;
 	SDL_Surface	*newSurface = NULL;
 	SDL_Rect	dst;
 
@@ -24,13 +23,12 @@ void			Graphics::openWindow()
 		std::cerr << "SDL init error :" << SDL_GetError() << std::endl;
 		return ;
 	}
-	win = SDL_CreateWindow("Nibbler (SDL)", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, _width, _height, SDL_WINDOW_MOUSE_FOCUS);
-	newSurface = drawImage((char *)"../texture/headUp.png", win);
+	_window = SDL_CreateWindow("Nibbler (SDL)", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, _width, _height, SDL_WINDOW_MOUSE_FOCUS);
 	dst.x = 0;
 	dst.y = 0;
 	dst.w = SIZE_SQUARE;
 	dst.h = SIZE_SQUARE;
-	if (SDL_BlitScaled(newSurface, NULL, SDL_GetWindowSurface(win), &dst)!= 0)
+	if (SDL_BlitScaled(newSurface, NULL, SDL_GetWindowSurface(_window), &dst)!= 0)
 		std::cerr << "SDL blit transfer error: " << SDL_GetError() << std::endl;
 	setMusic();
 }
@@ -95,7 +93,28 @@ key				Graphics::keyPress(void)
 
 void			Graphics::draw(Map &map)
 {
-	(void)map;
+	SDL_Rect		dst;
+	float			spaceAroundX = (_width / 2) - (_squareSize * 31);
+	
+	for (size_t y = 0 ; y < 62 ; y++)
+	{
+		for (size_t x = 0 ; x < 62 ; x++)
+		{
+			if (map.map[y][x] == 1)
+			{
+				SDL_Surface		*tmpSurface = drawImage(_surfaceMap[sprite::WALL], _window);
+				float			width = spaceAroundX + (x * _squareSize);
+				float			height = y * _squareSize;
+
+				dst.w = SIZE_SQUARE;
+				dst.h = SIZE_SQUARE;
+				dst.x = width;
+				dst.y = height;
+				if (SDL_BlitScaled(tmpSurface, NULL, SDL_GetWindowSurface(_window), &dst)!= 0)
+					std::cerr << "SDL blit transfer error: " << SDL_GetError() << std::endl;
+			}
+		}
+	}
 }
 
 // void			Graphics::loop(SDL_Window * win)
@@ -117,9 +136,8 @@ void			Graphics::draw(Map &map)
 // 	}
 // }
 
-SDL_Surface		*Graphics::drawImage(char * const path, SDL_Window * win)
+SDL_Surface		*Graphics::drawImage(SDL_Surface * texture, SDL_Window * win)
 {
-	SDL_Surface	*loadedSurface = NULL;
 	SDL_Surface	*finalSurface = NULL;
 	
 	int imgFlags = IMG_INIT_PNG;
@@ -131,24 +149,15 @@ SDL_Surface		*Graphics::drawImage(char * const path, SDL_Window * win)
     else
 	{
 		std::cout << "SDL_Image init successful" << std::endl;
-		if (!(loadedSurface = IMG_Load(path)))
+		finalSurface = SDL_ConvertSurface(texture, SDL_GetWindowSurface(win)->format, 0);
+		if (!finalSurface)
 		{
-			std::cerr << "SDL failed loading image: " << IMG_GetError() << std::endl;
+			std::cerr << "SDL failed transferring image to surface: " << IMG_GetError() << std::endl;
 			return (NULL);
 		}
 		else
-		{
-			std::cout << "SDL loaded image succesfully" << std::endl;
-			finalSurface = SDL_ConvertSurface(loadedSurface, SDL_GetWindowSurface(win)->format, 0);
-			if (!finalSurface)
-			{
-				std::cerr << "SDL failed transferring image to surface: " << IMG_GetError() << std::endl;
-				return (NULL);
-			}
-			else
-				std::cout << "SDL image succesfully transferred to new surface" << std::endl;
-			SDL_FreeSurface(loadedSurface);
-		}
+			std::cout << "SDL image succesfully transferred to new surface" << std::endl;
+		SDL_FreeSurface(texture);
 		return (finalSurface);
 	}
 }

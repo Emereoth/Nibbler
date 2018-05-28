@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libSDL.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/16 15:53:55 by acottier          #+#    #+#             */
-/*   Updated: 2018/05/24 12:28:09 by rvievill         ###   ########.fr       */
+/*   Updated: 2018/05/28 13:42:23 by acottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,12 @@
 
 #include <string>
 #include <map>
-#include "../SDL/include/SDL.h"
-#include "../SDL_Image/SDL_image.h"
-#include "../SDL_Mixer/SDL_mixer.h"
+// #include "~/.brew/include/SDL2/SDL.h"
+// #include "~/.brew/include/SDL2/SDL_image.h"
+// #include "~/.brew/include/SDL2/SDL_mixer.h"
+#include <SDL.h>
+#include <SDL_image.h>
+#include <SDL_mixer.h>
 #include "../../inc/Api.class.hpp"
 
 class Graphics : public AGraphics
@@ -28,7 +31,7 @@ class Graphics : public AGraphics
 		virtual ~Graphics(void);
 
 		void		openWindow(void) override;
-		SDL_Surface	*drawImage(char * const path, SDL_Window * win);
+		SDL_Surface	*drawImage(SDL_Surface *, SDL_Window * win);
 		bool		isOpen(void) const override;
 		key			keyPress(void) override;
 		void		draw(Map &map) override;
