@@ -6,7 +6,7 @@
 /*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/16 15:53:54 by acottier          #+#    #+#             */
-/*   Updated: 2018/05/28 17:20:33 by acottier         ###   ########.fr       */
+/*   Updated: 2018/05/28 17:58:36 by acottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,12 +87,11 @@ void			Graphics::draw(Map &map)
 	SDL_Rect		dst;
 	float			spaceAroundX = (_width / 2) - (_squareSize * 31);
 	
-	std::cout << "drawing shit" << std::endl;
 	for (size_t y = 0 ; y < 62 ; y++)
 	{
 		for (size_t x = 0 ; x < 62 ; x++)
 		{
-			if (map.map[y][x] == 1)
+			if (map.map[y][x] == '1')
 			{
 				SDL_Surface		*tmpSurface = loadSurface(_surfaceMap[sprite::WALL], _window);
 				float			width = spaceAroundX + (x * _squareSize);
@@ -104,6 +103,8 @@ void			Graphics::draw(Map &map)
 				dst.y = height;
 				if (SDL_BlitScaled(tmpSurface, NULL, SDL_GetWindowSurface(_window), &dst)!= 0)
 					std::cerr << "SDL blit transfer error: " << SDL_GetError() << std::endl;
+				else
+					std::cout << "youhou ca fonctionne" << std::endl;
 			}
 		}
 	}
