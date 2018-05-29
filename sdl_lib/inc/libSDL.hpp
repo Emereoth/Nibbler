@@ -6,7 +6,7 @@
 /*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/16 15:53:55 by acottier          #+#    #+#             */
-/*   Updated: 2018/05/28 15:27:44 by acottier         ###   ########.fr       */
+/*   Updated: 2018/05/29 15:30:34 by acottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include <SDL_mixer.h>
+#include <sstream>
 #include "../../inc/Api.class.hpp"
 
 class Graphics : public AGraphics
@@ -36,6 +37,61 @@ class Graphics : public AGraphics
 		void		setMusic(void) const;
 		
 		libName		name;
+
+		class SDL_InitFail : public std::exception
+		{
+			public:
+			virtual const char *what() const throw()
+			{
+				std::ostringstream	stream;
+				stream << "SDL initialization error: " << SDL_GetError();
+				return (stream.str().c_str());
+			}
+		};
+
+		class IMG_InitFail : public std::exception
+		{
+			public:
+			virtual const char *what() const throw()
+			{
+				std::ostringstream	stream;
+				stream << "SDL_Image initialization error: " << IMG_GetError();
+				return (stream.str().c_str());
+			}
+		};
+		
+		class SDL_BlitTransferFail : public std::exception
+		{
+			public:
+			virtual const char *what() const throw()
+			{
+				std::ostringstream	stream;
+				stream << "SDL bit transfer error: " << SDL_GetError();
+				return (stream.str().c_str());
+			}
+		};
+
+		class IMG_SurfaceLoadingFail : public std::exception
+		{
+			public:
+			virtual const char *what() const throw()
+			{
+				std::ostringstream	stream;
+				stream << "SDL image loading error: " << IMG_GetError();
+				return (stream.str().c_str());
+			}
+		};
+
+		class IMG_SurfaceConvertingFail : public std::exception
+		{
+			public:
+			virtual const char *what() const throw()
+			{
+				std::ostringstream	stream;
+				stream << "SDL surface converting error: " << IMG_GetError();
+				return (stream.str().c_str());
+			}
+		};
 
 	private:
 
