@@ -6,7 +6,7 @@
 /*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/16 15:53:54 by acottier          #+#    #+#             */
-/*   Updated: 2018/05/29 17:44:56 by rvievill         ###   ########.fr       */
+/*   Updated: 2018/05/30 12:10:27 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,11 @@
 void			Graphics::openWindow()
 {
 	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) < 0 || ! ( IMG_Init(IMG_INIT_PNG) & IMG_INIT_PNG) )
-	{
-		std::cerr << "SDL init error : " << SDL_GetError() << std::endl;
-		return ;
-	}
+		throw SDL_InitFail();
+	if ( !(IMG_Init(IMG_INIT_PNG) & IMG_INIT_PNG) )
+		throw IMG_InitFail();
 	_window = SDL_CreateWindow("Nibbler (SDL)", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, _width, _height, SDL_WINDOW_MOUSE_FOCUS);
-	// setMusic();
+	setMusic();
 }
 
 void			Graphics::setMusic() const
@@ -88,28 +87,26 @@ void			Graphics::draw(Map &map)
 	// SDL_Rect		dst;
 	// float			spaceAroundX = (_width / 2) - (_squareSize * 31);
 	
-	// for (size_t y = 0 ; y < 62 ; y++)
-	// {
-	// 	for (size_t x = 0 ; x < 62 ; x++)
-	// 	{
-	// 		if (map.map[y][x] == '1')
-	// 		{
-	// 			SDL_Surface		*tmpSurface = loadSurface(_surfaceMap[sprite::WALL], _window);
-	// 			float			width = spaceAroundX + (x * _squareSize);
-	// 			float			height = y * _squareSize;
+	for (size_t y = 0 ; y < 62 ; y++)
+	{
+		for (size_t x = 0 ; x < 62 ; x++)
+		{
+			if (map.map[y][x] == '1')
+			{
+				SDL_Surface		*tmpSurface = loadSurface(_surfaceMap[sprite::WALL], _window);
+				float			width = spaceAroundX + (x * _squareSize);
+				float			height = y * _squareSize;
 
-	// 			dst.w = SIZE_SQUARE;
-	// 			dst.h = SIZE_SQUARE;
-	// 			dst.x = width;
-	// 			dst.y = height;
-	// 			if (SDL_BlitScaled(tmpSurface, NULL, SDL_GetWindowSurface(_window), &dst)!= 0)
-	// 				std::cerr << "SDL blit transfer error: " << SDL_GetError() << std::endl;
-	// 			else
-	// 				std::cout << "youhou ca fonctionne" << std::endl;
-	// 		}
-	// 	}
-	// }
-	// SDL_UpdateWindowSurface(_window);
+				dst.w = SIZE_SQUARE;
+				dst.h = SIZE_SQUARE;
+				dst.x = width;
+				dst.y = height;
+				if (SDL_BlitScaled(tmpSurface, NULL, SDL_GetWindowSurface(_window), &dst)!= 0)
+					throw SDL_BlitTransferFail();
+			}
+		}
+	}
+	SDL_UpdateWindowSurface(_window);
 }
 
 // void			Graphics::loop(SDL_Window * win)
@@ -138,50 +135,16 @@ SDL_Surface		*Graphics::loadSurface(std::string path, SDL_Window * win)
 
 	tmpSurface = IMG_Load(path.c_str());
 	if (!tmpSurface)
-	{
-		std::cout << "Couldn't load image: " << IMG_GetError() << std::endl;
-		return (NULL);
-	}
+		throw IMG_SurfaceLoadingFail();
 	finalSurface = SDL_ConvertSurface(tmpSurface, SDL_GetWindowSurface(win)->format, 0);
 	if (!finalSurface)
-	{
-		std::cerr << "SDL failed transferring image to surface: " << IMG_GetError() << std::endl;
-		return (NULL);
-	}
-	else
-		std::cout << "SDL image succesfully transferred to new surface" << std::endl;
+		throw IMG_SurfaceConvertingFail();
 	SDL_FreeSurface(tmpSurface);
 	return (finalSurface);
 }
 
 Graphics::Graphics(size_t width, size_t height, float squareSize) : name(libName::SDL)
 {
-	// int imgFlags = IMG_INIT_PNG;
-	
-	// if( !(IMG_Init(imgFlags) & imgFlags ))
-	// {
-	// 	std::cerr << "SDL_Image init fail: " << IMG_GetError() << std::endl;
-	// 	return ;
-	// }
-	// _surfaceMap = 
-	// {
-	// 	{ sprite::HEAD_UP , IMG_Load("texture/headUp.png") } ,
-	// 	{ sprite::HEAD_DOWN , IMG_Load("texture/headDown.png") } ,
-	// 	{ sprite::HEAD_LEFT , IMG_Load("texture/headLeft.png") } ,
-	// 	{ sprite::HEAD_RIGHT , IMG_Load("texture/headRight.png") } ,
-	// 	{ sprite::BODY_H , IMG_Load("texture/bodyH.png") } ,
-	// 	{ sprite::BODY_V , IMG_Load("texture/bodyV.png") } ,
-	// 	{ sprite::TAIL_UP , IMG_Load("texture/tailUp.png") } ,
-	// 	{ sprite::TAIL_DOWN , IMG_Load("texture/tailDown.png") } ,
-	// 	{ sprite::TAIL_LEFT , IMG_Load("texture/tailLeft.png") } ,
-	// 	{ sprite::TAIL_RIGHT , IMG_Load("texture/tailRight.png") } ,
-	// 	{ sprite::BODY_UP_LEFT , IMG_Load("texture/bodyUpLeft.png") } ,
-	// 	{ sprite::BODY_UP_RIGHT , IMG_Load("texture/bodyUpRight.png") } ,
-	// 	{ sprite::BODY_DOWN_LEFT , IMG_Load("texture/bodyDownLeft.png") } ,
-	// 	{ sprite::BODY_DOWN_RIGHT , IMG_Load("texture/bodydownRight.png") } ,
-	// 	{ sprite::WALL , IMG_Load("texture/wall.png") } ,
-	// 	{ sprite::FOOD , IMG_Load("texture/food.png") }
-	// }; 
 	_surfaceMap = 
 	{
 		{ sprite::HEAD_UP , "texture/headUp.png" } ,
