@@ -116,9 +116,9 @@ namespace {
 					if ((squareSize = (width > height ? height / 62.0f : width / 62.0f)) < 10)
 						throw Error::WindowTooSmall();
 				}
-				else
-					throw Error::optBadFormat();
 			}
+			else
+				throw Error::optBadFormat();
 			i++;
 		}
 	}
