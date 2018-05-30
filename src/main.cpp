@@ -188,6 +188,7 @@ int main(int ac, char **av)
 		{
 			lib->keyPress();
 			lib->draw(map);
+			std::cout << "fuck you" << std::endl;
 		}
 	}
 	catch (std::exception &e)

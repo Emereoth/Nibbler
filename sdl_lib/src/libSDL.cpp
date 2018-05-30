@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libSDL.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/16 15:53:54 by acottier          #+#    #+#             */
-/*   Updated: 2018/05/30 12:10:27 by rvievill         ###   ########.fr       */
+/*   Updated: 2018/05/30 12:28:36 by acottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,27 +83,26 @@ key				Graphics::keyPress(void)
 
 void			Graphics::draw(Map &map)
 {
-	(void)map;
-	// SDL_Rect		dst;
-	// float			spaceAroundX = (_width / 2) - (_squareSize * 31);
+	SDL_Rect		dst;
+	size_t			size = 62 * 62;
+	float			spaceAroundX = (_width / 2) - (_squareSize * 31);
 	
-	for (size_t y = 0 ; y < 62 ; y++)
+	std::cout << "oh hai" << std::endl;
+	for (size_t i = 0 ; i < size ; i++)
 	{
-		for (size_t x = 0 ; x < 62 ; x++)
+		if (map.map[i] == 1)
 		{
-			if (map.map[y][x] == '1')
-			{
-				SDL_Surface		*tmpSurface = loadSurface(_surfaceMap[sprite::WALL], _window);
-				float			width = spaceAroundX + (x * _squareSize);
-				float			height = y * _squareSize;
-
-				dst.w = SIZE_SQUARE;
-				dst.h = SIZE_SQUARE;
-				dst.x = width;
-				dst.y = height;
-				if (SDL_BlitScaled(tmpSurface, NULL, SDL_GetWindowSurface(_window), &dst)!= 0)
-					throw SDL_BlitTransferFail();
-			}
+			SDL_Surface		*tmpSurface = loadSurface(_surfaceMap[sprite::WALL], _window);
+			float			widthPos = spaceAroundX + ((i % 62) * _squareSize);
+			float			heightPos = (i / 62) * _squareSize;
+			dst.w = SIZE_SQUARE;
+			dst.h = SIZE_SQUARE;
+			dst.x = widthPos;
+			dst.y = heightPos;
+			if (SDL_BlitScaled(tmpSurface, NULL, SDL_GetWindowSurface(_window), &dst)!= 0)
+				throw SDL_BlitTransferFail();
+			else
+				std::cout << "blit transfer successful" << std::endl;
 		}
 	}
 	SDL_UpdateWindowSurface(_window);
