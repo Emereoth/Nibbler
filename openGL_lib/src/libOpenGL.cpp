@@ -6,7 +6,7 @@
 /*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/14 17:26:49 by rvievill          #+#    #+#             */
-/*   Updated: 2018/05/29 17:45:06 by rvievill         ###   ########.fr       */
+/*   Updated: 2018/05/30 17:17:58 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,6 @@ void				Graphics::openWindow(void)
 	    std::cerr << "Failed to initialize GLEW\n" << std::endl;
 		return ;
 	}
-	glfwWindowHint(GLFW_SAMPLES, 4);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
-	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 	_window = glfwCreateWindow(_width, _height, "Nibbler (OpenGL)", NULL, NULL);
 	if (_window == NULL)
 	{
@@ -40,11 +35,9 @@ void				Graphics::openWindow(void)
 		return ;
 	}
 	glfwMakeContextCurrent(_window);
-	if (glewInit() != GLEW_OK) {
-		std::cerr << "Failed to initialize GLEW\n" << std::endl;
-		return ;
-	}
-	glfwSetInputMode(_window, GLFW_STICKY_KEYS, GL_TRUE);
+	glEnable(GL_TEXTURE_2D);
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 }
 
 bool				Graphics::isOpen(void) const
@@ -60,56 +53,38 @@ key					Graphics::keyPress(void)
 
 void				Graphics::draw(Map &map)
 {
-	// GLuint texture;
-	// GLenum internFormat(0);
-	// GLenum format(0);
-	// int width, height, bpp;
+	GLuint			texture;
+	auto sizeY = _squareSize / (_height / 2);
+	auto sizeX = _squareSize / (_width / 2);
+	auto startX = -(sizeX * 31);
+	auto startY = 1;
 
-	// glGenTextures(1, &texture);                                        // Generation de l'iD
-	// glBindTexture(GL_TEXTURE_2D,
-	// 			  texture);                                // Verouillage, obligatoire pour modification du GLuint
-	// glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);    // Les textures proche sont lissées
-	// glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);    // Les textures éloignées sont lissées
-	// texture = SOIL_load_OGL_texture(
-	// 	"./texture/wall.png",
-    //     SOIL_LOAD_RGB,
-    //     SOIL_CREATE_NEW_ID,
-    //     SOIL_FLAG_INVERT_Y
-	// );
-	// glTexImage2D(GL_TEXTURE_2D, 0, internFormat, width, height, 0, format, GL_UNSIGNED_BYTE, data);
-	// glGenerateMipmap(GL_TEXTURE_2D);
-	// stbi_image_free(data);                                                // Liberation memoire
-	// glBindTexture(GL_TEXTURE_2D, 0);
-
-
-	// //////////////////////////////////////////////
-	// glBindTexture(GL_TEXTURE_2D, texture);
-	// t_coordd start = {};
-	// start.x = ((0 * 2.0) / _width) - 1.0;
-	// start.y = ((0 * 2.0) / _height) - 1.0;
-
-	// t_coordd end = {};
-	// end.x = (((0 + _squareSize) * 2.0) / _width) - 1.0;
-	// end.y = (((0 + _squareSize) * 2.0) / _height) - 1.0;
-
-	// glBegin(GL_QUADS);
-	// glTexCoord2d(0, 0);
-	// glVertex2d(start.x, -end.y);    // bottom Left Corner
-	// glTexCoord2d(0, 1);
-	// glVertex2d(start.x, -start.y);    // upper Left Corner
-	// glTexCoord2d(1, 1);
-	// glVertex2d(end.x, -start.y);    // upper Right Corner
-	// glTexCoord2d(1, 0);
-	// glVertex2d(end.x, -end.y);        // bottom Right Corner
-	// glEnd();
-	// glBindTexture(GL_TEXTURE_2D, 0);
-	// (void)map;
-	// (void)bpp;
-	// (void)width;
-	// (void)height;
-	// (void)format;
-	// (void)internFormat;
-	(void)map;
+    glGenTextures(1, &texture); 
+	glBindTexture(GL_TEXTURE_2D, texture);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR); //Les textures proche sont lissées
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	texture = SOIL_load_OGL_texture // load an image file directly as a new OpenGL texture 
+	(
+		"texture/wall.png",
+		SOIL_LOAD_AUTO,
+		SOIL_CREATE_NEW_ID,
+		SOIL_FLAG_MIPMAPS | SOIL_FLAG_INVERT_Y | SOIL_FLAG_NTSC_SAFE_RGB | SOIL_FLAG_COMPRESS_TO_DXT
+	);
+	glColor3f(255,255,255);
+	glBegin(GL_QUADS); // Start drawing a quad primitive
+	glTexCoord2d(0, 0);
+	glVertex2d(startX, startY - sizeY); // The bottom left corner
+	glTexCoord2d(0, 1);
+	glVertex2d(startX, startY); // The upper left corner
+	glTexCoord2d(1, 1);
+	glVertex2d(startX + sizeX, startY); // The upper right corner
+	glTexCoord2d(1, 0);
+	glVertex2d(startX + sizeX, startY - sizeY); // The bottom right corner
+	glEnd();
+	glBindTexture(GL_TEXTURE_2D, 0);
+	glFlush();
+	glfwSwapBuffers(_window);
+ 	(void)map;
 }
 
 Graphics::~Graphics(void)

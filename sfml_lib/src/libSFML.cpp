@@ -57,6 +57,8 @@ void				Graphics::draw(Map &map)
 	int				pos = 0;
 	float			widthSprite;
 	float			heightSprite;
+	float			posX;
+	float			posY;
 
 	for (size_t i = 0; i < size; i++)
 	{
@@ -64,13 +66,12 @@ void				Graphics::draw(Map &map)
 			pos = 0;
 		if (map.map[i] == 1)
 		{
-			float			width = spaceAroundX + (pos * _squareSize);
-			float			height = (i / 62) * _squareSize;
-
+			posX = spaceAroundX + (pos * _squareSize);
+			posY = (i / 62) * _squareSize;
 			_texture.setSmooth(true);
 			_texture.loadFromFile(_spriteMap[sprite::WALL]);	
 			_sprite.setTexture(_texture);
-			_sprite.setPosition(width, height);
+			_sprite.setPosition(posX, posY);
 			widthSprite = _sprite.getLocalBounds().width;
 			heightSprite = _sprite.getLocalBounds().height;
 			_sprite.setScale(_squareSize / widthSprite, _squareSize / heightSprite);
@@ -83,7 +84,7 @@ void				Graphics::draw(Map &map)
 
 void				Graphics::runSound(void)
 {
-	_music.openFromFile("./music/tetris.wav");
+	_music.openFromFile("./music/tetris_hard.wav");
 	_music.setLoop(true);
 	_music.play();
 }
