@@ -163,8 +163,6 @@ int main(int ac, char **av)
 		read(open("/dev/urandom", O_RDONLY), &seed, sizeof(seed));
 		srand(seed);
 		map.placeItem();
-		(void)ac;
-		(void)av;
 		Opt					opt = getOpt(ac, av);
 
 		void				*entryPoint;
@@ -188,7 +186,6 @@ int main(int ac, char **av)
 		{
 			lib->keyPress();
 			lib->draw(map);
-			std::cout << "fuck you" << std::endl;
 		}
 	}
 	catch (std::exception &e)
