@@ -7,6 +7,7 @@
 #include <regex>
 #include <sstream>
 #include <string>
+#include <unistd.h>
 
 namespace {
 
@@ -162,6 +163,8 @@ int main(int ac, char **av)
 		read(open("/dev/urandom", O_RDONLY), &seed, sizeof(seed));
 		srand(seed);
 		map.placeItem();
+		(void)ac;
+		(void)av;
 		Opt					opt = getOpt(ac, av);
 
 		void				*entryPoint;

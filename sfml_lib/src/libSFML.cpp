@@ -53,30 +53,30 @@ key					Graphics::keyPress(void)
 void				Graphics::draw(Map &map)
 {
 	float			spaceAroundX = (_width / 2) - (_squareSize * 31);
+	size_t			size = 62 * 62;
+	int				pos = 0;
+	float			widthSprite;
+	float			heightSprite;
 
-	for (size_t y = 0; y < 62; y++)
+	for (size_t i = 0; i < size; i++)
 	{
-		for(size_t x = 0; x < 62; x++)
+		if (pos == map.offsetMap)
+			pos = 0;
+		if (map.map[i] == 1)
 		{
-			if (map.map[y][x] == '1')
-			{
-				float			width = spaceAroundX + (x * _squareSize);
-				float			height = y * _squareSize;
-				sf::Sprite		sprite;
-				sf::Texture		tex;
+			float			width = spaceAroundX + (pos * _squareSize);
+			float			height = (i / 62) * _squareSize;
 
-				tex.setSmooth(true);
-				tex.loadFromFile(_spriteMap[sprite::WALL]);	
-				sprite.setTexture(tex);
-				sprite.setPosition(width, height);
-
-				float			widthSprite = sprite.getLocalBounds().width;
-				float			heightSprite = sprite.getLocalBounds().height;
-
-				sprite.setScale(_squareSize / widthSprite, _squareSize / heightSprite);
-				_window.draw(sprite);
-			}
+			_texture.setSmooth(true);
+			_texture.loadFromFile(_spriteMap[sprite::WALL]);	
+			_sprite.setTexture(_texture);
+			_sprite.setPosition(width, height);
+			widthSprite = _sprite.getLocalBounds().width;
+			heightSprite = _sprite.getLocalBounds().height;
+			_sprite.setScale(_squareSize / widthSprite, _squareSize / heightSprite);
+			_window.draw(_sprite);
 		}
+		pos++;
 	}
 	_window.display();
 }

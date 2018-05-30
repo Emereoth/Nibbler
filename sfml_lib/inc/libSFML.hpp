@@ -8,6 +8,24 @@
 
 class Graphics : public AGraphics {
 
+	private:
+
+		Graphics(void) = default;
+		Graphics(Graphics const &src) = default;
+
+		Graphics			&operator=(Graphics const &rhs) = default;
+
+		void				runSound(void);
+		void				drawElem(Map &map);
+		void				drawElem(Snake &snake);
+
+		sf::RenderWindow						_window;
+		sf::Texture								_texture;
+		sf::Sprite								_sprite;
+		sf::Event								_event;
+		std::map<sprite, std::string>			_spriteMap;
+		sf::Music 								_music;
+
 	public:
 
 		explicit Graphics(size_t width, size_t height, float squareSize);
@@ -21,17 +39,6 @@ class Graphics : public AGraphics {
 
 		libName				name;
 
-	private:
-
-		Graphics(void) = default;
-		Graphics(Graphics const &src) = default;
-		Graphics			&operator=(Graphics const &rhs) = default;
-		void				runSound(void);
-
-		sf::RenderWindow						_window;
-		sf::Event								_event;
-		std::map<sprite, std::string>			_spriteMap;
-		sf::Music 								_music;
 
 };
 

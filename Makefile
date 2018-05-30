@@ -11,7 +11,6 @@ OPATH = obj/
 INC = $(addprefix -I, $(HPATH))
 CFILES =	main.cpp			\
 			Map.class.cpp		\
-			Preset.class.cpp	\
 			Snake.class.cpp
 
 OFILES = $(CFILES:.cpp=.o)

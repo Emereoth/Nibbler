@@ -6,7 +6,7 @@
 /*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/19 14:50:15 by rvievill          #+#    #+#             */
-/*   Updated: 2018/05/28 12:09:21 by rvievill         ###   ########.fr       */
+/*   Updated: 2018/05/30 11:58:18 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,28 @@
 #include <array>
 #include <vector>
 #include <unistd.h>
-#include "../inc/Preset.class.hpp"
 #include "../inc/Snake.class.hpp"
 
 class Map {
+
+	private:
+
+		explicit 							Map(const Map &src) = delete;
+		Map									&operator=(const Map &rhs) = delete;
+
+		std::array<size_t, 2>				generateItem(size_t (&zoneStart)[2], bool preset);
+		std::array<size_t, 2>				generatePreset(void);
+		std::array<size_t, 2>				preset1(void);
+		std::array<size_t, 2>				preset2(void);
+		std::array<size_t, 2>				preset3(void);
+		std::array<size_t, 2>				generateRand(void);
+		void								updateMap(std::array<size_t, 2> &start);
+		bool								checkCollision(std::list<snakeInfo> snake) const;
+		void								clearObstacle(void);
+
+
+		Snake								&_snake;
+		int									_obstacle[19][29];
 
 	public:
 
@@ -32,21 +50,9 @@ class Map {
 		void								placeItem(void);
 		void								displayMap(void) const;
 
-		int									map[62][62];
+		int									offsetMap;
+		int									map[62 * 62];
 
-	private:
-
-		explicit 							Map(const Map &src) = delete;
-		Map									&operator=(const Map &rhs) = delete;
-
-		std::array<int, 2>					generateItem(int zoneStart[2], bool preset);
-		void								generatePreset(void);
-		void								generateRand(void);
-		void								updateMap(std::array<int, 2> start);
-		bool								checkCollision(std::list<snakeInfo> snake) const;
-
-		std::vector<std::vector<int>>		_obstacle;
-		Snake								&_snake;
 };
 
 #endif

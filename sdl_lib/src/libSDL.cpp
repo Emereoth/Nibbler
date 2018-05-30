@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libSDL.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/16 15:53:54 by acottier          #+#    #+#             */
-/*   Updated: 2018/05/28 17:58:36 by acottier         ###   ########.fr       */
+/*   Updated: 2018/05/29 17:44:56 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,31 +84,32 @@ key				Graphics::keyPress(void)
 
 void			Graphics::draw(Map &map)
 {
-	SDL_Rect		dst;
-	float			spaceAroundX = (_width / 2) - (_squareSize * 31);
+	(void)map;
+	// SDL_Rect		dst;
+	// float			spaceAroundX = (_width / 2) - (_squareSize * 31);
 	
-	for (size_t y = 0 ; y < 62 ; y++)
-	{
-		for (size_t x = 0 ; x < 62 ; x++)
-		{
-			if (map.map[y][x] == '1')
-			{
-				SDL_Surface		*tmpSurface = loadSurface(_surfaceMap[sprite::WALL], _window);
-				float			width = spaceAroundX + (x * _squareSize);
-				float			height = y * _squareSize;
+	// for (size_t y = 0 ; y < 62 ; y++)
+	// {
+	// 	for (size_t x = 0 ; x < 62 ; x++)
+	// 	{
+	// 		if (map.map[y][x] == '1')
+	// 		{
+	// 			SDL_Surface		*tmpSurface = loadSurface(_surfaceMap[sprite::WALL], _window);
+	// 			float			width = spaceAroundX + (x * _squareSize);
+	// 			float			height = y * _squareSize;
 
-				dst.w = SIZE_SQUARE;
-				dst.h = SIZE_SQUARE;
-				dst.x = width;
-				dst.y = height;
-				if (SDL_BlitScaled(tmpSurface, NULL, SDL_GetWindowSurface(_window), &dst)!= 0)
-					std::cerr << "SDL blit transfer error: " << SDL_GetError() << std::endl;
-				else
-					std::cout << "youhou ca fonctionne" << std::endl;
-			}
-		}
-	}
-	SDL_UpdateWindowSurface(_window);
+	// 			dst.w = SIZE_SQUARE;
+	// 			dst.h = SIZE_SQUARE;
+	// 			dst.x = width;
+	// 			dst.y = height;
+	// 			if (SDL_BlitScaled(tmpSurface, NULL, SDL_GetWindowSurface(_window), &dst)!= 0)
+	// 				std::cerr << "SDL blit transfer error: " << SDL_GetError() << std::endl;
+	// 			else
+	// 				std::cout << "youhou ca fonctionne" << std::endl;
+	// 		}
+	// 	}
+	// }
+	// SDL_UpdateWindowSurface(_window);
 }
 
 // void			Graphics::loop(SDL_Window * win)
