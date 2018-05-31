@@ -6,7 +6,7 @@
 /*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/16 15:53:54 by acottier          #+#    #+#             */
-/*   Updated: 2018/05/30 12:28:36 by acottier         ###   ########.fr       */
+/*   Updated: 2018/05/31 15:13:31 by acottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,15 @@
 void			Graphics::openWindow()
 {
 	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) < 0 || ! ( IMG_Init(IMG_INIT_PNG) & IMG_INIT_PNG) )
+	{
+		closeWindow();
 		throw SDL_InitFail();
+	}
 	if ( !(IMG_Init(IMG_INIT_PNG) & IMG_INIT_PNG) )
+	{
+		closeWindow();
 		throw IMG_InitFail();
+	}
 	_window = SDL_CreateWindow("Nibbler (SDL)", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, _width, _height, SDL_WINDOW_MOUSE_FOCUS);
 	setMusic();
 }
@@ -59,7 +65,6 @@ bool			Graphics::isOpen(void) const
 
 key				Graphics::keyPress(void)
 {
-	key				res;
 	SDL_Event		currentEvent;
 	std::map<SDL_Keycode, key>	eventMap =
 	{
@@ -72,13 +77,16 @@ key				Graphics::keyPress(void)
 		{SDLK_2, key::TWO},
 		{SDLK_3, key::THREE}
 	};
-	
-	SDL_PollEvent(&currentEvent);
-	res = key::NO;
-	if (SDL_KEYDOWN && eventMap.find(currentEvent.key.keysym.sym) != eventMap.end())
-		res = eventMap[currentEvent.key.keysym.sym];
-	// TODO :: PURGE EVENT QUEUE
-	return (res);
+
+	SDL_PumpEvents();
+	while (SDL_PollEvent(&currentEvent))
+	{
+		if (SDL_KEYDOWN && eventMap.find(currentEvent.key.keysym.sym) != eventMap.end())
+			return (eventMap[currentEvent.key.keysym.sym]);
+		else if (currentEvent.type == SDL_WINDOWEVENT && currentEvent.window.event == SDL_WINDOWEVENT_CLOSE)
+			return (key::ESCAPE);
+	}
+	return (key::NO);
 }
 
 void			Graphics::draw(Map &map)
@@ -87,12 +95,11 @@ void			Graphics::draw(Map &map)
 	size_t			size = 62 * 62;
 	float			spaceAroundX = (_width / 2) - (_squareSize * 31);
 	
-	std::cout << "oh hai" << std::endl;
 	for (size_t i = 0 ; i < size ; i++)
 	{
 		if (map.map[i] == 1)
 		{
-			SDL_Surface		*tmpSurface = loadSurface(_surfaceMap[sprite::WALL], _window);
+			SDL_Surface		*tmpSurface = loadSurface(sprite::WALL, _window);
 			float			widthPos = spaceAroundX + ((i % 62) * _squareSize);
 			float			heightPos = (i / 62) * _squareSize;
 			dst.w = SIZE_SQUARE;
@@ -100,9 +107,10 @@ void			Graphics::draw(Map &map)
 			dst.x = widthPos;
 			dst.y = heightPos;
 			if (SDL_BlitScaled(tmpSurface, NULL, SDL_GetWindowSurface(_window), &dst)!= 0)
+			{
+				closeWindow();
 				throw SDL_BlitTransferFail();
-			else
-				std::cout << "blit transfer successful" << std::endl;
+			}
 		}
 	}
 	SDL_UpdateWindowSurface(_window);
@@ -127,18 +135,21 @@ void			Graphics::draw(Map &map)
 // 	}
 // }
 
-SDL_Surface		*Graphics::loadSurface(std::string path, SDL_Window * win)
+SDL_Surface		*Graphics::loadSurface(sprite texture, SDL_Window * win)
 {
 	SDL_Surface	*finalSurface = NULL;
-	SDL_Surface	*tmpSurface = NULL;
 
-	tmpSurface = IMG_Load(path.c_str());
-	if (!tmpSurface)
+	if (_surfaceMap[texture] == NULL)
+	{
+		closeWindow();
 		throw IMG_SurfaceLoadingFail();
-	finalSurface = SDL_ConvertSurface(tmpSurface, SDL_GetWindowSurface(win)->format, 0);
+	}
+	finalSurface = SDL_ConvertSurface(_surfaceMap[texture], SDL_GetWindowSurface(win)->format, 0);
 	if (!finalSurface)
+	{
+		closeWindow();
 		throw IMG_SurfaceConvertingFail();
-	SDL_FreeSurface(tmpSurface);
+	}
 	return (finalSurface);
 }
 
@@ -146,22 +157,22 @@ Graphics::Graphics(size_t width, size_t height, float squareSize) : name(libName
 {
 	_surfaceMap = 
 	{
-		{ sprite::HEAD_UP , "texture/headUp.png" } ,
-		{ sprite::HEAD_DOWN , "texture/headDown.png" } ,
-		{ sprite::HEAD_LEFT , "texture/headLeft.png" } ,
-		{ sprite::HEAD_RIGHT , "texture/headRight.png" } ,
-		{ sprite::BODY_H , "texture/bodyH.png" } ,
-		{ sprite::BODY_V , "texture/bodyV.png" } ,
-		{ sprite::TAIL_UP , "texture/tailUp.png" } ,
-		{ sprite::TAIL_DOWN , "texture/tailDown.png" } ,
-		{ sprite::TAIL_LEFT , "texture/tailLeft.png" } ,
-		{ sprite::TAIL_RIGHT , "texture/tailRight.png" } ,
-		{ sprite::BODY_UP_LEFT , "texture/bodyUpLeft.png" } ,
-		{ sprite::BODY_UP_RIGHT , "texture/bodyUpRight.png" } ,
-		{ sprite::BODY_DOWN_LEFT , "texture/bodyDownLeft.png" } ,
-		{ sprite::BODY_DOWN_RIGHT , "texture/bodydownRight.png" } ,
-		{ sprite::WALL , "texture/wall.png" } ,
-		{ sprite::FOOD , "texture/apple.png" }
+		{ sprite::HEAD_UP , IMG_Load("texture/headUp.png") } ,
+		{ sprite::HEAD_DOWN , IMG_Load("texture/headDown.png") } ,
+		{ sprite::HEAD_LEFT , IMG_Load("texture/headLeft.png") } ,
+		{ sprite::HEAD_RIGHT , IMG_Load("texture/headRight.png") } ,
+		{ sprite::BODY_H , IMG_Load("texture/bodyH.png") } ,
+		{ sprite::BODY_V , IMG_Load("texture/bodyV.png") } ,
+		{ sprite::TAIL_UP , IMG_Load("texture/tailUp.png") } ,
+		{ sprite::TAIL_DOWN , IMG_Load("texture/tailDown.png") } ,
+		{ sprite::TAIL_LEFT , IMG_Load("texture/tailLeft.png") } ,
+		{ sprite::TAIL_RIGHT , IMG_Load("texture/tailRight.png") } ,
+		{ sprite::BODY_UP_LEFT , IMG_Load("texture/bodyUpLeft.png") } ,
+		{ sprite::BODY_UP_RIGHT , IMG_Load("texture/bodyUpRight.png") } ,
+		{ sprite::BODY_DOWN_LEFT , IMG_Load("texture/bodyDownLeft.png") } ,
+		{ sprite::BODY_DOWN_RIGHT , IMG_Load("texture/bodydownRight.png") } ,
+		{ sprite::WALL , IMG_Load("texture/wall.png") } ,
+		{ sprite::FOOD , IMG_Load("texture/apple.png") }
 	};
 	_height = height;
 	_width = width;
@@ -172,6 +183,8 @@ void		Graphics::closeWindow(void)
 {
 	SDL_DestroyWindow(_window);
 	_window = NULL;
+	for (std::map<sprite, SDL_Surface *>::iterator ii = _surfaceMap.begin() ; ii != _surfaceMap.end() ; ii++)
+		delete ii->second;
 }
 
 Graphics::Graphics(void)

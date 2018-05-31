@@ -3,17 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   Snake.class.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/21 15:16:06 by acottier          #+#    #+#             */
-/*   Updated: 2018/05/24 12:56:26 by rvievill         ###   ########.fr       */
+/*   Updated: 2018/05/31 15:10:20 by acottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/Snake.class.hpp"
 
-Snake::Snake(void)
+Snake::Snake(Map & map) : _map(map)
 {
+	(void)_map;
 }
 
 Snake::~Snake()
@@ -82,4 +83,11 @@ void				Snake::updateExtremity(int key, std::list<snakeInfo>::iterator it)
 			break;
 		}
 	}
+}
+
+bool			Snake::update(int input)
+{
+	(void)input;
+	// return value : true if food is eaten
+	return (false);
 }

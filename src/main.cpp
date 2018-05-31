@@ -152,13 +152,34 @@ namespace {
 	}
 }
 
+void	updateEntities(AGraphics *lib, key input, Snake &snake)
+{
+	std::map<key, int> 	inputConversion = 
+	{
+		{key::UP, UP},
+		{key::DOWN, DOWN},
+		{key::RIGHT, RIGHT},
+		{key::LEFT, LEFT}
+	};
+	int					convertedInput = -1;
+	if (input == key::ESCAPE)
+	{
+		lib->closeWindow();
+		return ;
+	}
+	else if (inputConversion.find(input) != inputConversion.end())
+		convertedInput = inputConversion[input];
+	snake.update(convertedInput); // TODO: check return value to respawn food
+}
+
 int main(int ac, char **av)
 {
 	try
 	{
-		Snake					snake;
-		Map						map(snake);
+		Map						map;
+		Snake					snake(map);
 		unsigned int			seed;
+		key						input;
 
 		read(open("/dev/urandom", O_RDONLY), &seed, sizeof(seed));
 		srand(seed);
@@ -184,7 +205,10 @@ int main(int ac, char **av)
 		lib->openWindow();
 		while (lib->isOpen())
 		{
-			lib->keyPress();
+			input = lib->keyPress();
+			updateEntities(lib, input, snake);
+			if (input == key::ESCAPE)
+				break ;
 			lib->draw(map);
 		}
 	}

@@ -6,7 +6,7 @@
 /*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/16 15:53:55 by acottier          #+#    #+#             */
-/*   Updated: 2018/05/29 15:30:34 by acottier         ###   ########.fr       */
+/*   Updated: 2018/05/31 15:13:44 by acottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ class Graphics : public AGraphics
 		virtual ~Graphics(void);
 
 		void		openWindow(void) override;
-		SDL_Surface	*loadSurface(std::string path, SDL_Window * win);
+		SDL_Surface	*loadSurface(sprite texture, SDL_Window * win);
 		bool		isOpen(void) const override;
 		key			keyPress(void) override;
 		void		draw(Map &map) override;
@@ -98,9 +98,9 @@ class Graphics : public AGraphics
 		explicit Graphics(void);
 		Graphics		&operator=(Graphics const & rhs) = delete;
 		Graphics(Graphics const &) = default;
-		
+
 		SDL_Window						*_window;
-		std::map<sprite, std::string>	_surfaceMap;
+		std::map<sprite, SDL_Surface *>	_surfaceMap;
 };
 
 extern "C"

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libOpenGL.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/14 14:34:38 by rvievill          #+#    #+#             */
-/*   Updated: 2018/05/31 13:32:21 by rvievill         ###   ########.fr       */
+/*   Updated: 2018/05/31 15:15:41 by acottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,9 @@
 
 # include <GL/glew.h>
 # include <GLFW/glfw3.h>
-#include <SOIL2.h>
+# include <SOIL2.h>
 # include "../../inc/Api.class.hpp"
+# include <map>
 
 typedef struct		s_form
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Map.class.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/19 14:50:15 by rvievill          #+#    #+#             */
-/*   Updated: 2018/05/30 11:58:18 by rvievill         ###   ########.fr       */
+/*   Updated: 2018/05/31 14:45:14 by acottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 #include <array>
 #include <vector>
 #include <unistd.h>
-#include "../inc/Snake.class.hpp"
 
 class Map {
 
@@ -34,17 +33,15 @@ class Map {
 		std::array<size_t, 2>				preset3(void);
 		std::array<size_t, 2>				generateRand(void);
 		void								updateMap(std::array<size_t, 2> &start);
-		bool								checkCollision(std::list<snakeInfo> snake) const;
+		// bool								checkCollision(std::list<snakeInfo> snake) const;
 		void								clearObstacle(void);
 
 
-		Snake								&_snake;
 		int									_obstacle[19][29];
 
 	public:
 
 		explicit 							Map(void);
-		explicit							Map(Snake &snake);
 		~Map(void);
 
 		void								placeItem(void);

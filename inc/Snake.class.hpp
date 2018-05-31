@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Snake.class.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/21 14:17:24 by acottier          #+#    #+#             */
-/*   Updated: 2018/05/24 12:56:38 by rvievill         ###   ########.fr       */
+/*   Updated: 2018/05/31 15:04:47 by acottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <array>
 #include <map>
 #include <list>
+#include "Map.class.hpp"
 
 enum	 snakeOrientation
 {
@@ -52,20 +53,23 @@ class Snake
 {
 	public:
 
-		explicit Snake(void);
+		explicit Snake(Map & map);
 		virtual ~Snake(void);
 
 		std::list<snakeInfo>	getSnake(void) const;
 		void					grow(void);
 		void					updatePos(int key = 0);
+		bool					update(int input);
 
 	private:
 	
+		explicit Snake(void) = default;
 		Snake(const Snake &) = delete;
 		Snake &operator=(const Snake &) = delete;
 		void				updateExtremity(int key, std::list<snakeInfo>::iterator it);
 
 		std::list<snakeInfo>	_snake;
+		Map						&_map;
 
 };
 
