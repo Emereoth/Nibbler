@@ -6,25 +6,22 @@ Graphics::Graphics(size_t width, size_t height, float squareSize) : name(libName
 	_height = height;
 	_width = width;
 	_squareSize = squareSize;
-	_spriteMap =
-	{
-		{sprite::HEAD_UP, "./texture/headUp.png"},
-		{sprite::HEAD_DOWN, "./texture/headDown.png"},
-		{sprite::HEAD_LEFT, "./texture/headLeft.png"},
-		{sprite::HEAD_RIGHT, "./texture/headRight.png"},
-		{sprite::BODY_H, "./texture/bodyH.png"},
-		{sprite::BODY_V, "./texture/bodyV.png"},
-		{sprite::TAIL_UP, "./texture/tailUp.png"},
-		{sprite::TAIL_DOWN, "./texture/tailDown.png"},
-		{sprite::TAIL_LEFT, "./texture/tailLeft.png"},
-		{sprite::TAIL_RIGHT, "./texture/tailRight.png"},
-		{sprite::BODY_UP_LEFT, "./texture/bodyUpLeft.png"},
-		{sprite::BODY_UP_RIGHT, "./texture/bodyUpRight.png"},
-		{sprite::BODY_DOWN_LEFT, "./texture/bodyDownLeft.png"},
-		{sprite::BODY_DOWN_RIGHT, "./texture/bodyDownRight.png"},
-		{sprite::WALL, "./texture/wall.png"},
-		{sprite::FOOD, "./texture/apple.png"}
-	};
+	loadTexture(sprite::HEAD_UP, "./texture/headUp.png");
+	loadTexture(sprite::HEAD_DOWN, "./texture/headDown.png");
+	loadTexture(sprite::HEAD_LEFT, "./texture/headLeft.png");
+	loadTexture(sprite::HEAD_RIGHT, "./texture/headRight.png");
+	loadTexture(sprite::BODY_H, "./texture/bodyH.png");
+	loadTexture(sprite::BODY_V, "./texture/bodyV.png");
+	loadTexture(sprite::TAIL_UP, "./texture/tailUp.png");
+	loadTexture(sprite::TAIL_DOWN, "./texture/tailDown.png");
+	loadTexture(sprite::TAIL_LEFT, "./texture/tailLeft.png");
+	loadTexture(sprite::TAIL_RIGHT, "./texture/tailRight.png");
+	loadTexture(sprite::BODY_UP_LEFT, "./texture/bodyUpLeft.png");
+	loadTexture(sprite::BODY_UP_RIGHT, "./texture/bodyUpRight.png");
+	loadTexture(sprite::BODY_DOWN_LEFT, "./texture/bodyDownLeft.png");
+	loadTexture(sprite::BODY_DOWN_RIGHT, "./texture/bodyDownRight.png");
+	loadTexture(sprite::WALL, "./texture/wall.png");
+	loadTexture(sprite::FOOD, "./texture/apple.png");
 }
 
 Graphics::~Graphics(void)
@@ -50,13 +47,32 @@ key					Graphics::keyPress(void)
 	return (key::NO);
 }
 
+void				Graphics::loadTexture(sprite sprite, const char *texturePath)
+{
+	_texture.setSmooth(true);
+	_texture.loadFromFile(texturePath);
+	_textureList[sprite] = _texture;
+}
+
+void				Graphics::loadSprite(float posX, float posY, sprite texture)
+{
+	float			widthSprite;
+	float			heightSprite;
+	sf::Sprite		sprite;
+
+	sprite.setTexture(_textureList[texture]);
+	sprite.setPosition(posX, posY);
+	widthSprite = sprite.getLocalBounds().width;
+	heightSprite = sprite.getLocalBounds().height;
+	sprite.setScale(_squareSize / widthSprite, _squareSize / heightSprite);
+	_spriteList.push_back(sprite);
+}
+
 void				Graphics::draw(Map &map)
 {
 	float			spaceAroundX = (_width / 2) - (_squareSize * 31);
 	size_t			size = 62 * 62;
 	int				pos = 0;
-	float			widthSprite;
-	float			heightSprite;
 	float			posX;
 	float			posY;
 
@@ -68,17 +84,14 @@ void				Graphics::draw(Map &map)
 		{
 			posX = spaceAroundX + (pos * _squareSize);
 			posY = (i / 62) * _squareSize;
-			_texture.setSmooth(true);
-			_texture.loadFromFile(_spriteMap[sprite::WALL]);	
-			_sprite.setTexture(_texture);
-			_sprite.setPosition(posX, posY);
-			widthSprite = _sprite.getLocalBounds().width;
-			heightSprite = _sprite.getLocalBounds().height;
-			_sprite.setScale(_squareSize / widthSprite, _squareSize / heightSprite);
-			_window.draw(_sprite);
+			loadSprite(posX, posY, sprite::WALL);
 		}
 		pos++;
 	}
+	for (const auto &item : _spriteList) {
+		_window.draw(item);
+	}
+	_spriteList.clear();
 	_window.display();
 }
 

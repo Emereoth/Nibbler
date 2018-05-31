@@ -16,14 +16,14 @@ class Graphics : public AGraphics {
 		Graphics			&operator=(Graphics const &rhs) = default;
 
 		void				runSound(void);
-		void				drawElem(Map &map);
-		void				drawElem(Snake &snake);
+		void				loadTexture(sprite sprite, const char *texturePath);
+		void				loadSprite(float posX, float posY, sprite texture);
 
 		sf::RenderWindow						_window;
 		sf::Texture								_texture;
-		sf::Sprite								_sprite;
+		std::map<sprite, sf::Texture>			_textureList;
+		std::vector<sf::Sprite>					_spriteList;
 		sf::Event								_event;
-		std::map<sprite, std::string>			_spriteMap;
 		sf::Music 								_music;
 
 	public:

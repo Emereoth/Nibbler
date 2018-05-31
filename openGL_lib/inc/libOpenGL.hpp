@@ -6,7 +6,7 @@
 /*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/14 14:34:38 by rvievill          #+#    #+#             */
-/*   Updated: 2018/05/28 17:25:16 by rvievill         ###   ########.fr       */
+/*   Updated: 2018/05/31 13:32:21 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,13 @@
 #include <SOIL2.h>
 # include "../../inc/Api.class.hpp"
 
-struct			t_coordd
+typedef struct		s_form
 {
-	double		x;
-	double		y;
-};
+	double			posX;
+	double			posY;
+	double			sizeX;
+	double			sizeY;
+}					t_form;
 
 class Graphics : public AGraphics {
 
@@ -44,9 +46,14 @@ class Graphics : public AGraphics {
 
 		Graphics(void) = default;
 		Graphics(Graphics const &src) = default;
+
 		Graphics			&operator=(Graphics const &rhs) = default;
 
-		GLFWwindow			*_window;
+		GLuint				loadTexture(const char *texturePath);
+		void				putTexture(sprite sprite, t_form &infoForm);
+
+		GLFWwindow					*_window;
+		std::map<sprite, GLuint>	_texture;
 
 };
 
