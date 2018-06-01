@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   Snake.class.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/21 15:16:06 by acottier          #+#    #+#             */
-/*   Updated: 2018/05/31 15:10:20 by acottier         ###   ########.fr       */
+/*   Updated: 2018/06/01 10:54:17 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/Snake.class.hpp"
 
-Snake::Snake(Map & map) : _map(map)
+Snake::Snake(Map &map) : _map(map)
 {
 	(void)_map;
 }
@@ -29,6 +29,11 @@ std::list<snakeInfo>	Snake::getSnake(void) const
 void				Snake::grow(void)
 {
 	// TODO SHIT
+}
+
+bool				Snake::checkCollid()
+{
+	return (false);
 }
 
 void				Snake::updatePos(int key)

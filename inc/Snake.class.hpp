@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Snake.class.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/21 14:17:24 by acottier          #+#    #+#             */
-/*   Updated: 2018/05/31 15:04:47 by acottier         ###   ########.fr       */
+/*   Updated: 2018/06/01 10:43:55 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,11 @@ class Snake
 	private:
 	
 		explicit Snake(void) = default;
-		Snake(const Snake &) = delete;
-		Snake &operator=(const Snake &) = delete;
+		Snake(const Snake &) = default;
+		Snake &operator=(const Snake &) = default;
+
 		void				updateExtremity(int key, std::list<snakeInfo>::iterator it);
+		bool				checkCollid();
 
 		std::list<snakeInfo>	_snake;
 		Map						&_map;

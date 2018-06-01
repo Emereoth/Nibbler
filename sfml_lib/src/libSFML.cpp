@@ -86,6 +86,7 @@ void				Graphics::loadSprite(float posX, float posY, sprite texture)
 void				Graphics::draw(Map &map)
 {
 	float			spaceAroundX = (_width / 2) - (_squareSize * 31);
+	float			spaceAroundY = (_height / 2) - (_squareSize * 31);
 	size_t			size = 62 * 62;
 	int				pos = 0;
 	float			posX;
@@ -98,7 +99,7 @@ void				Graphics::draw(Map &map)
 		if (map.map[i] == 1)
 		{
 			posX = spaceAroundX + (pos * _squareSize);
-			posY = (i / 62) * _squareSize;
+			posY = spaceAroundY + ((i / 62) * _squareSize);
 			loadSprite(posX, posY, sprite::WALL);
 		}
 		pos++;
