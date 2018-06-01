@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libOpenGL.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/14 14:34:38 by rvievill          #+#    #+#             */
-/*   Updated: 2018/05/31 15:15:41 by acottier         ###   ########.fr       */
+/*   Updated: 2018/06/01 09:59:16 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ class Graphics : public AGraphics {
 		void				closeWindow(void) override;
 
 		libName				name;
+		static key			keyUse;
+		
 
 	private:
 
@@ -55,6 +57,7 @@ class Graphics : public AGraphics {
 
 		GLFWwindow					*_window;
 		std::map<sprite, GLuint>	_texture;
+
 
 };
 

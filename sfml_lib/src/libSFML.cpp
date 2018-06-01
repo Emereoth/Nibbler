@@ -22,6 +22,15 @@ Graphics::Graphics(size_t width, size_t height, float squareSize) : name(libName
 	loadTexture(sprite::BODY_DOWN_RIGHT, "./texture/bodyDownRight.png");
 	loadTexture(sprite::WALL, "./texture/wall.png");
 	loadTexture(sprite::FOOD, "./texture/apple.png");
+	_eventMap[sf::Keyboard::Escape] = key::ESCAPE;
+	_eventMap[sf::Keyboard::Up] = key::UP;
+	_eventMap[sf::Keyboard::Left] = key::LEFT;
+	_eventMap[sf::Keyboard::Right] = key::RIGHT;
+	_eventMap[sf::Keyboard::Down] = key::DOWN;
+	_eventMap[sf::Keyboard::Unknown] = key::NO;
+	_eventMap[sf::Keyboard::Num1] = key::ONE;
+	_eventMap[sf::Keyboard::Num2] = key::TWO;
+	_eventMap[sf::Keyboard::Num3] = key::THREE;
 }
 
 Graphics::~Graphics(void)
@@ -43,8 +52,14 @@ bool				Graphics::isOpen(void) const
 
 key					Graphics::keyPress(void)
 {
-	_window.pollEvent(_event);
-	return (key::NO);
+	sf::Event		event;
+
+	_window.pollEvent(event);
+	if (event.type == sf::Event::Closed)
+		return (_eventMap[sf::Keyboard::Escape]);
+	else if (event.type == sf::Event::KeyPressed)
+		return (_eventMap[event.key.code]);
+	return (_eventMap[sf::Keyboard::Unknown]);
 }
 
 void				Graphics::loadTexture(sprite sprite, const char *texturePath)

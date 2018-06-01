@@ -23,8 +23,8 @@ class Graphics : public AGraphics {
 		sf::Texture								_texture;
 		std::map<sprite, sf::Texture>			_textureList;
 		std::vector<sf::Sprite>					_spriteList;
-		sf::Event								_event;
 		sf::Music 								_music;
+		std::map<sf::Keyboard::Key, key>		_eventMap;
 
 	public:
 

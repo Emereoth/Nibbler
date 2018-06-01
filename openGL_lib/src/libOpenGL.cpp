@@ -6,12 +6,35 @@
 /*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/14 17:26:49 by rvievill          #+#    #+#             */
-/*   Updated: 2018/05/31 13:53:14 by rvievill         ###   ########.fr       */
+/*   Updated: 2018/06/01 10:02:43 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/libOpenGL.hpp"
 #include <iostream>
+
+key						Graphics::keyUse = key::NO;
+
+static void				keyCallback(GLFWwindow* window, int keyVal, int scancode, int action, int mods)
+{
+	static_cast<void>(scancode);
+	static_cast<void>(window);
+	static_cast<void>(mods);
+	static std::map<int, key>		eventMap = {
+		{GLFW_KEY_DOWN, key::DOWN},
+		{GLFW_KEY_LEFT, key::LEFT},
+		{GLFW_KEY_RIGHT, key::RIGHT},
+		{GLFW_KEY_UP, key::UP},
+		{GLFW_KEY_1, key::ONE},
+		{GLFW_KEY_2, key::TWO},
+		{GLFW_KEY_3, key::THREE},
+		{GLFW_KEY_ESCAPE, key::ESCAPE},
+		{GLFW_KEY_UNKNOWN, key::NO}
+	};
+
+	if (action == GLFW_PRESS)
+		Graphics::keyUse = eventMap[keyVal];
+}
 
 Graphics::Graphics(size_t width, size_t height, size_t squareSize) : name(libName::OPENGL)
 {
@@ -40,6 +63,7 @@ void				Graphics::openWindow(void)
 		return ;
 	}
 	glfwMakeContextCurrent(_window);
+	glfwSetKeyCallback(_window, keyCallback);
 	glEnable(GL_TEXTURE_2D);
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -69,7 +93,7 @@ bool				Graphics::isOpen(void) const
 key					Graphics::keyPress(void)
 {
 	glfwPollEvents();
-	return (key::NO);
+	return (Graphics::keyUse);
 }
 
 void				Graphics::draw(Map &map)
