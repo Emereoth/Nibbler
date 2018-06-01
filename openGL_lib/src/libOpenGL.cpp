@@ -6,7 +6,7 @@
 /*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/14 17:26:49 by rvievill          #+#    #+#             */
-/*   Updated: 2018/06/01 11:26:54 by rvievill         ###   ########.fr       */
+/*   Updated: 2018/06/01 13:26:02 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,8 +112,8 @@ void				Graphics::draw(Map &map)
 			infoForm.posY -= infoForm.sizeY;
 			infoForm.posX = -(infoForm.sizeX * 31);
 		}
-		if (map.map[i] == 1)
-			putTexture(sprite::WALL, infoForm);
+		if (map.map[i] != sprite::SOIL)
+			putTexture(map.map[i], infoForm);
 		infoForm.posX += infoForm.sizeX;
 	}
 	glFlush();

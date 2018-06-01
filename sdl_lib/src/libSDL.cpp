@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libSDL.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/16 15:53:54 by acottier          #+#    #+#             */
-/*   Updated: 2018/05/31 15:13:31 by acottier         ###   ########.fr       */
+/*   Updated: 2018/06/01 13:25:28 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ void			Graphics::draw(Map &map)
 	
 	for (size_t i = 0 ; i < size ; i++)
 	{
-		if (map.map[i] == 1)
+		if (map.map[i] != sprite::SOIL)
 		{
 			SDL_Surface		*tmpSurface = loadSurface(sprite::WALL, _window);
 			float			widthPos = spaceAroundX + ((i % 62) * _squareSize);

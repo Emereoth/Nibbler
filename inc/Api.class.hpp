@@ -21,26 +21,6 @@ enum class	key
 	ESCAPE
 };
 
-enum class	sprite
-{
-	HEAD_UP,
-	HEAD_DOWN,
-	HEAD_LEFT,
-	HEAD_RIGHT,
-	BODY_H,
-	BODY_V,
-	TAIL_UP,
-	TAIL_DOWN,
-	TAIL_LEFT,
-	TAIL_RIGHT,
-	BODY_UP_LEFT,
-	BODY_UP_RIGHT,
-	BODY_DOWN_LEFT,
-	BODY_DOWN_RIGHT,
-	WALL,
-	FOOD
-};
-
 enum class	libName
 {
 	SFML,

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Map.class.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/19 14:50:15 by rvievill          #+#    #+#             */
-/*   Updated: 2018/05/31 14:45:14 by acottier         ###   ########.fr       */
+/*   Updated: 2018/06/01 13:20:56 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,27 @@
 #include <array>
 #include <vector>
 #include <unistd.h>
+
+enum class	sprite
+{
+	SOIL,
+	WALL,
+	HEAD_UP,
+	HEAD_DOWN,
+	HEAD_LEFT,
+	HEAD_RIGHT,
+	BODY_H,
+	BODY_V,
+	TAIL_UP,
+	TAIL_DOWN,
+	TAIL_LEFT,
+	TAIL_RIGHT,
+	BODY_UP_LEFT,
+	BODY_UP_RIGHT,
+	BODY_DOWN_LEFT,
+	BODY_DOWN_RIGHT,
+	FOOD
+};
 
 class Map {
 
@@ -37,7 +58,7 @@ class Map {
 		void								clearObstacle(void);
 
 
-		int									_obstacle[19][29];
+		sprite								_obstacle[19][29];
 
 	public:
 
@@ -48,7 +69,7 @@ class Map {
 		void								displayMap(void) const;
 
 		int									offsetMap;
-		int									map[62 * 62];
+		sprite								map[62 * 62];
 
 };
 

@@ -96,11 +96,11 @@ void				Graphics::draw(Map &map)
 	{
 		if (pos == map.offsetMap)
 			pos = 0;
-		if (map.map[i] == 1)
+		if (map.map[i] != sprite::SOIL)
 		{
 			posX = spaceAroundX + (pos * _squareSize);
 			posY = spaceAroundY + ((i / 62) * _squareSize);
-			loadSprite(posX, posY, sprite::WALL);
+			loadSprite(posX, posY, map.map[i]);
 		}
 		pos++;
 	}
