@@ -1,14 +1,15 @@
 CC = clang++
 NAME = SDL.so
 DYLIB = -shared -fPIC
-LIBGRAPH = -L $${HOME}/.brew/lib -lSDL2 -lSDL2_image -lSDL2_mixer
+LIBGRAPH = -L $${HOME}/.brew/lib -lSDL2 -lSDL2_image #-lSDL2_mixer
 SOUNDLIB = 
 CFLAGS = -Wall -Werror -Wextra -std=c++11
-CPATH = src/
+CPATH = src/# ../libmusic/src
 OPATH = obj/
 INC = $(addprefix -I, $(INCPATH))
-CFILES = libSDL.cpp
-INCPATH = $${HOME}/.brew/include/SDL2
+CFILES = 	libSDL.cpp 
+			#audio.cpp
+INCPATH = $${HOME}/.brew/include/SDL2  libmusic/inc
 
 OFILES = $(CFILES:.cpp=.o)
 
@@ -37,10 +38,10 @@ re: fclean all
 install:
 	brew install sdl2
 	brew install sdl2_image
-	brew install sdl2_mixer
+	# brew install sdl2_mixer
 
 uninstall:
-	brew uninstall sdl2_mixer
+	# brew uninstall sdl2_mixer
 	brew uninstall sdl2_image
 	brew uninstall sdl2
 

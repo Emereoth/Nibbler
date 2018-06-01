@@ -6,7 +6,7 @@
 /*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/16 15:53:55 by acottier          #+#    #+#             */
-/*   Updated: 2018/05/31 15:13:44 by acottier         ###   ########.fr       */
+/*   Updated: 2018/06/01 16:10:32 by acottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@
 #include <map>
 #include <SDL.h>
 #include <SDL_image.h>
-#include <SDL_mixer.h>
+#include <audio.hpp>
+// #include <SDL_mixer.h>
 #include <sstream>
 #include "../../inc/Api.class.hpp"
 
@@ -34,7 +35,7 @@ class Graphics : public AGraphics
 		key			keyPress(void) override;
 		void		draw(Map &map) override;
 		void		closeWindow(void) override;
-		void		setMusic(void) const;
+		void		setMusic(void);
 		
 		libName		name;
 
@@ -101,6 +102,7 @@ class Graphics : public AGraphics
 
 		SDL_Window						*_window;
 		std::map<sprite, SDL_Surface *>	_surfaceMap;
+		Audio							*_soundtrack;
 };
 
 extern "C"

@@ -6,12 +6,15 @@
 /*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/16 15:53:54 by acottier          #+#    #+#             */
-/*   Updated: 2018/06/01 14:10:17 by acottier         ###   ########.fr       */
+/*   Updated: 2018/06/01 15:37:01 by acottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/libSDL.hpp"
 #include <iostream>
+
+#define MUSIC_PATH "music/towerfall2.wav"
+#define MUSIC_HARDCORE_PATH "music/towerfall.wav"
 
 void			Graphics::openWindow()
 {
@@ -29,33 +32,16 @@ void			Graphics::openWindow()
 	setMusic();
 }
 
-void			Graphics::setMusic() const
+void			Graphics::setMusic()
 {
-	Mix_Chunk	*soundtrack;
-	// SDL_AudioSpec	*audio;
-	// SDL_AudioSpec	wav_spec;
-	// Uint8			*wav_buffer;
-	// Uint32			wav_length;
-
-	// if (!(audio = SDL_LoadWAV("../music/towerfall.wav", &wav_spec, &wav_buffer, &wav_length)))
-	// 	std::cerr << "Error loading WAV: " << SDL_GetError() << std::endl;
-	// if ( SDL_OpenAudio(&wav_spec, NULL) < 0 ){
-	// 	fprintf(stderr, "Couldn't open audio: %s\n", SDL_GetError());
-	// 	exit(-1);
-	// }
-	// SDL_PauseAudio(0);
-	if (!Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 1024))
-	{
-		std::cerr << "Error loading SDL_Mixer: " << Mix_GetError() << std::endl;
-		return ;
-	}
-	if (!(soundtrack = Mix_LoadWAV("../music/towerfall.wav")))
-	{
-		std::cerr << "Error playing soundtrack: " << Mix_GetError() << std::endl;
-		return ; 
-	}
-	Mix_FadeInChannel(-1, soundtrack, -1, 500);
-
+	initAudio();
+	_soundtrack = createAudio(MUSIC_PATH, 1, 64);
+	playMusicFromMemory(_soundtrack, 64);
+	SDL_Delay(5000);
+	// SDL_Delay(3000);
+	freeAudio(_soundtrack);
+	_soundtrack = createAudio(MUSIC_HARDCORE_PATH, 1, 64);
+	playMusicFromMemory(_soundtrack, 64);
 }
 
 bool			Graphics::isOpen(void) const
