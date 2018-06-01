@@ -2,6 +2,7 @@ CC = clang++
 NAME = SDL.so
 DYLIB = -shared -fPIC
 LIBGRAPH = -L $${HOME}/.brew/lib -lSDL2 -lSDL2_image -lSDL2_mixer
+SOUNDLIB = 
 CFLAGS = -Wall -Werror -Wextra -std=c++11
 CPATH = src/
 OPATH = obj/
@@ -20,7 +21,7 @@ OBJ = $(addprefix $(OPATH), $(OFILES))
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(DYLIB) $(LIBGRAPH) $(OBJ) -o $(NAME) 
+	$(CC) $(CFLAGS) $(DYLIB) $(SOUNDLIB) $(LIBGRAPH) $(OBJ) -o $(NAME) 
 
 $(OPATH)%.o: $(CPATH)%.cpp $(HFILES)
 	$(CC) $(CFLAGS) $(INC) $< -c -o $@
@@ -37,6 +38,7 @@ install:
 	brew install sdl2
 	brew install sdl2_image
 	brew install sdl2_mixer
+
 uninstall:
 	brew uninstall sdl2_mixer
 	brew uninstall sdl2_image

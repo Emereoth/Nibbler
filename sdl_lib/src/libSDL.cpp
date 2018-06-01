@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libSDL.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/16 15:53:54 by acottier          #+#    #+#             */
-/*   Updated: 2018/06/01 13:25:28 by rvievill         ###   ########.fr       */
+/*   Updated: 2018/06/01 14:10:17 by acottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,16 +94,18 @@ void			Graphics::draw(Map &map)
 	SDL_Rect		dst;
 	size_t			size = 62 * 62;
 	float			spaceAroundX = (_width / 2) - (_squareSize * 31);
+	float			spaceAroundY = (_height / 2) - (_squareSize * 31);
 	
+	SDL_FillRect(SDL_GetWindowSurface(_window), NULL, 0x0000000);
 	for (size_t i = 0 ; i < size ; i++)
 	{
 		if (map.map[i] != sprite::SOIL)
 		{
-			SDL_Surface		*tmpSurface = loadSurface(sprite::WALL, _window);
-			float			widthPos = spaceAroundX + ((i % 62) * _squareSize);
-			float			heightPos = (i / 62) * _squareSize;
-			dst.w = SIZE_SQUARE;
-			dst.h = SIZE_SQUARE;
+			SDL_Surface		*tmpSurface = loadSurface(map.map[i], _window);
+			float			widthPos = spaceAroundX + i % 62 * _squareSize;
+			float			heightPos = spaceAroundY + i / 62 * _squareSize;
+			dst.w = _squareSize;
+			dst.h = _squareSize;
 			dst.x = widthPos;
 			dst.y = heightPos;
 			if (SDL_BlitScaled(tmpSurface, NULL, SDL_GetWindowSurface(_window), &dst)!= 0)
