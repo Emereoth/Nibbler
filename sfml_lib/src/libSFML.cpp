@@ -40,7 +40,7 @@ Graphics::~Graphics(void)
 
 void				Graphics::openWindow(void)
 {
-	_window.create(sf::VideoMode(_width, _height), "Nibbler (SFML)");
+	_window.create(sf::VideoMode(_width, _height), "Nibbler (SFML)", sf::Style::Titlebar | sf::Style::Close);
 	_window.setKeyRepeatEnabled(false);
 	runSound();
 }
