@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libSDL.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/16 15:53:55 by acottier          #+#    #+#             */
-/*   Updated: 2018/06/01 16:10:32 by acottier         ###   ########.fr       */
+/*   Updated: 2018/06/02 12:39:02 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include <map>
 #include <SDL.h>
 #include <SDL_image.h>
-#include <audio.hpp>
+// #include <audio.hpp>
 // #include <SDL_mixer.h>
 #include <sstream>
 #include "../../inc/Api.class.hpp"
@@ -30,7 +30,7 @@ class Graphics : public AGraphics
 		virtual ~Graphics(void);
 
 		void		openWindow(void) override;
-		SDL_Surface	*loadSurface(sprite texture, SDL_Window * win);
+		SDL_Surface	*loadSurface(const char * texturePath, SDL_Window * win);
 		bool		isOpen(void) const override;
 		key			keyPress(void) override;
 		void		draw(Map &map) override;
@@ -102,7 +102,7 @@ class Graphics : public AGraphics
 
 		SDL_Window						*_window;
 		std::map<sprite, SDL_Surface *>	_surfaceMap;
-		Audio							*_soundtrack;
+		// Audio							*_soundtrack;
 };
 
 extern "C"

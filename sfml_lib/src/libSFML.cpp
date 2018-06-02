@@ -92,6 +92,7 @@ void				Graphics::draw(Map &map)
 	float			posX;
 	float			posY;
 
+	_window.clear();
 	for (size_t i = 0; i < size; i++)
 	{
 		if (pos == map.offsetMap)

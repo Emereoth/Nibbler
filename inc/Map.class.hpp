@@ -6,7 +6,7 @@
 /*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/19 14:50:15 by rvievill          #+#    #+#             */
-/*   Updated: 2018/06/01 13:20:56 by rvievill         ###   ########.fr       */
+/*   Updated: 2018/06/01 13:35:17 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 #include <array>
 #include <vector>
 #include <unistd.h>
+
+# define SIZE_MAP 62 * 62
 
 enum class	sprite
 {

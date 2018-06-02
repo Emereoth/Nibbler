@@ -6,7 +6,7 @@
 /*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/21 14:17:24 by acottier          #+#    #+#             */
-/*   Updated: 2018/06/01 10:43:55 by rvievill         ###   ########.fr       */
+/*   Updated: 2018/06/02 12:52:23 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,17 +36,10 @@ enum	 snakeCombinedOrientation
 
 struct snakeInfo
 {
-	std::array<int, 2>								pos;
-	unsigned char									origin;
-	unsigned char									destination;
-	bool											grow;
-	// std::map<snakeCombinedOrientation, std::string>	spriteMap = 
-	// {
-	// 	{UP_LEFT, "upleft.png"},
-	// 	{UP_RIGHT, "upright.png"},
-	// 	{DOWN_LEFT, "downleft.png"},
-	// 	{DOWN_RIGHT, "downright.png"}
-	// };
+	int				pos;
+	unsigned char	origin;
+	unsigned char	destination;
+	sprite			sprite;
 };
 
 class Snake
@@ -56,7 +49,7 @@ class Snake
 		explicit Snake(Map & map);
 		virtual ~Snake(void);
 
-		std::list<snakeInfo>	getSnake(void) const;
+		std::vector<snakeInfo>	getSnake(void) const;
 		void					grow(void);
 		void					updatePos(int key = 0);
 		bool					update(int input);
@@ -67,10 +60,11 @@ class Snake
 		Snake(const Snake &) = default;
 		Snake &operator=(const Snake &) = default;
 
-		void				updateExtremity(int key, std::list<snakeInfo>::iterator it);
-		bool				checkCollid();
+		void					updateExtremity(int key, std::list<snakeInfo>::iterator it);
+		void					pushPartSnake(sprite sprite, int origin, int dest, int pos);
+		bool					isPlace(int index) const;
 
-		std::list<snakeInfo>	_snake;
+		std::vector<snakeInfo>	_snake;
 		Map						&_map;
 
 };

@@ -6,7 +6,7 @@
 /*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/16 15:53:54 by acottier          #+#    #+#             */
-/*   Updated: 2018/06/02 12:43:26 by rvievill         ###   ########.fr       */
+/*   Updated: 2018/06/01 16:42:05 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,25 +29,6 @@ void			Graphics::openWindow()
 		throw IMG_InitFail();
 	}
 	_window = SDL_CreateWindow("Nibbler (SDL)", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, _width, _height, SDL_WINDOW_MOUSE_FOCUS);
-	_surfaceMap = 
-	{
-		{ sprite::HEAD_UP , loadSurface("texture/headUp.png", _window) } ,
-		{ sprite::HEAD_DOWN , loadSurface("texture/headDown.png", _window) } ,
-		{ sprite::HEAD_LEFT , loadSurface("texture/headLeft.png", _window) } ,
-		{ sprite::HEAD_RIGHT , loadSurface("texture/headRight.png", _window) } ,
-		{ sprite::BODY_H , loadSurface("texture/bodyH.png", _window) } ,
-		{ sprite::BODY_V , loadSurface("texture/bodyV.png", _window) } ,
-		{ sprite::TAIL_UP , loadSurface("texture/tailUp.png", _window) } ,
-		{ sprite::TAIL_DOWN , loadSurface("texture/tailDown.png", _window) } ,
-		{ sprite::TAIL_LEFT , loadSurface("texture/tailLeft.png", _window) } ,
-		{ sprite::TAIL_RIGHT , loadSurface("texture/tailRight.png", _window) } ,
-		{ sprite::BODY_UP_LEFT , loadSurface("texture/bodyUpLeft.png", _window) } ,
-		{ sprite::BODY_UP_RIGHT , loadSurface("texture/bodyUpRight.png", _window) } ,
-		{ sprite::BODY_DOWN_LEFT , loadSurface("texture/bodyDownLeft.png", _window) } ,
-		{ sprite::BODY_DOWN_RIGHT , loadSurface("texture/bodydownRight.png", _window) } ,
-		{ sprite::WALL , loadSurface("texture/wall.png", _window) } ,
-		{ sprite::FOOD , loadSurface("texture/apple.png", _window) }
-	};
 	setMusic();
 }
 
@@ -106,13 +87,14 @@ void			Graphics::draw(Map &map)
 	{
 		if (map.map[i] != sprite::SOIL)
 		{
+			SDL_Surface		*tmpSurface = loadSurface(map.map[i], _window);
 			float			widthPos = spaceAroundX + i % 62 * _squareSize;
 			float			heightPos = spaceAroundY + i / 62 * _squareSize;
 			dst.w = _squareSize;
 			dst.h = _squareSize;
 			dst.x = widthPos;
 			dst.y = heightPos;
-			if (SDL_BlitScaled(_surfaceMap[map.map[i]], NULL, SDL_GetWindowSurface(_window), &dst)!= 0)
+			if (SDL_BlitScaled(tmpSurface, NULL, SDL_GetWindowSurface(_window), &dst)!= 0)
 			{
 				closeWindow();
 				throw SDL_BlitTransferFail();
@@ -141,18 +123,16 @@ void			Graphics::draw(Map &map)
 // 	}
 // }
 
-SDL_Surface		*Graphics::loadSurface(const char *texturePath, SDL_Window * win)
+SDL_Surface		*Graphics::loadSurface(sprite texture, SDL_Window * win)
 {
 	SDL_Surface	*finalSurface = NULL;
-	SDL_Surface	*img_load = IMG_Load(texturePath);
 
-
-	if (img_load == NULL)
+	if (_surfaceMap[texture] == NULL)
 	{
 		closeWindow();
 		throw IMG_SurfaceLoadingFail();
 	}
-	finalSurface = SDL_ConvertSurface(img_load, SDL_GetWindowSurface(win)->format, 0);
+	finalSurface = SDL_ConvertSurface(_surfaceMap[texture], SDL_GetWindowSurface(win)->format, 0);
 	if (!finalSurface)
 	{
 		closeWindow();
@@ -163,6 +143,25 @@ SDL_Surface		*Graphics::loadSurface(const char *texturePath, SDL_Window * win)
 
 Graphics::Graphics(size_t width, size_t height, float squareSize) : name(libName::SDL)
 {
+	_surfaceMap = 
+	{
+		{ sprite::HEAD_UP , IMG_Load("texture/headUp.png") } ,
+		{ sprite::HEAD_DOWN , IMG_Load("texture/headDown.png") } ,
+		{ sprite::HEAD_LEFT , IMG_Load("texture/headLeft.png") } ,
+		{ sprite::HEAD_RIGHT , IMG_Load("texture/headRight.png") } ,
+		{ sprite::BODY_H , IMG_Load("texture/bodyH.png") } ,
+		{ sprite::BODY_V , IMG_Load("texture/bodyV.png") } ,
+		{ sprite::TAIL_UP , IMG_Load("texture/tailUp.png") } ,
+		{ sprite::TAIL_DOWN , IMG_Load("texture/tailDown.png") } ,
+		{ sprite::TAIL_LEFT , IMG_Load("texture/tailLeft.png") } ,
+		{ sprite::TAIL_RIGHT , IMG_Load("texture/tailRight.png") } ,
+		{ sprite::BODY_UP_LEFT , IMG_Load("texture/bodyUpLeft.png") } ,
+		{ sprite::BODY_UP_RIGHT , IMG_Load("texture/bodyUpRight.png") } ,
+		{ sprite::BODY_DOWN_LEFT , IMG_Load("texture/bodyDownLeft.png") } ,
+		{ sprite::BODY_DOWN_RIGHT , IMG_Load("texture/bodydownRight.png") } ,
+		{ sprite::WALL , IMG_Load("texture/wall.png") } ,
+		{ sprite::FOOD , IMG_Load("texture/apple.png") }
+	};
 	_height = height;
 	_width = width;
 	_squareSize = squareSize;

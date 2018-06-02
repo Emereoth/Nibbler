@@ -6,7 +6,7 @@
 /*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/19 15:19:36 by rvievill          #+#    #+#             */
-/*   Updated: 2018/06/01 13:22:46 by rvievill         ###   ########.fr       */
+/*   Updated: 2018/06/02 14:08:52 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ Map::Map() :
 		sprite::WALL,sprite::WALL,sprite::WALL,sprite::WALL,sprite::WALL,sprite::WALL,sprite::WALL,sprite::WALL,sprite::WALL,sprite::WALL,sprite::WALL,sprite::WALL,sprite::WALL,sprite::WALL,sprite::WALL,sprite::WALL,sprite::WALL,sprite::WALL,sprite::WALL,sprite::WALL,sprite::WALL,sprite::WALL,sprite::WALL,sprite::WALL,sprite::WALL,sprite::WALL,sprite::WALL,sprite::WALL,sprite::WALL,sprite::WALL,sprite::WALL,sprite::WALL,sprite::WALL,sprite::WALL,sprite::WALL,sprite::WALL,sprite::WALL,sprite::WALL,sprite::WALL,sprite::WALL,sprite::WALL,sprite::WALL,sprite::WALL,sprite::WALL,sprite::WALL,sprite::WALL,sprite::WALL,sprite::WALL,sprite::WALL,sprite::WALL,sprite::WALL,sprite::WALL,sprite::WALL,sprite::WALL,sprite::WALL,sprite::WALL,sprite::WALL,sprite::WALL,sprite::WALL,sprite::WALL,sprite::WALL,sprite::WALL	
 		}
 {
+	placeItem();
 }
 
 Map::~Map(void)

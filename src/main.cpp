@@ -1,13 +1,13 @@
 #include <iostream>
-#include <dlfcn.h>
 #include "../inc/Api.class.hpp"
 #include "../inc/Map.class.hpp"
-#include "../inc/Snake.class.hpp"
-#include <fcntl.h>
+#include "../inc/Nibbler.class.hpp"
 #include <regex>
 #include <sstream>
 #include <string>
 #include <unistd.h>
+#include <fcntl.h>
+#include <dlfcn.h>
 
 namespace {
 
@@ -152,65 +152,39 @@ namespace {
 	}
 }
 
-void	updateEntities(AGraphics *lib, key input, Snake &snake)
-{
-	std::map<key, int> 	inputConversion = 
-	{
-		{key::UP, UP},
-		{key::DOWN, DOWN},
-		{key::RIGHT, RIGHT},
-		{key::LEFT, LEFT}
-	};
-	int					convertedInput = -1;
-	if (input == key::ESCAPE)
-	{
-		lib->closeWindow();
-		return ;
-	}
-	else if (inputConversion.find(input) != inputConversion.end())
-		convertedInput = inputConversion[input];
-	snake.update(convertedInput); // TODO: check return value to respawn food
-}
+// void	updateEntities(AGraphics *lib, key input, Snake &snake)
+// {
+// 	std::map<key, int> 	inputConversion = 
+// 	{
+// 		{key::UP, UP},
+// 		{key::DOWN, DOWN},
+// 		{key::RIGHT, RIGHT},
+// 		{key::LEFT, LEFT}
+// 	};
+// 	int					convertedInput = -1;
+// 	if (input == key::ESCAPE)
+// 	{
+// 		lib->closeWindow();
+// 		return ;
+// 	}
+// 	else if (inputConversion.find(input) != inputConversion.end())
+// 		convertedInput = inputConversion[input];
+// 	snake.update(convertedInput); // TODO: check return value to respawn food
+// }
 
 int main(int ac, char **av)
 {
 	try
 	{
+		Opt						opt = getOpt(ac, av);
+		Nibbler					nibbler(opt.lib.c_str(), opt.width, opt.height, opt.squareSize);
 		Map						map;
-		Snake					snake(map);
 		unsigned int			seed;
-		key						input;
 
 		read(open("/dev/urandom", O_RDONLY), &seed, sizeof(seed));
 		srand(seed);
-		map.placeItem();
-		Opt					opt = getOpt(ac, av);
+		nibbler.run(map);
 
-		void				*entryPoint;
-		AGraphics			*(*func)(size_t, size_t, float);
-
-		entryPoint = dlopen(opt.lib.c_str(), RTLD_NOW);
-		if (!entryPoint)
-		{
-			std::cerr << dlerror() << std::endl;
-			return (-1);
-		}
-		func = (AGraphics *(*)(size_t, size_t, float))dlsym(entryPoint, "create");
-		if (!func)
-		{
-			std::cerr << dlerror() << std::endl;
-			return (-1);
-		}
-		AGraphics		*lib = func(opt.width, opt.height, opt.squareSize);
-		lib->openWindow();
-		while (lib->isOpen())
-		{
-			input = lib->keyPress();
-			updateEntities(lib, input, snake);
-			if (input == key::ESCAPE)
-				break ;
-			lib->draw(map);
-		}
 	}
 	catch (std::exception &e)
 	{
