@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Map.class.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/19 15:19:36 by rvievill          #+#    #+#             */
-/*   Updated: 2018/06/02 14:08:52 by rvievill         ###   ########.fr       */
+/*   Updated: 2018/06/06 17:46:00 by acottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -258,4 +258,9 @@ void									Map::clearObstacle(void)
 			_obstacle[i][j] = sprite::SOIL;
 		}
 	}
+}
+
+void									Map::spawnFood(void)
+{
+	
 }

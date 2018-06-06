@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libSDL.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/16 15:53:55 by acottier          #+#    #+#             */
-/*   Updated: 2018/06/02 12:39:02 by rvievill         ###   ########.fr       */
+/*   Updated: 2018/06/06 14:11:05 by acottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@
 #include <map>
 #include <SDL.h>
 #include <SDL_image.h>
-// #include <audio.hpp>
-// #include <SDL_mixer.h>
+#include <audio.hpp>
 #include <sstream>
 #include "../../inc/Api.class.hpp"
 
@@ -102,7 +101,7 @@ class Graphics : public AGraphics
 
 		SDL_Window						*_window;
 		std::map<sprite, SDL_Surface *>	_surfaceMap;
-		// Audio							*_soundtrack;
+		Audio							*_soundtrack;
 };
 
 extern "C"

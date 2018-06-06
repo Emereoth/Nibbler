@@ -12,7 +12,8 @@ INC = $(addprefix -I, $(HPATH))
 CFILES =	main.cpp			\
 			Map.class.cpp		\
 			Snake.class.cpp		\
-			Nibbler.class.cpp
+			Nibbler.class.cpp	\
+			Pathfinder.class.cpp
 
 OFILES = $(CFILES:.cpp=.o)
 

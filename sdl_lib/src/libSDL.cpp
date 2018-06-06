@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libSDL.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/16 15:53:54 by acottier          #+#    #+#             */
-/*   Updated: 2018/06/02 12:43:26 by rvievill         ###   ########.fr       */
+/*   Updated: 2018/06/06 13:35:50 by acottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,9 @@ void			Graphics::openWindow()
 
 void			Graphics::setMusic()
 {
-	// initAudio();
-	// _soundtrack = createAudio(MUSIC_PATH, 1, 64);
-	// playMusicFromMemory(_soundtrack, 64);
+	initAudio();
+	_soundtrack = createAudio(MUSIC_PATH, 1, 64);
+	playMusicFromMemory(_soundtrack, 64);
 	// SDL_Delay(5000);
 	// // SDL_Delay(3000);
 	// freeAudio(_soundtrack);
