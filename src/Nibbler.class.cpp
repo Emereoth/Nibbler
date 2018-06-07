@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   Nibbler.class.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/02 13:59:48 by rvievill          #+#    #+#             */
-/*   Updated: 2018/06/02 14:19:48 by rvievill         ###   ########.fr       */
+/*   Updated: 2018/06/07 14:01:31 by acottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/Nibbler.class.hpp"
+#include "../inc/Pathfinder.class.hpp"
 #include <unistd.h>
 #include <fcntl.h>
 #include <dlfcn.h>
@@ -32,9 +33,11 @@ Nibbler::Nibbler(const char *pathLib, size_t width, size_t height, float squareS
 void				Nibbler::run(Map &map)
 {
 	Snake			snake(map);
+	Pathfinder		pathfinder(map);
 	key				input;
 
 	window->openWindow();
+	pathfinder.spawnFood(snake);
 	while (window->isOpen())
 	{
 		input = window->keyPress();

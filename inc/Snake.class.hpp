@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Snake.class.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/21 14:17:24 by acottier          #+#    #+#             */
-/*   Updated: 2018/06/02 12:52:23 by rvievill         ###   ########.fr       */
+/*   Updated: 2018/06/07 13:42:33 by acottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ class Snake
 		void					grow(void);
 		void					updatePos(int key = 0);
 		bool					update(int input);
+		
+		int						size;
 
 	private:
 	

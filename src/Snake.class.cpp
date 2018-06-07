@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   Snake.class.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/21 15:16:06 by acottier          #+#    #+#             */
-/*   Updated: 2018/06/02 12:10:03 by rvievill         ###   ########.fr       */
+/*   Updated: 2018/06/07 13:48:14 by acottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/Snake.class.hpp"
 #include <random>
 
-Snake::Snake(Map &map) : _map(map)
+Snake::Snake(Map &map) : size(5), _map(map)
 {
 	std::random_device				rd;
 	std::mt19937					gen(rd());
@@ -73,6 +73,7 @@ std::vector<snakeInfo>	Snake::getSnake(void) const
 
 void				Snake::grow(void)
 {
+	size++;
 	// TODO SHIT
 }
 

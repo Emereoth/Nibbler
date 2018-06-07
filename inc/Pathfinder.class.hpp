@@ -6,7 +6,7 @@
 /*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 14:17:00 by acottier          #+#    #+#             */
-/*   Updated: 2018/06/06 17:22:26 by acottier         ###   ########.fr       */
+/*   Updated: 2018/06/07 15:34:09 by acottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,28 +20,32 @@ class Pathfinder
 {
     public:
 
-        Pathfinder(Map &map, int snakeSize);
+        Pathfinder(Map &map);
         ~Pathfinder();
 
-        void            run(int start);
+        void                 spawnFood(Snake &snake);
 
-        bool            isReachable;
+        bool                 isReachable;
 
     private:
 
         explicit Pathfinder() = default;
         Pathfinder(Pathfinder & src) = default;
-        Pathfinder      &operator=(Pathfinder & rhs) = default;
+        Pathfinder          &operator=(Pathfinder & rhs) = default;
 
-        std::deque<int>     calculatePath() const;
-        bool                nextStep(int coordinate, std::deque<int> *path) const;
+        void                run(int start);
+        void                calculatePath(int start, std::deque<int> *path);
+        bool                nextStep(int coordinate, std::deque<int> *path, int pathSize) const;
         bool                checkAvailability(int coordinate) const;
 
         Map                 &_map;
-        int                 _sizeThreshold;
+        int                 _food;
         int                 _start;
+        int                 _sizeThreshold;
+        int                 _snakeSize;
         std::deque<int>     _firstPath;
         std::deque<int>     _secondPath;
+
 };
 
 #endif

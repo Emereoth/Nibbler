@@ -6,7 +6,7 @@
 /*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/19 15:19:36 by rvievill          #+#    #+#             */
-/*   Updated: 2018/06/06 17:46:00 by acottier         ###   ########.fr       */
+/*   Updated: 2018/06/07 13:10:37 by acottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -258,9 +258,4 @@ void									Map::clearObstacle(void)
 			_obstacle[i][j] = sprite::SOIL;
 		}
 	}
-}
-
-void									Map::spawnFood(void)
-{
-	
 }
