@@ -6,13 +6,13 @@
 /*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 14:21:18 by acottier          #+#    #+#             */
-/*   Updated: 2018/06/07 16:38:13 by acottier         ###   ########.fr       */
+/*   Updated: 2018/06/08 16:01:28 by acottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/Pathfinder.class.hpp"
 
-Pathfinder::Pathfinder(Map &map) : isReachable(false), _map(map), _food(-1), _sizeThreshold(8)
+Pathfinder::Pathfinder(Map &map) : isReachable(false), _map(map), _food(-1), _sizeThreshold(15)
 {
 }
 
@@ -27,11 +27,13 @@ void				Pathfinder::spawnFood(Snake &snake)
 {
 	int			foodPos;
 
+    // std::cout << "spawning food" << std::endl;
     _snakeSize = snake.size;
     if (_food != -1)
         _map.map[_food] = sprite::SOIL;
 	while (!isReachable)
 	{
+        // std::cout << "random placement loop" << std::endl;
 		foodPos = (rand() % (62 * 62)) + 1;
 		if (_map.map[foodPos] == sprite::SOIL)
             run(foodPos);
@@ -46,15 +48,17 @@ void				Pathfinder::spawnFood(Snake &snake)
 */
 void                Pathfinder::run(int start)
 {
-    isReachable = false;
-    
+    // std::cout << "calculating paths" << std::endl;
     calculatePath(start, &_firstPath);
+    // std::cout << "Path ONE done" << std::endl;
     if (_firstPath.size() == 0)
         return ;
     calculatePath(start, &_secondPath);
+    // std::cout << "Path TWO done" << std::endl;
     if (_secondPath.size() == 0)
         return ;
         
+    // std::cout << "Two valid paths found, authorizing spawn" << std::endl;
     isReachable = true;
     _firstPath.clear();
     _secondPath.clear();
@@ -84,10 +88,14 @@ bool                Pathfinder::nextStep(int coordinate, std::deque<int> *path, 
 
     if (coordinate < 0 || coordinate >= 62 * 62 || _map.map[coordinate] != sprite::SOIL
         || coordinate == _start || !checkAvailability(coordinate) )
+    {
+        // std::cout << "pixel availability check: failed" << std::endl;
         return (false);
+    }
     if ( (x > startX + _sizeThreshold || x < startX - _sizeThreshold || y >= startY + _sizeThreshold || y <= startY - _sizeThreshold) 
         && pathSize > _snakeSize)
     {
+        // std::cout << "path threshold reached, backtracking and adding pixels" << std::endl;
         (*path).push_front(coordinate);
         return (true);
     }
@@ -102,6 +110,7 @@ bool                Pathfinder::nextStep(int coordinate, std::deque<int> *path, 
         validPath = nextStep(coordinate - 62, path, pathSize + 1);
     if (validPath)
         return (true);
+    // std::cout << "all possiblities failed, removing pixel from path" << std::endl;
     (*path).pop_front();
     return (false);
 }

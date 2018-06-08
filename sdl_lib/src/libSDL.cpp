@@ -6,7 +6,7 @@
 /*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/16 15:53:54 by acottier          #+#    #+#             */
-/*   Updated: 2018/06/06 13:35:50 by acottier         ###   ########.fr       */
+/*   Updated: 2018/06/08 12:50:39 by acottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,19 +48,21 @@ void			Graphics::openWindow()
 		{ sprite::WALL , loadSurface("texture/wall.png", _window) } ,
 		{ sprite::FOOD , loadSurface("texture/apple.png", _window) }
 	};
-	setMusic();
+	// setMusic();
 }
 
 void			Graphics::setMusic()
 {
 	initAudio();
 	_soundtrack = createAudio(MUSIC_PATH, 1, 64);
+	playSoundFromMemory(_soundtrack, 64);
+}
+
+void			Graphics::changeMusic()
+{
+	freeAudio(_soundtrack);
+	_soundtrack = createAudio(MUSIC_HARDCORE_PATH, 1, 64);
 	playMusicFromMemory(_soundtrack, 64);
-	// SDL_Delay(5000);
-	// // SDL_Delay(3000);
-	// freeAudio(_soundtrack);
-	// _soundtrack = createAudio(MUSIC_HARDCORE_PATH, 1, 64);
-	// playMusicFromMemory(_soundtrack, 64);
 }
 
 bool			Graphics::isOpen(void) const

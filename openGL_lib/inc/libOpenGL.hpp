@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libOpenGL.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/14 14:34:38 by rvievill          #+#    #+#             */
-/*   Updated: 2018/06/01 09:59:16 by rvievill         ###   ########.fr       */
+/*   Updated: 2018/06/07 16:49:55 by acottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ class Graphics : public AGraphics {
 		key					keyPress(void) override;
 		void				draw(Map &map) override;
 		void				closeWindow(void) override;
+		void				changeMusic(void) override;
 
 		libName				name;
 		static key			keyUse;

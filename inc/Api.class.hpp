@@ -37,6 +37,7 @@ class AGraphics {
 		virtual key				keyPress(void) = 0;
 		virtual void			draw(Map &map) = 0;
 		virtual void			closeWindow(void) = 0;
+		virtual void			changeMusic(void) = 0;
 
 	protected:
 		

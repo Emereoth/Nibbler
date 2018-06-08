@@ -6,7 +6,7 @@
 /*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/16 15:53:55 by acottier          #+#    #+#             */
-/*   Updated: 2018/06/06 14:11:05 by acottier         ###   ########.fr       */
+/*   Updated: 2018/06/07 16:48:32 by acottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,11 @@ class Graphics : public AGraphics
 		virtual ~Graphics(void);
 
 		void		openWindow(void) override;
-		SDL_Surface	*loadSurface(const char * texturePath, SDL_Window * win);
 		bool		isOpen(void) const override;
 		key			keyPress(void) override;
 		void		draw(Map &map) override;
 		void		closeWindow(void) override;
-		void		setMusic(void);
+		void		changeMusic(void) override;
 		
 		libName		name;
 
@@ -98,6 +97,9 @@ class Graphics : public AGraphics
 		explicit Graphics(void);
 		Graphics		&operator=(Graphics const & rhs) = delete;
 		Graphics(Graphics const &) = default;
+
+		SDL_Surface	*loadSurface(const char * texturePath, SDL_Window * win);
+		void		setMusic(void);
 
 		SDL_Window						*_window;
 		std::map<sprite, SDL_Surface *>	_surfaceMap;

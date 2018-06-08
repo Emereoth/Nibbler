@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libOpenGL.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/14 17:26:49 by rvievill          #+#    #+#             */
-/*   Updated: 2018/06/01 16:57:57 by rvievill         ###   ########.fr       */
+/*   Updated: 2018/06/07 16:50:33 by acottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,6 +161,10 @@ void				Graphics::putTexture(sprite sprite, t_form &infoForm)
 	glVertex2d(infoForm.posX + infoForm.sizeX, infoForm.posY - infoForm.sizeY); // The bottom right corner
 	glEnd();
 	glBindTexture(GL_TEXTURE_2D, 0);
+}
+
+void				Graphics::changeMusic()
+{
 }
 
 Graphics			*create(size_t width, size_t height, float squareSize)

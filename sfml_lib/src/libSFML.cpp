@@ -119,6 +119,11 @@ void				Graphics::runSound(void)
 	_music.play();
 }
 
+void				Graphics::changeMusic(void)
+{
+	
+}
+
 void				Graphics::closeWindow(void)
 {
 	_window.close();

@@ -36,6 +36,7 @@ class Graphics : public AGraphics {
 		key					keyPress(void) override;
 		void				draw(Map &map) override;
 		void				closeWindow(void) override;
+		void				changeMusic(void) override;
 
 		libName				name;
 
