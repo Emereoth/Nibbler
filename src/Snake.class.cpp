@@ -1,19 +1,44 @@
+
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   Snake.class.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/21 15:16:06 by acottier          #+#    #+#             */
-/*   Updated: 2018/06/07 16:46:10 by acottier         ###   ########.fr       */
+/*   Updated: 2018/06/09 12:45:25 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/Snake.class.hpp"
 #include <random>
 
-Snake::Snake(Map &map) : size(5), _map(map)
+Snake::Snake(Map &map) :
+	size(4),
+	_map(map),
+	_convertKey {
+		{key::UP, UP},
+		{key::DOWN, DOWN},
+		{key::LEFT, LEFT},
+		{key::RIGHT, RIGHT},
+	},
+	_spriteForKey {
+		{UP_LEFT, sprite::BODY_UP_LEFT},
+		{UP_RIGHT, sprite::BODY_UP_RIGHT},
+		{DOWN_LEFT, sprite::BODY_DOWN_LEFT},
+		{DOWN_RIGHT, sprite::BODY_DOWN_RIGHT},
+		{UP, sprite::HEAD_UP},
+		{DOWN, sprite::HEAD_DOWN},
+		{LEFT, sprite::HEAD_LEFT},
+		{RIGHT, sprite::HEAD_RIGHT},
+	},
+	_moveForKey {
+		{UP, -62},
+		{DOWN, 62},
+		{LEFT, -1},
+		{RIGHT, 1}
+	}
 {
 	std::random_device				rd;
 	std::mt19937					gen(rd());
@@ -24,8 +49,9 @@ Snake::Snake(Map &map) : size(5), _map(map)
 
 	while (!isPlace(index))
 		index = pos(gen);
+	std::cout << "LEFT => " << LEFT << std::endl;
 	pushPartSnake(sprite::HEAD_LEFT, LEFT, LEFT, index);
-	pushPartSnake(sprite::TAIL_LEFT, LEFT, LEFT, index + 4);
+	pushPartSnake(sprite::TAIL_LEFT, LEFT, LEFT, index + 3);
 	sizeSnake = _snake.size();
 	for (size_t i = 0; i < sizeSnake; i++)
 	{
@@ -77,65 +103,75 @@ void				Snake::grow(void)
 	// TODO SHIT
 }
 
-void				Snake::updatePos(int key)
+void				Snake::updatePos(key keyPress)
 {
-	// std::list<snakeInfo>::iterator		it = _snake.begin();
-	// std::list<snakeInfo>::iterator		end = _snake.end();
-	// unsigned char						prevOrigin = (*it).origin;
+	int				convertKey = _convertKey[keyPress];
 
-	// (void)prevOrigin;
-	// while (it != end)
-	// {
-	// 	if (it == _snake.begin())
-	// 	{
+	if (keyPress == key::NO
+	|| (_snake[0].origin <= DOWN && convertKey <= DOWN)
+	|| (_snake[0].origin > DOWN && convertKey > DOWN))
+		convertKey = _snake[0].origin;
+	else if ((_snake[0].origin <= DOWN && convertKey > DOWN) || (_snake[0].origin > DOWN && convertKey <= DOWN))
+	{
+		snakeInfo	newPart;
 
-	// 	}
-	// 	// else if (*it == _snake.back())
-	// 	// {
+		newPart.pos = _snake[0].pos;
+		newPart.origin = convertKey;
+		newPart.destination = (_snake[0].origin ^ 255) + convertKey;
+		newPart.sprite = _spriteForKey[newPart.destination];
+		_snake.insert(_snake.begin() + 1, newPart);
+	}
+	updateExtremities(convertKey);
+	updateMap(convertKey);
+}
 
-	// 	// }
-	// 	else
-	// 	{
-			
-	// 	}
-	// }
-	// updateExtremity(key, it);
+void				Snake::updateExtremities(int key)
+{
+	int				move = _moveForKey[key];
+	size_t			size = _snake.size() - 1;
+
+	_snake[0].origin = key;
+	_snake[0].destination = key;
+	_snake[0].sprite = _spriteForKey[key];
+	_snake[0].pos += move;
+	_map.map[_snake[size].pos] = sprite::SOIL;
+	_snake[size].pos += _moveForKey[_snake[size].origin];
+	if (_snake[size - 1].pos == _snake[size].pos)
+	{
+		_snake[size].origin = _snake[size - 1].origin;
+		if (_snake[size].origin == LEFT)
+			_snake[size].sprite = sprite::TAIL_LEFT;
+		else if (_snake[size].origin == RIGHT)
+			_snake[size].sprite = sprite::TAIL_RIGHT;
+		else if (_snake[size].origin == DOWN)
+			_snake[size].sprite = sprite::TAIL_UP;
+		else if (_snake[size].origin == UP)
+			_snake[size].sprite = sprite::TAIL_DOWN;
+		_snake.erase(_snake.begin() + size - 1);
+	}
+}
+
+void				Snake::updateMap(int key)
+{
+	size_t			delta = 0;
+	size_t			sizeSnake = _snake.size();
+	int				move;
+
 	(void)key;
-}
-
-void				Snake::updateExtremity(int key, std::list<snakeInfo>::iterator it)
-{
-	// if ( it == _snake.begin() && key && (*it).destination + key != 4 && (*it).destination + key != 9)
-	// 	(*it).destination = (*it).origin = key;
-	// switch ((*it).origin)
-	// {
-	// 	case (UP) :
-	// 	{
-	// 		(*it).pos[1]--;
-	// 		break ;
-	// 	}
-	// 	case (DOWN) :
-	// 	{
-	// 		(*it).pos[1]++;
-	// 		break ;
-	// 	}
-	// 	case (RIGHT) :
-	// 	{
-	// 		(*it).pos[0]++;
-	// 		break ;
-	// 	}
-	// 	case (LEFT) :
-	// 	{
-	// 		(*it).pos[0]--;
-	// 		break;
-	// 	}
-	// }
-	(void)key;(void)it;
-}
-
-bool			Snake::update(int input)
-{
-	(void)input;
-	// return value : true if food is eaten
-	return (false);
+	for (size_t i = 0; i < sizeSnake; i++)
+	{
+		_map.map[_snake[i].pos] = _snake[i].sprite;
+		if (i + 1 < sizeSnake)
+		{
+			move = _moveForKey[_snake[i + 1].origin];
+			delta = std::abs(_snake[i + 1].pos - _snake[i].pos) / std::abs(move);
+			for (size_t j = 1; j < delta; j++)
+			{
+				if (_snake[i + 1].origin == LEFT || _snake[i + 1].origin == RIGHT)
+					_map.map[_snake[i].pos - move] = sprite::BODY_H;
+				else
+					_map.map[_snake[i].pos - move] = sprite::BODY_V;
+			}
+		}
+	}
 }

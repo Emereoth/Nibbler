@@ -42,6 +42,7 @@ void				Graphics::openWindow(void)
 {
 	_window.create(sf::VideoMode(_width, _height), "Nibbler (SFML)", sf::Style::Titlebar | sf::Style::Close);
 	_window.setKeyRepeatEnabled(false);
+	_window.setFramerateLimit(60);
 	runSound();
 }
 
@@ -53,12 +54,16 @@ bool				Graphics::isOpen(void) const
 key					Graphics::keyPress(void)
 {
 	sf::Event		event;
+	key				key;
 
 	_window.pollEvent(event);
 	if (event.type == sf::Event::Closed)
 		return (_eventMap[sf::Keyboard::Escape]);
 	else if (event.type == sf::Event::KeyPressed)
-		return (_eventMap[event.key.code]);
+	{
+		key = _eventMap[event.key.code];
+		return (key != key::ONE ? key : key::NO);
+	}
 	return (_eventMap[sf::Keyboard::Unknown]);
 }
 
@@ -126,6 +131,7 @@ void				Graphics::changeMusic(void)
 
 void				Graphics::closeWindow(void)
 {
+	_music.stop();
 	_window.close();
 }
 

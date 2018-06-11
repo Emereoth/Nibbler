@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Nibbler.class.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/02 13:59:48 by rvievill          #+#    #+#             */
-/*   Updated: 2018/06/08 16:01:21 by acottier         ###   ########.fr       */
+/*   Updated: 2018/06/11 15:35:57 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,20 +33,23 @@ Nibbler::Nibbler(const char *pathLib, size_t width, size_t height, float squareS
 void				Nibbler::run(Map &map)
 {
 	Snake			snake(map);
-	Pathfinder		pathfinder(map);
+	// Pathfinder		pathfinder(map);
 	key				input;
 	int				i = 0;
 
 	window->openWindow();
 	while (window->isOpen())
 	{
-		if (i % 100 == 0)
-			pathfinder.spawnFood(snake);
+		// if (i % 100 == 0)
+			// pathfinder.spawnFood(snake);
 		input = window->keyPress();
+		std::cout << "input key => " << (int)input << std::endl;
 		if (input == key::ESCAPE)
 			return ;
+		snake.updatePos(input);
 		window->draw(map);
 		i++;
+		sleep(1);
 	}
 }
 

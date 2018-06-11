@@ -1,5 +1,5 @@
-#ifndef ITEST_HPP
-# define ITEST_HPP
+#ifndef API_HPP
+# define API_HPP
 
 #include <stdio.h>
 #include "Map.class.hpp"
@@ -10,15 +10,15 @@
 
 enum class	key
 {
+	ONE,
+	TWO,
+	THREE,
+	ESCAPE,
 	NO,
 	LEFT,
 	RIGHT,
 	UP,
-	DOWN,
-	ONE,
-	TWO,
-	THREE,
-	ESCAPE
+	DOWN
 };
 
 enum class	libName
