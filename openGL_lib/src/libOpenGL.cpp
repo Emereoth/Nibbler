@@ -6,7 +6,7 @@
 /*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/14 17:26:49 by rvievill          #+#    #+#             */
-/*   Updated: 2018/06/13 18:51:51 by acottier         ###   ########.fr       */
+/*   Updated: 2018/06/13 18:59:10 by acottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,18 +60,18 @@ Graphics::~Graphics(void)
 
 void				Graphics::setMusic()
 {
-	// initAudio();
-	// _soundtrack = createAudio(MUSIC_PATH, 1, 64);
-	// playSoundFromMemory(_soundtrack, 64);
+	initAudio();
+	_soundtrack = createAudio(MUSIC_PATH, 1, 64);
+	playSoundFromMemory(_soundtrack, 64);
 }
 
 void			Graphics::changeMusic()
 {
-	// endAudio();
-	// initAudio();
-	// freeAudio(_soundtrack);
-	// _soundtrack = createAudio(MUSIC_HARDCORE_PATH, 1, 64);
-	// playMusicFromMemory(_soundtrack, 64);
+	endAudio();
+	initAudio();
+	freeAudio(_soundtrack);
+	_soundtrack = createAudio(MUSIC_HARDCORE_PATH, 1, 64);
+	playMusicFromMemory(_soundtrack, 64);
 }
 
 void				Graphics::openWindow(void)
@@ -189,10 +189,6 @@ void				Graphics::putTexture(sprite sprite, t_form &infoForm)
 	glVertex2d(infoForm.posX + infoForm.sizeX, infoForm.posY - infoForm.sizeY); // The bottom right corner
 	glEnd();
 	glBindTexture(GL_TEXTURE_2D, 0);
-}
-
-void				Graphics::changeMusic()
-{
 }
 
 Graphics			*create(size_t width, size_t height, float squareSize)

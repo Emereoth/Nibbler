@@ -1,14 +1,14 @@
 CC = clang++
 NAME = openGL.so
-HPATH = inc/ GLFW/include $$HOME/.brew/include SOIL2/incs ../libmusic/inc/
+HPATH = inc/ GLFW/include $$HOME/.brew/include SOIL2/incs ../libmusic/inc/ $${HOME}/.brew/include/SDL2
 DYLIB = -shared -fPIC
-LIBGRAPH = -framework openGL -framework Cocoa -framework IOKit -framework CoreVideo -L ~/.brew/lib/ -lGLEW
+LIBGRAPH = -framework openGL -framework Cocoa -framework IOKit -framework CoreVideo -L ~/.brew/lib/ -lGLEW -lSDL2
 CFLAGS = -Wall -Werror -Wextra -std=c++11
 CPATH = src/
 OPATH = obj/
 INC = $(addprefix -I, $(HPATH))
 CFILES =	libOpenGL.cpp		\
-			# audio.cpp
+			audio.cpp
 
 OFILES = $(CFILES:.cpp=.o)
 
@@ -18,10 +18,11 @@ OBJ = $(addprefix $(OPATH), $(OFILES))
 
 .PHONY: all clean fclean re
 
-all: $(NAME)
+all: import $(NAME)
 
 $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) $(DYLIB) $(LIBGRAPH) $(OBJ) GLFW/src/libglfw3.a  SOIL2/libSOIL2.a -o $(NAME)
+	@rm src/audio.cpp
 
 $(OPATH)%.o: $(CPATH)%.cpp $(HFILES)
 	@mkdir -p $(OPATH)
@@ -32,6 +33,9 @@ clean:
 
 fclean: clean
 	rm -rf $(NAME)
+
+import:
+	@cp ../libmusic/src/audio.cpp src
 
 install:
 	brew install glew

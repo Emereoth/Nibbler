@@ -6,7 +6,7 @@
 /*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/16 15:53:54 by acottier          #+#    #+#             */
-/*   Updated: 2018/06/13 18:51:33 by acottier         ###   ########.fr       */
+/*   Updated: 2018/06/13 18:54:49 by acottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,10 +113,10 @@ void			Graphics::draw(Map &map)
 		{
 			float			widthPos = spaceAroundX + i % 62 * _squareSize;
 			float			heightPos = spaceAroundY + i / 62 * _squareSize;
-			dst.w = _squareSize;
-			dst.h = _squareSize;
-			dst.x = widthPos - 1;
-			dst.y = heightPos - 1;
+			dst.w = _squareSize + 1;
+			dst.h = _squareSize + 1;
+			dst.x = widthPos;
+			dst.y = heightPos;
 			if (SDL_BlitScaled(_surfaceMap[map.map[i]], NULL, SDL_GetWindowSurface(_window), &dst)!= 0)
 			{
 				closeWindow();
