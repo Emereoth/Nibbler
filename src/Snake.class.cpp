@@ -133,7 +133,10 @@ bool				Snake::collider(int key)
 		size++;
 	}
 	else if (_map.map[pos] != sprite::SOIL && _map.map[pos] != sprite::FOOD)
+	{
+		std::cout << "collide" << std::endl;
 		return true;
+	}
 	return false;
 }
 

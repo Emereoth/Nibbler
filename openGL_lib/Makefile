@@ -34,6 +34,7 @@ fclean: clean
 	rm -rf $(NAME)
 
 install:
+	brew install glew
 	wget https://github.com/glfw/glfw/releases/download/3.2.1/glfw-3.2.1.zip
 	tar -xf glfw-3.2.1.zip
 	rm -rf glfw-3.2.1.zip

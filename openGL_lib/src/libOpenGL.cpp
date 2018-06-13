@@ -6,7 +6,7 @@
 /*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/14 17:26:49 by rvievill          #+#    #+#             */
-/*   Updated: 2018/06/12 18:50:31 by rvievill         ###   ########.fr       */
+/*   Updated: 2018/06/13 16:47:56 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,7 @@ void				Graphics::draw(Map &map)
 
 void				Graphics::closeWindow(void)
 {
-	glfwDestroyWindow(_window);
+	glfwTerminate();
 	_window = NULL;
 }
 

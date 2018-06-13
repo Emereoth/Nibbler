@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Nibbler.class.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/02 13:59:48 by rvievill          #+#    #+#             */
-/*   Updated: 2018/06/13 16:17:57 by acottier         ###   ########.fr       */
+/*   Updated: 2018/06/13 17:08:50 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ Nibbler::Nibbler(const char *pathLib, size_t width, size_t height, float squareS
 		{key::TWO, &Nibbler::switchLib},
 		{key::THREE, &Nibbler::switchLib},
 		{key::ESCAPE, &Nibbler::closeLib}
-	} , _gameSpeed(13), _hardMode(false)
+	} , _gameSpeed(8), _hardMode(false)
 {
 	openLib(pathLib, width, height, squareSize);
 }
@@ -65,7 +65,7 @@ void				Nibbler::run(Map &map)
 		{
 			_hardMode = true;
 			window->changeMusic();
-			_gameSpeed = 7;
+			_gameSpeed = 4;
 			time(&lastRespawn);
 		}
 		Time::calculDeltaTime();
@@ -75,6 +75,8 @@ void				Nibbler::run(Map &map)
 			pathfinder.spawnFood(snake);
 		}
 		input = window->keyPress();
+		if (input == key::ESCAPE)
+			std::cout << "mort de lol" << std::endl;
 		if (!(this->*(manageInput[input]))(snake, input))
 			window->draw(map);
 		Time::sleepAsMuchAsNeeded(_gameSpeed);

@@ -32,11 +32,11 @@ Graphics::Graphics(size_t width, size_t height, float squareSize)
 	_eventMap[sf::Keyboard::Num1] = key::ONE;
 	_eventMap[sf::Keyboard::Num2] = key::TWO;
 	_eventMap[sf::Keyboard::Num3] = key::THREE;
+	_music.openFromFile("music/tetris.wav");
 }
 
 Graphics::~Graphics(void)
 {
-
 }
 
 void				Graphics::openWindow(void)
@@ -58,9 +58,7 @@ key					Graphics::keyPress(void)
 	key				key;
 
 	_window.pollEvent(event);
-	if (event.type == sf::Event::Closed)
-		return (_eventMap[sf::Keyboard::Escape]);
-	else if (event.type == sf::Event::KeyPressed)
+	if (event.type == sf::Event::KeyPressed)
 	{
 		key = _eventMap[event.key.code];
 		return (key != key::ONE ? key : key::NO);
@@ -120,19 +118,19 @@ void				Graphics::draw(Map &map)
 
 void				Graphics::runSound(void)
 {
-	_music.openFromFile("./music/tetris_hard.wav");
 	_music.setLoop(true);
 	_music.play();
 }
 
 void				Graphics::changeMusic(void)
 {
-	
+	_music.openFromFile("music/tetris_hard.wav");
+	runSound();
 }
 
 void				Graphics::closeWindow(void)
 {
-	_music.stop();
+	_music.~Music();
 	_window.close();
 }
 
