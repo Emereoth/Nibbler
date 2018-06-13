@@ -6,7 +6,7 @@
 /*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/14 17:26:49 by rvievill          #+#    #+#             */
-/*   Updated: 2018/06/13 17:48:59 by rvievill         ###   ########.fr       */
+/*   Updated: 2018/06/13 17:55:22 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,13 @@ static void				keyCallback(GLFWwindow* window, int keyVal, int scancode, int act
 	};
 
 	if (action == GLFW_PRESS)
-		Graphics::keyUse = eventMap[keyVal];
+	{
+		if (eventMap.find(keyVal) == eventMap.end())
+			Graphics::keyUse = key::NO;
+		else
+			Graphics::keyUse = eventMap[keyVal];
+			
+	}
 }
 
 Graphics::Graphics(size_t width, size_t height, float squareSize)
