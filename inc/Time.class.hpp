@@ -6,14 +6,12 @@
 /*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/11 17:29:06 by acottier          #+#    #+#             */
-/*   Updated: 2018/06/13 15:16:40 by acottier         ###   ########.fr       */
+/*   Updated: 2018/06/13 15:38:10 by acottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TIME_H_
 # define TIME_H_
-
-# define MIN_FRAME_LEN 13
 
 # include <time.h>
 # include <unistd.h>

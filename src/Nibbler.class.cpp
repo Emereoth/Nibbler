@@ -6,7 +6,7 @@
 /*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/02 13:59:48 by rvievill          #+#    #+#             */
-/*   Updated: 2018/06/13 13:53:59 by acottier         ###   ########.fr       */
+/*   Updated: 2018/06/13 15:49:46 by acottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ void				Nibbler::run(Map &map)
 	Snake			snake(map);
 	Pathfinder		pathfinder(map);
 	key				input;
+	float			gameSpeed = 13;
+	bool			hardMode = false;
 
 	window->openWindow();
 	pathfinder.spawnFood(snake);
@@ -65,7 +67,7 @@ void				Nibbler::run(Map &map)
 		input = window->keyPress();
 		if (!(this->*(manageInput[input]))(snake, input))
 			window->draw(map);
-		Time::sleepAsMuchAsNeeded();
+		Time::sleepAsMuchAsNeeded(gameSpeed);
 	}
 }
 

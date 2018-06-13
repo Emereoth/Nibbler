@@ -6,7 +6,7 @@
 /*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/16 15:53:54 by acottier          #+#    #+#             */
-/*   Updated: 2018/06/13 15:14:15 by acottier         ###   ########.fr       */
+/*   Updated: 2018/06/13 15:33:45 by acottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void			Graphics::setMusic()
 {
 	initAudio();
 	_soundtrack = createAudio(MUSIC_PATH, 1, 64);
-	playSoundFromMemory(_soundtrack, 64);
+	// playSoundFromMemory(_soundtrack, 64);
 }
 
 void			Graphics::changeMusic()
@@ -124,25 +124,6 @@ void			Graphics::draw(Map &map)
 	SDL_UpdateWindowSurface(_window);
 }
 
-// void			Graphics::loop(SDL_Window * win)
-// {
-// 	SDL_Event	currentEvent;
-
-// 	while (win)
-// 	{
-// 		while (SDL_PollEvent(&currentEvent))
-// 		{
-// 			SDL_UpdateWindowSurface(win);
-// 			SDL_PumpEvents();
-// 			if (currentEvent.type == SDL_WINDOWEVENT && currentEvent.window.event == SDL_WINDOWEVENT_CLOSE)
-// 			{
-// 				SDL_DestroyWindow(win);
-// 				win = NULL;
-// 			}
-// 		}
-// 	}
-// }
-
 SDL_Surface		*Graphics::loadSurface(const char *texturePath, SDL_Window * win)
 {
 	SDL_Surface	*finalSurface = NULL;
@@ -173,6 +154,8 @@ Graphics::Graphics(size_t width, size_t height, float squareSize)
 
 void		Graphics::closeWindow(void)
 {
+	freeAudio(_soundtrack);
+	endAudio();
 	SDL_DestroyWindow(_window);
 	_window = NULL;
 	for (std::map<sprite, SDL_Surface *>::iterator ii = _surfaceMap.begin() ; ii != _surfaceMap.end() ; ii++)

@@ -6,7 +6,7 @@
 /*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/11 17:42:46 by acottier          #+#    #+#             */
-/*   Updated: 2018/06/13 15:16:31 by acottier         ###   ########.fr       */
+/*   Updated: 2018/06/13 15:34:44 by acottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,6 @@ void            Time::sleepAsMuchAsNeeded(float gameSpeed) {
 
         float last = timeSinceLastUpdate();
 
-        if (last < MIN_FRAME_LEN)
-                usleep((unsigned int)((MIN_FRAME_LEN - last) * 10000));
+        if (last < gameSpeed)
+                usleep((unsigned int)((gameSpeed - last) * 10000));
 }
