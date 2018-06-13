@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libOpenGL.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/14 14:34:38 by rvievill          #+#    #+#             */
-/*   Updated: 2018/06/13 18:36:14 by acottier         ###   ########.fr       */
+/*   Updated: 2018/06/13 19:19:31 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@
 # include "../../inc/Api.class.hpp"
 # include <audio.hpp>
 # include <map>
+
+#define MUSIC_PATH "music/ff7.wav"
+#define MUSIC_HARDCORE_PATH "music/sephiroth.wav"
 
 typedef struct		s_form
 {

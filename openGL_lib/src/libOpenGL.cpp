@@ -3,18 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   libOpenGL.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/14 17:26:49 by rvievill          #+#    #+#             */
-/*   Updated: 2018/06/13 18:59:10 by acottier         ###   ########.fr       */
+/*   Updated: 2018/06/13 19:22:12 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/libOpenGL.hpp"
 #include <iostream>
-
-#define MUSIC_PATH "music/towerfall.wav"
-#define MUSIC_HARDCORE_PATH "music/towerfall_hard.wav"
 
 key						Graphics::keyUse = key::NO;
 
@@ -60,6 +57,7 @@ Graphics::~Graphics(void)
 
 void				Graphics::setMusic()
 {
+	SDL_Init(SDL_INIT_AUDIO);
 	initAudio();
 	_soundtrack = createAudio(MUSIC_PATH, 1, 64);
 	playSoundFromMemory(_soundtrack, 64);
@@ -110,6 +108,7 @@ void				Graphics::openWindow(void)
 	_texture[sprite::BODY_DOWN_RIGHT] = loadTexture("texture/bodyDownRight.png");
 	_texture[sprite::FOOD] = loadTexture("texture/apple.png");
 	_texture[sprite::WALL] = loadTexture("texture/wall.png");
+	setMusic();
 }
 
 bool				Graphics::isOpen(void) const
