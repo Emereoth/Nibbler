@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   Nibbler.class.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/02 13:59:48 by rvievill          #+#    #+#             */
-/*   Updated: 2018/06/12 17:47:37 by rvievill         ###   ########.fr       */
+/*   Updated: 2018/06/13 13:53:59 by acottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/Nibbler.class.hpp"
 #include "../inc/Pathfinder.class.hpp"
+#include "../inc/Time.class.hpp"
 #include <unistd.h>
 #include <fcntl.h>
 #include <dlfcn.h>
@@ -58,12 +59,13 @@ void				Nibbler::run(Map &map)
 	pathfinder.spawnFood(snake);
 	while (window->isOpen())
 	{
+		Time::calculDeltaTime();
 		if (snake.eatFood)
 			pathfinder.spawnFood(snake);
 		input = window->keyPress();
 		if (!(this->*(manageInput[input]))(snake, input))
 			window->draw(map);
-		sleep(1);
+		Time::sleepAsMuchAsNeeded();
 	}
 }
 

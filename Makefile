@@ -13,7 +13,8 @@ CFILES =	main.cpp			\
 			Map.class.cpp		\
 			Snake.class.cpp		\
 			Nibbler.class.cpp	\
-			Pathfinder.class.cpp
+			Pathfinder.class.cpp\
+			Time.class.cpp
 
 OFILES = $(CFILES:.cpp=.o)
 
