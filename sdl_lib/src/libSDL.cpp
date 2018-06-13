@@ -6,15 +6,15 @@
 /*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/16 15:53:54 by acottier          #+#    #+#             */
-/*   Updated: 2018/06/13 17:24:19 by acottier         ###   ########.fr       */
+/*   Updated: 2018/06/13 18:27:03 by acottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/libSDL.hpp"
 #include <iostream>
 
-#define MUSIC_PATH "music/towerfall2.wav"
-#define MUSIC_HARDCORE_PATH "music/towerfall.wav"
+#define MUSIC_PATH "music/towerfall.wav"
+#define MUSIC_HARDCORE_PATH "music/towerfall_hard.wav"
 
 void			Graphics::openWindow()
 {
@@ -60,8 +60,11 @@ void			Graphics::setMusic()
 
 void			Graphics::changeMusic()
 {
+	endAudio();
+	initAudio();
 	freeAudio(_soundtrack);
 	_soundtrack = createAudio(MUSIC_HARDCORE_PATH, 1, 64);
+	std::cout << SDL_GetError() << std::endl;
 	playMusicFromMemory(_soundtrack, 64);
 }
 
