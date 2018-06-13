@@ -6,7 +6,7 @@
 /*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/14 17:26:49 by rvievill          #+#    #+#             */
-/*   Updated: 2018/06/13 16:47:56 by rvievill         ###   ########.fr       */
+/*   Updated: 2018/06/13 17:48:59 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,8 +101,10 @@ bool				Graphics::isOpen(void) const
 
 key					Graphics::keyPress(void)
 {
+	key				key = Graphics::keyUse;
+
 	glfwPollEvents();
-	return (Graphics::keyUse);
+	return (key);
 }
 
 void				Graphics::draw(Map &map)

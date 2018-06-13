@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Nibbler.class.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/02 13:39:31 by rvievill          #+#    #+#             */
-/*   Updated: 2018/06/13 16:16:52 by acottier         ###   ########.fr       */
+/*   Updated: 2018/06/13 17:33:30 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "../inc/Api.class.hpp"
 # include "../inc/Map.class.hpp"
-#include "../inc/Snake.class.hpp"
+# include "../inc/Snake.class.hpp"
 
 class Nibbler {
 

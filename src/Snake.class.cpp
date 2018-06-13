@@ -66,7 +66,7 @@ Snake::Snake(Map &map) :
 
 bool					Snake::isPlace(int index) const
 {
-	int					start = index - 8;
+	int					start = index - 10;
 
 	while (start < index + 5)
 	{

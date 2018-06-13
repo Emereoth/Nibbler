@@ -6,7 +6,7 @@
 /*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/02 13:59:48 by rvievill          #+#    #+#             */
-/*   Updated: 2018/06/13 17:08:50 by rvievill         ###   ########.fr       */
+/*   Updated: 2018/06/13 17:44:00 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,6 @@ void				Nibbler::run(Map &map)
 			pathfinder.spawnFood(snake);
 		}
 		input = window->keyPress();
-		if (input == key::ESCAPE)
-			std::cout << "mort de lol" << std::endl;
 		if (!(this->*(manageInput[input]))(snake, input))
 			window->draw(map);
 		Time::sleepAsMuchAsNeeded(_gameSpeed);
@@ -102,11 +100,8 @@ bool				Nibbler::switchLib(Snake &snake, key key)
 {
 	int				name = static_cast<int>(key);
 
-	static_cast<void>(snake);
-	static_cast<void>(key);
 	if (window->name != name)
 	{
-		std::cout << "avant => " << window << std::endl;
 		closeLib(snake, key);
 		if (name == 0)
 			openLib("sfml_lib/sfml.so", window->_width, window->_height, window->_squareSize);
@@ -114,7 +109,6 @@ bool				Nibbler::switchLib(Snake &snake, key key)
 			openLib("sdl_lib/SDL.so", window->_width, window->_height, window->_squareSize);
 		else if (name == 2)
 			openLib("opengl_lib/openGL.so", window->_width, window->_height, window->_squareSize);
-		std::cout <<"apres => " <<  window << std::endl;
 		window->openWindow();
 	}
 	return (false);
