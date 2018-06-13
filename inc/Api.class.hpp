@@ -4,11 +4,7 @@
 #include <stdio.h>
 #include "Map.class.hpp"
 
-# define WIDTH_WINDOW 1920
-# define HEIGHT_WINDOW 1080
-# define SIZE_SQUARE (HEIGHT_WINDOW > WIDTH_WINDOW ? WIDTH_WINDOW / 50 : HEIGHT_WINDOW / 50)
-
-enum class	key
+enum class key
 {
 	ONE,
 	TWO,
@@ -21,7 +17,7 @@ enum class	key
 	DOWN
 };
 
-enum class	libName
+enum libName
 {
 	SFML,
 	SDL,
@@ -39,11 +35,12 @@ class AGraphics {
 		virtual void			closeWindow(void) = 0;
 		virtual void			changeMusic(void) = 0;
 
-	protected:
+	// protected:
 		
 		size_t					_height;
 		size_t					_width;
 		float					_squareSize;
+		int						name;
 };
 
 #endif

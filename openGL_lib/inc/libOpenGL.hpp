@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libOpenGL.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/14 14:34:38 by rvievill          #+#    #+#             */
-/*   Updated: 2018/06/07 16:49:55 by acottier         ###   ########.fr       */
+/*   Updated: 2018/06/12 18:49:56 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <GLFW/glfw3.h>
 # include <SOIL2.h>
 # include "../../inc/Api.class.hpp"
+// #include "../../inc/audio.hpp"
 # include <map>
 
 typedef struct		s_form
@@ -31,7 +32,7 @@ class Graphics : public AGraphics {
 
 	public:
 
-		explicit Graphics(size_t width, size_t height, size_t squareSize);
+		explicit Graphics(size_t width, size_t height, float squareSize);
 		virtual ~Graphics(void);
 
 
@@ -41,8 +42,8 @@ class Graphics : public AGraphics {
 		void				draw(Map &map) override;
 		void				closeWindow(void) override;
 		void				changeMusic(void) override;
+		void				setMusic(void);
 
-		libName				name;
 		static key			keyUse;
 		
 

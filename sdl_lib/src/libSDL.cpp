@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libSDL.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/16 15:53:54 by acottier          #+#    #+#             */
-/*   Updated: 2018/06/08 12:50:39 by acottier         ###   ########.fr       */
+/*   Updated: 2018/06/12 18:19:19 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void			Graphics::openWindow()
 		{ sprite::WALL , loadSurface("texture/wall.png", _window) } ,
 		{ sprite::FOOD , loadSurface("texture/apple.png", _window) }
 	};
-	// setMusic();
+	setMusic();
 }
 
 void			Graphics::setMusic()
@@ -163,8 +163,9 @@ SDL_Surface		*Graphics::loadSurface(const char *texturePath, SDL_Window * win)
 	return (finalSurface);
 }
 
-Graphics::Graphics(size_t width, size_t height, float squareSize) : name(libName::SDL)
+Graphics::Graphics(size_t width, size_t height, float squareSize)
 {
+	name = libName::SDL;
 	_height = height;
 	_width = width;
 	_squareSize = squareSize;

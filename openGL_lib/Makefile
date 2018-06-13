@@ -1,13 +1,14 @@
 CC = clang++
 NAME = openGL.so
-HPATH = inc/ GLFW/include $$HOME/.brew/include SOIL2/incs
+HPATH = inc/ GLFW/include $$HOME/.brew/include SOIL2/incs ../libmusic/inc/
 DYLIB = -shared -fPIC
 LIBGRAPH = -framework openGL -framework Cocoa -framework IOKit -framework CoreVideo -L ~/.brew/lib/ -lGLEW
 CFLAGS = -Wall -Werror -Wextra -std=c++11
 CPATH = src/
 OPATH = obj/
 INC = $(addprefix -I, $(HPATH))
-CFILES = libOpenGL.cpp
+CFILES =	libOpenGL.cpp		\
+			# audio.cpp
 
 OFILES = $(CFILES:.cpp=.o)
 

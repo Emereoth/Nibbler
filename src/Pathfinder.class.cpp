@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Pathfinder.class.cpp                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 14:21:18 by acottier          #+#    #+#             */
-/*   Updated: 2018/06/08 16:01:28 by acottier         ###   ########.fr       */
+/*   Updated: 2018/06/12 14:14:28 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void				Pathfinder::spawnFood(Snake &snake)
     isReachable = false;
 	_map.map[foodPos] = sprite::FOOD;
 	_food = foodPos;
+	snake.eatFood = false;
 }
 
 /*

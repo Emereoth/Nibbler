@@ -6,7 +6,7 @@
 /*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/21 14:17:24 by acottier          #+#    #+#             */
-/*   Updated: 2018/06/11 16:43:24 by rvievill         ###   ########.fr       */
+/*   Updated: 2018/06/12 14:10:04 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,11 @@ class Snake
 		explicit Snake(Map & map);
 		virtual ~Snake(void);
 
-		std::vector<snakeInfo>	getSnake(void) const;
 		void					grow(void);
-		void					updatePos(key keyPress);
+		bool					updatePos(key keyPress);
 		
 		int						size;
+		bool					eatFood;
 
 	private:
 	
@@ -66,9 +66,9 @@ class Snake
 		void					updateExtremities(int key);
 		bool					isPlace(int index) const;
 		void					updateMap(int mvoe);
+		bool					collider(int pos);
 
 		std::vector<snakeInfo>	_snake;
-		bool					_eatFood;
 		Map						&_map;
 		std::map<key, int>		_convertKey;
 		std::map<int, sprite>	_spriteForKey;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Nibbler.class.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/02 13:39:31 by rvievill          #+#    #+#             */
-/*   Updated: 2018/06/07 13:07:20 by acottier         ###   ########.fr       */
+/*   Updated: 2018/06/12 15:55:21 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,17 @@ class Nibbler {
 
 		Nibbler			&operator=(Nibbler const &rhs) = default;		
 
-		void			switchLib(libName lib);
+		bool					switchLib(Snake &snake, key key);
+		bool					updateEntities(Snake &snake, key key);
+		bool					closeLib(Snake &snake, key key);
+		void					openLib(const char *pathLib, size_t width, size_t height, float squareSize);
+
+		std::map<key, bool (Nibbler::*)(Snake &, key)>		manageInput;
 
 	public:
 
 		explicit Nibbler(const char *pathLib, size_t width, size_t height, float squareSize);
+		~Nibbler();
 
 		void			run(Map &map);
 

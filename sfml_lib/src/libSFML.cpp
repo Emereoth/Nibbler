@@ -1,8 +1,9 @@
 #include "../inc/libSFML.hpp"
 #include <iostream>
 
-Graphics::Graphics(size_t width, size_t height, float squareSize) : name(libName::SFML)
+Graphics::Graphics(size_t width, size_t height, float squareSize)
 {
+	name = libName::SFML;
 	_height = height;
 	_width = width;
 	_squareSize = squareSize;

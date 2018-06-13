@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Map.class.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/19 15:19:36 by rvievill          #+#    #+#             */
-/*   Updated: 2018/06/07 13:10:37 by acottier         ###   ########.fr       */
+/*   Updated: 2018/06/12 16:13:19 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ void				Map::placeItem(void)
 			zoneStart[1] += 30;
 		zoneStart[0] %= 59;
 	}
-	displayMap();
+	// displayMap();
 }
 
 void				Map::updateMap(std::array<size_t, 2> &start)

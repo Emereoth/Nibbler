@@ -16,6 +16,7 @@
 
 Snake::Snake(Map &map) :
 	size(4),
+	eatFood(false),
 	_map(map),
 	_convertKey {
 		{key::UP, UP},
@@ -49,7 +50,6 @@ Snake::Snake(Map &map) :
 
 	while (!isPlace(index))
 		index = pos(gen);
-	std::cout << "LEFT => " << LEFT << std::endl;
 	pushPartSnake(sprite::HEAD_LEFT, LEFT, LEFT, index);
 	pushPartSnake(sprite::TAIL_LEFT, LEFT, LEFT, index + 3);
 	sizeSnake = _snake.size();
@@ -92,18 +92,13 @@ Snake::~Snake()
 {
 }
 
-std::vector<snakeInfo>	Snake::getSnake(void) const
-{
-	return (_snake);
-}
-
 void				Snake::grow(void)
 {
 	size++;
 	// TODO SHIT
 }
 
-void				Snake::updatePos(key keyPress)
+bool				Snake::updatePos(key keyPress)
 {
 	int				convertKey = _convertKey[keyPress];
 
@@ -121,8 +116,25 @@ void				Snake::updatePos(key keyPress)
 		newPart.sprite = _spriteForKey[newPart.destination];
 		_snake.insert(_snake.begin() + 1, newPart);
 	}
+	if (collider(convertKey))
+		return (true);
 	updateExtremities(convertKey);
 	updateMap(convertKey);
+	return (false);
+}
+
+bool				Snake::collider(int key)
+{
+	int				pos = _snake[0].pos + _moveForKey[key];
+
+	if (_map.map[pos] == sprite::FOOD)
+	{
+		eatFood = true;
+		size++;
+	}
+	else if (_map.map[pos] != sprite::SOIL && _map.map[pos] != sprite::FOOD)
+		return true;
+	return false;
 }
 
 void				Snake::updateExtremities(int key)
@@ -134,20 +146,23 @@ void				Snake::updateExtremities(int key)
 	_snake[0].destination = key;
 	_snake[0].sprite = _spriteForKey[key];
 	_snake[0].pos += move;
-	_map.map[_snake[size].pos] = sprite::SOIL;
-	_snake[size].pos += _moveForKey[_snake[size].origin];
-	if (_snake[size - 1].pos == _snake[size].pos)
+	if (!eatFood)
 	{
-		_snake[size].origin = _snake[size - 1].origin;
-		if (_snake[size].origin == LEFT)
-			_snake[size].sprite = sprite::TAIL_LEFT;
-		else if (_snake[size].origin == RIGHT)
-			_snake[size].sprite = sprite::TAIL_RIGHT;
-		else if (_snake[size].origin == DOWN)
-			_snake[size].sprite = sprite::TAIL_UP;
-		else if (_snake[size].origin == UP)
-			_snake[size].sprite = sprite::TAIL_DOWN;
-		_snake.erase(_snake.begin() + size - 1);
+		_map.map[_snake[size].pos] = sprite::SOIL;
+		_snake[size].pos += _moveForKey[_snake[size].origin];
+		if (_snake[size - 1].pos == _snake[size].pos)
+		{
+			_snake[size].origin = _snake[size - 1].origin;
+			if (_snake[size].origin == LEFT)
+				_snake[size].sprite = sprite::TAIL_LEFT;
+			else if (_snake[size].origin == RIGHT)
+				_snake[size].sprite = sprite::TAIL_RIGHT;
+			else if (_snake[size].origin == DOWN)
+				_snake[size].sprite = sprite::TAIL_UP;
+			else if (_snake[size].origin == UP)
+				_snake[size].sprite = sprite::TAIL_DOWN;
+			_snake.erase(_snake.begin() + size - 1);
+		}
 	}
 }
 

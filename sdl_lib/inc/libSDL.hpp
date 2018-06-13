@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libSDL.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/16 15:53:55 by acottier          #+#    #+#             */
-/*   Updated: 2018/06/07 16:48:32 by acottier         ###   ########.fr       */
+/*   Updated: 2018/06/12 15:35:30 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,6 @@ class Graphics : public AGraphics
 		void		closeWindow(void) override;
 		void		changeMusic(void) override;
 		
-		libName		name;
-
 		class SDL_InitFail : public std::exception
 		{
 			public:

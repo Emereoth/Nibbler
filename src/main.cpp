@@ -8,6 +8,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <dlfcn.h>
+#include <unistd.h>
 
 namespace {
 
@@ -151,26 +152,6 @@ namespace {
 		return (Opt(ac, av));
 	}
 }
-
-// void	updateEntities(AGraphics *lib, key input, Snake &snake)
-// {
-// 	std::map<key, int> 	inputConversion = 
-// 	{
-// 		{key::UP, UP},
-// 		{key::DOWN, DOWN},
-// 		{key::RIGHT, RIGHT},
-// 		{key::LEFT, LEFT}
-// 	};
-// 	int					convertedInput = -1;
-// 	if (input == key::ESCAPE)
-// 	{
-// 		lib->closeWindow();
-// 		return ;
-// 	}
-// 	else if (inputConversion.find(input) != inputConversion.end())
-// 		convertedInput = inputConversion[input];
-// 	snake.update(convertedInput); // TODO: check return value to respawn food
-// }
 
 int main(int ac, char **av)
 {

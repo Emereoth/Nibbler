@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libOpenGL.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/14 17:26:49 by rvievill          #+#    #+#             */
-/*   Updated: 2018/06/07 16:50:33 by acottier         ###   ########.fr       */
+/*   Updated: 2018/06/12 18:50:31 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,9 @@ static void				keyCallback(GLFWwindow* window, int keyVal, int scancode, int act
 		Graphics::keyUse = eventMap[keyVal];
 }
 
-Graphics::Graphics(size_t width, size_t height, size_t squareSize) : name(libName::OPENGL)
+Graphics::Graphics(size_t width, size_t height, float squareSize)
 {
+	name = libName::OPENGL;
 	_width = width;
 	_height = height;
 	_squareSize = squareSize;
@@ -46,6 +47,13 @@ Graphics::Graphics(size_t width, size_t height, size_t squareSize) : name(libNam
 Graphics::~Graphics(void)
 {
 	return ;
+}
+
+void				Graphics::setMusic()
+{
+	// initAudio();
+	// _soundtrack = createAudio("music/tetris.wav", 1, 64);
+	// playSoundFromMemory(_soundtrack, 64);
 }
 
 void				Graphics::openWindow(void)
@@ -126,6 +134,7 @@ void				Graphics::draw(Map &map)
 void				Graphics::closeWindow(void)
 {
 	glfwDestroyWindow(_window);
+	_window = NULL;
 }
 
 GLuint				Graphics::loadTexture(const char *texturePath)
