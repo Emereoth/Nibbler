@@ -6,7 +6,7 @@
 /*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/16 15:53:54 by acottier          #+#    #+#             */
-/*   Updated: 2018/06/13 15:58:24 by acottier         ###   ########.fr       */
+/*   Updated: 2018/06/13 17:16:34 by acottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ bool			Graphics::isOpen(void) const
 key				Graphics::keyPress(void)
 {
 	SDL_Event		currentEvent;
+	key				res = ket::NO;
 	std::map<SDL_Keycode, key>	eventMap =
 	{
 		{SDLK_ESCAPE, key::ESCAPE},
@@ -88,12 +89,12 @@ key				Graphics::keyPress(void)
 	SDL_PumpEvents();
 	while (SDL_PollEvent(&currentEvent))
 	{
-		if (SDL_KEYDOWN && eventMap.find(currentEvent.key.keysym.sym) != eventMap.end())
-			return (eventMap[currentEvent.key.keysym.sym]);
-		else if (currentEvent.type == SDL_WINDOWEVENT && currentEvent.window.event == SDL_WINDOWEVENT_CLOSE)
-			return (key::ESCAPE);
+		if (res == key::NO && SDL_KEYDOWN && eventMap.find(currentEvent.key.keysym.sym) != eventMap.end())
+			res = eventMap[currentEvent.key.keysym.sym];
+		else if (res == key::NO && currentEvent.type == SDL_WINDOWEVENT && currentEvent.window.event == SDL_WINDOWEVENT_CLOSE)
+			res = key::ESCAPE;
 	}
-	return (key::NO);
+	return (res);
 }
 
 void			Graphics::draw(Map &map)

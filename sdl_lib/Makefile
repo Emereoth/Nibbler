@@ -25,6 +25,7 @@ $(NAME): $(OBJ)
 	@rm src/audio.cpp
 
 $(OPATH)%.o: $(CPATH)%.cpp $(HFILES)
+	@mkdir -p $(OPATH)
 	$(CC) $(CFLAGS) $(INC) $< -c -o $@
 
 import:
