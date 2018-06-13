@@ -6,7 +6,7 @@
 /*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/14 17:26:49 by rvievill          #+#    #+#             */
-/*   Updated: 2018/06/13 17:55:22 by rvievill         ###   ########.fr       */
+/*   Updated: 2018/06/13 18:32:08 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static void				keyCallback(GLFWwindow* window, int keyVal, int scancode, int act
 
 Graphics::Graphics(size_t width, size_t height, float squareSize)
 {
-	name = libName::OPENGL;
+	name = OPENGL;
 	_width = width;
 	_height = height;
 	_squareSize = squareSize;
@@ -107,10 +107,9 @@ bool				Graphics::isOpen(void) const
 
 key					Graphics::keyPress(void)
 {
-	key				key = Graphics::keyUse;
-
+	Graphics::keyUse = key::NO;
 	glfwPollEvents();
-	return (key);
+	return (Graphics::keyUse);
 }
 
 void				Graphics::draw(Map &map)
