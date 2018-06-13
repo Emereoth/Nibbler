@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Nibbler.class.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/02 13:59:48 by rvievill          #+#    #+#             */
-/*   Updated: 2018/06/13 17:44:00 by rvievill         ###   ########.fr       */
+/*   Updated: 2018/06/13 18:47:20 by acottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,11 @@ bool				Nibbler::switchLib(Snake &snake, key key)
 		else if (name == 2)
 			openLib("opengl_lib/openGL.so", window->_width, window->_height, window->_squareSize);
 		window->openWindow();
+		if (_hardMode)
+		{
+			window->changeMusic();
+			_gameSpeed = 4;
+		}
 	}
 	return (false);
 }
