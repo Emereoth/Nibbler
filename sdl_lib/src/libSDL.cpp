@@ -6,7 +6,7 @@
 /*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/16 15:53:54 by acottier          #+#    #+#             */
-/*   Updated: 2018/06/13 17:16:34 by acottier         ###   ########.fr       */
+/*   Updated: 2018/06/13 17:24:19 by acottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ bool			Graphics::isOpen(void) const
 key				Graphics::keyPress(void)
 {
 	SDL_Event		currentEvent;
-	key				res = ket::NO;
+	key				res = key::NO;
 	std::map<SDL_Keycode, key>	eventMap =
 	{
 		{SDLK_ESCAPE, key::ESCAPE},
