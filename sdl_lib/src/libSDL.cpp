@@ -6,7 +6,7 @@
 /*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/16 15:53:54 by acottier          #+#    #+#             */
-/*   Updated: 2018/06/13 15:33:45 by acottier         ###   ########.fr       */
+/*   Updated: 2018/06/13 15:58:24 by acottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void			Graphics::setMusic()
 {
 	initAudio();
 	_soundtrack = createAudio(MUSIC_PATH, 1, 64);
-	// playSoundFromMemory(_soundtrack, 64);
+	playSoundFromMemory(_soundtrack, 64);
 }
 
 void			Graphics::changeMusic()
@@ -112,8 +112,8 @@ void			Graphics::draw(Map &map)
 			float			heightPos = spaceAroundY + i / 62 * _squareSize;
 			dst.w = _squareSize;
 			dst.h = _squareSize;
-			dst.x = widthPos;
-			dst.y = heightPos;
+			dst.x = widthPos - 1;
+			dst.y = heightPos - 1;
 			if (SDL_BlitScaled(_surfaceMap[map.map[i]], NULL, SDL_GetWindowSurface(_window), &dst)!= 0)
 			{
 				closeWindow();

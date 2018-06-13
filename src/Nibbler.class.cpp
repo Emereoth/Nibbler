@@ -6,7 +6,7 @@
 /*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/02 13:59:48 by rvievill          #+#    #+#             */
-/*   Updated: 2018/06/13 15:49:46 by acottier         ###   ########.fr       */
+/*   Updated: 2018/06/13 16:17:57 by acottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "../inc/Pathfinder.class.hpp"
 #include "../inc/Time.class.hpp"
 #include <unistd.h>
+#include <time.h>
 #include <fcntl.h>
 #include <dlfcn.h>
 
@@ -28,7 +29,7 @@ Nibbler::Nibbler(const char *pathLib, size_t width, size_t height, float squareS
 		{key::TWO, &Nibbler::switchLib},
 		{key::THREE, &Nibbler::switchLib},
 		{key::ESCAPE, &Nibbler::closeLib}
-	}
+	} , _gameSpeed(13), _hardMode(false)
 {
 	openLib(pathLib, width, height, squareSize);
 }
@@ -54,20 +55,29 @@ void				Nibbler::run(Map &map)
 	Snake			snake(map);
 	Pathfinder		pathfinder(map);
 	key				input;
-	float			gameSpeed = 13;
-	bool			hardMode = false;
+	time_t			lastRespawn;
 
 	window->openWindow();
 	pathfinder.spawnFood(snake);
 	while (window->isOpen())
 	{
+		if (!_hardMode && snake.size == 10)
+		{
+			_hardMode = true;
+			window->changeMusic();
+			_gameSpeed = 7;
+			time(&lastRespawn);
+		}
 		Time::calculDeltaTime();
-		if (snake.eatFood)
+		if (snake.eatFood || (_hardMode && difftime(time(NULL), lastRespawn) > 10))
+		{
+			time(&lastRespawn);
 			pathfinder.spawnFood(snake);
+		}
 		input = window->keyPress();
 		if (!(this->*(manageInput[input]))(snake, input))
 			window->draw(map);
-		Time::sleepAsMuchAsNeeded(gameSpeed);
+		Time::sleepAsMuchAsNeeded(_gameSpeed);
 	}
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Nibbler.class.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/02 13:39:31 by rvievill          #+#    #+#             */
-/*   Updated: 2018/06/12 15:55:21 by rvievill         ###   ########.fr       */
+/*   Updated: 2018/06/13 16:16:52 by acottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ class Nibbler {
 		void					openLib(const char *pathLib, size_t width, size_t height, float squareSize);
 
 		std::map<key, bool (Nibbler::*)(Snake &, key)>		manageInput;
+		float												_gameSpeed;
+		bool												_hardMode;
 
 	public:
 
