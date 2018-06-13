@@ -3,15 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   libOpenGL.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/14 17:26:49 by rvievill          #+#    #+#             */
-/*   Updated: 2018/06/13 18:32:08 by rvievill         ###   ########.fr       */
+/*   Updated: 2018/06/13 18:51:51 by acottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/libOpenGL.hpp"
 #include <iostream>
+
+#define MUSIC_PATH "music/towerfall.wav"
+#define MUSIC_HARDCORE_PATH "music/towerfall_hard.wav"
 
 key						Graphics::keyUse = key::NO;
 
@@ -58,8 +61,17 @@ Graphics::~Graphics(void)
 void				Graphics::setMusic()
 {
 	// initAudio();
-	// _soundtrack = createAudio("music/tetris.wav", 1, 64);
+	// _soundtrack = createAudio(MUSIC_PATH, 1, 64);
 	// playSoundFromMemory(_soundtrack, 64);
+}
+
+void			Graphics::changeMusic()
+{
+	// endAudio();
+	// initAudio();
+	// freeAudio(_soundtrack);
+	// _soundtrack = createAudio(MUSIC_HARDCORE_PATH, 1, 64);
+	// playMusicFromMemory(_soundtrack, 64);
 }
 
 void				Graphics::openWindow(void)

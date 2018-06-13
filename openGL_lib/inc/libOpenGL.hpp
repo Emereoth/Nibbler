@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libOpenGL.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/14 14:34:38 by rvievill          #+#    #+#             */
-/*   Updated: 2018/06/12 18:49:56 by rvievill         ###   ########.fr       */
+/*   Updated: 2018/06/13 18:36:14 by acottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <GLFW/glfw3.h>
 # include <SOIL2.h>
 # include "../../inc/Api.class.hpp"
-// #include "../../inc/audio.hpp"
+# include <audio.hpp>
 # include <map>
 
 typedef struct		s_form
@@ -59,6 +59,7 @@ class Graphics : public AGraphics {
 
 		GLFWwindow					*_window;
 		std::map<sprite, GLuint>	_texture;
+		Audio						*_soundtrack;
 
 
 };
