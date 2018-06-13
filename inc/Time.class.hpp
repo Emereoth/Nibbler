@@ -6,7 +6,7 @@
 /*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/11 17:29:06 by acottier          #+#    #+#             */
-/*   Updated: 2018/06/13 13:58:56 by acottier         ###   ########.fr       */
+/*   Updated: 2018/06/13 15:16:40 by acottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class Time
 	        static void             calculDeltaTime( void );
 	        static float    deltaTime( void );
 	        static float    timeSinceLastUpdate( void );
-	        static void             sleepAsMuchAsNeeded( void );
+	        static void             sleepAsMuchAsNeeded(float gameSpeed);
 	        static float    _deltaTime;
 	private:
 	        Time( void );
