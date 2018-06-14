@@ -4,12 +4,12 @@ DYLIB = -shared -fPIC
 CFLAGS = -Wall -Werror -Wextra -std=c++11
 
 LIB = -L $${HOME}/.brew/lib -lSDL2 -lSDL2_image -lSDL2_mixer
-INCPATH = $${HOME}/.brew/include/SDL2  ../libmusic/inc
+INCPATH = $${HOME}/.brew/include/SDL2 $${HOME}/.brew/include/SDL2_mixer  ../libmusic/inc
 CPATH = src/
 OPATH = obj/
 
-CFILES = 	libSDL.cpp \
-			audio.cpp
+CFILES = 	libSDL.cpp
+
 OFILES = $(CFILES:.cpp=.o)
 HFILES = inc/libSDL.hpp
 
@@ -18,18 +18,14 @@ OBJ = $(addprefix $(OPATH), $(OFILES))
 
 .PHONY: all clean fclean re install uninstall reinstall
 
-all: import $(NAME)
+all: $(NAME)
 
 $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) $(DYLIB) $(LIB) $(OBJ) -o $(NAME) 
-	@rm src/audio.cpp
 
 $(OPATH)%.o: $(CPATH)%.cpp $(HFILES)
 	@mkdir -p $(OPATH)
 	$(CC) $(CFLAGS) $(INC) $< -c -o $@
-
-import:
-	@cp ../libmusic/src/audio.cpp src
 
 clean:
 	rm -rf $(OBJ)
@@ -39,12 +35,12 @@ fclean: clean
 
 re: fclean all
 
-install:
-	brew install sdl2
-	brew install sdl2_image
+# install:
+# 	brew install sdl2
+# 	brew install sdl2_image
 
-uninstall:
-	brew uninstall sdl2_image
-	brew uninstall sdl2
+# uninstall:
+# 	brew uninstall sdl2_image
+# 	brew uninstall sdl2
 
 reinstall: uninstall install

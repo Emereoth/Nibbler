@@ -8,7 +8,6 @@ CPATH = src/
 OPATH = obj/
 INC = $(addprefix -I, $(HPATH))
 CFILES =	libOpenGL.cpp		\
-			audio.cpp
 
 OFILES = $(CFILES:.cpp=.o)
 
@@ -18,11 +17,10 @@ OBJ = $(addprefix $(OPATH), $(OFILES))
 
 .PHONY: all clean fclean re
 
-all: import $(NAME)
+all: $(NAME)
 
 $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) $(DYLIB) $(LIBGRAPH) $(OBJ) GLFW/src/libglfw3.a  SOIL2/libSOIL2.a -o $(NAME)
-	@rm src/audio.cpp
 
 $(OPATH)%.o: $(CPATH)%.cpp $(HFILES)
 	@mkdir -p $(OPATH)
@@ -34,11 +32,7 @@ clean:
 fclean: clean
 	rm -rf $(NAME)
 
-import:
-	@cp ../libmusic/src/audio.cpp src
-
 install:
-	brew install glew
 	wget https://github.com/glfw/glfw/releases/download/3.2.1/glfw-3.2.1.zip
 	tar -xf glfw-3.2.1.zip
 	rm -rf glfw-3.2.1.zip
@@ -46,9 +40,6 @@ install:
 	cd GLFW && cmake . && make
 	git clone https://github.com/alelievr/SOIL2.git
 	cd SOIL2 && make
-
-uninstall:
-	brew uninstall glew
 
 remove:
 	rm -rf GLFW
