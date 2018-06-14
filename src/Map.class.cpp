@@ -6,7 +6,7 @@
 /*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/19 15:19:36 by rvievill          #+#    #+#             */
-/*   Updated: 2018/06/12 16:13:19 by rvievill         ###   ########.fr       */
+/*   Updated: 2018/06/14 16:56:20 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,8 +132,9 @@ void				Map::updateMap(std::array<size_t, 2> &start)
 		{
 			if (_obstacle[i][j] == sprite::WALL)
 			{
-				int truc = (yStart + i) * 62 + xStart + j;
-				map[truc] = sprite::WALL;
+				int posInMap = (yStart + i) * 62 + xStart + j;
+				if (posInMap < 3844)
+					map[posInMap] = sprite::WALL;
 			}
 		}
 	}
