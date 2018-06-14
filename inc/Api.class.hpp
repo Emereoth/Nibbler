@@ -35,8 +35,6 @@ class AGraphics {
 		virtual void			closeWindow(void) = 0;
 		virtual void			changeMusic(void) = 0;
 
-	// protected:
-		
 		size_t					_height;
 		size_t					_width;
 		float					_squareSize;

@@ -6,7 +6,7 @@
 /*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/16 15:53:55 by acottier          #+#    #+#             */
-/*   Updated: 2018/06/12 15:35:30 by rvievill         ###   ########.fr       */
+/*   Updated: 2018/06/14 13:36:55 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@
 #include <map>
 #include <SDL.h>
 #include <SDL_image.h>
-#include <audio.hpp>
+#include <SDL_mixer.h>
+// #include <audio.hpp>
 #include <sstream>
 #include "../../inc/Api.class.hpp"
 
@@ -101,7 +102,7 @@ class Graphics : public AGraphics
 
 		SDL_Window						*_window;
 		std::map<sprite, SDL_Surface *>	_surfaceMap;
-		Audio							*_soundtrack;
+		Mix_Music						*_soundtrack;
 };
 
 extern "C"

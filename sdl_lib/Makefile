@@ -3,7 +3,7 @@ NAME = SDL.so
 DYLIB = -shared -fPIC
 CFLAGS = -Wall -Werror -Wextra -std=c++11
 
-LIB = -L $${HOME}/.brew/lib -lSDL2 -lSDL2_image
+LIB = -L $${HOME}/.brew/lib -lSDL2 -lSDL2_image -lSDL2_mixer
 INCPATH = $${HOME}/.brew/include/SDL2  ../libmusic/inc
 CPATH = src/
 OPATH = obj/

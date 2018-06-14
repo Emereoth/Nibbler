@@ -3,7 +3,7 @@
 
 Graphics::Graphics(size_t width, size_t height, float squareSize)
 {
-	name = libName::SFML;
+	name = SFML;
 	_height = height;
 	_width = width;
 	_squareSize = squareSize;

@@ -2,7 +2,7 @@ CC = clang++
 NAME = openGL.so
 HPATH = inc/ GLFW/include $$HOME/.brew/include SOIL2/incs ../libmusic/inc/ $${HOME}/.brew/include/SDL2
 DYLIB = -shared -fPIC
-LIBGRAPH = -framework openGL -framework Cocoa -framework IOKit -framework CoreVideo -L ~/.brew/lib/ -lGLEW -lSDL2
+LIBGRAPH = -framework openGL -framework Cocoa -framework IOKit -framework CoreVideo -L ~/.brew/lib/ -lGLEW -lSDL2 -lSDL2_mixer
 CFLAGS = -Wall -Werror -Wextra -std=c++11
 CPATH = src/
 OPATH = obj/
@@ -46,6 +46,9 @@ install:
 	cd GLFW && cmake . && make
 	git clone https://github.com/alelievr/SOIL2.git
 	cd SOIL2 && make
+
+uninstall:
+	brew uninstall glew
 
 remove:
 	rm -rf GLFW

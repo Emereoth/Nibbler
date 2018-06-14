@@ -6,7 +6,7 @@
 /*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/14 14:34:38 by rvievill          #+#    #+#             */
-/*   Updated: 2018/06/13 19:19:31 by rvievill         ###   ########.fr       */
+/*   Updated: 2018/06/14 13:18:41 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,10 @@
 # include <GLFW/glfw3.h>
 # include <SOIL2.h>
 # include "../../inc/Api.class.hpp"
-# include <audio.hpp>
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_mixer.h>
 # include <map>
+# include <stdexcept>
 
 #define MUSIC_PATH "music/ff7.wav"
 #define MUSIC_HARDCORE_PATH "music/sephiroth.wav"
@@ -62,7 +64,8 @@ class Graphics : public AGraphics {
 
 		GLFWwindow					*_window;
 		std::map<sprite, GLuint>	_texture;
-		Audio						*_soundtrack;
+		// Audio						*_soundtrack;
+		Mix_Music 					*_music;
 
 
 };

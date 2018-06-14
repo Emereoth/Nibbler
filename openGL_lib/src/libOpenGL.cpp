@@ -6,7 +6,7 @@
 /*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/14 17:26:49 by rvievill          #+#    #+#             */
-/*   Updated: 2018/06/13 19:22:12 by rvievill         ###   ########.fr       */
+/*   Updated: 2018/06/14 13:38:32 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,24 +52,25 @@ Graphics::Graphics(size_t width, size_t height, float squareSize)
 
 Graphics::~Graphics(void)
 {
+	Mix_FreeMusic(_music);
+	Mix_CloseAudio();
 	return ;
 }
 
 void				Graphics::setMusic()
 {
 	SDL_Init(SDL_INIT_AUDIO);
-	initAudio();
-	_soundtrack = createAudio(MUSIC_PATH, 1, 64);
-	playSoundFromMemory(_soundtrack, 64);
+	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 1024)== -1)
+		throw std::runtime_error("Mix audio failed !");
+	_music = Mix_LoadMUS(MUSIC_PATH);
+	Mix_PlayMusic(_music, -1);
 }
 
 void			Graphics::changeMusic()
 {
-	endAudio();
-	initAudio();
-	freeAudio(_soundtrack);
-	_soundtrack = createAudio(MUSIC_HARDCORE_PATH, 1, 64);
-	playMusicFromMemory(_soundtrack, 64);
+	Mix_FreeMusic(_music);
+	_music = Mix_LoadMUS(MUSIC_HARDCORE_PATH);
+	Mix_PlayMusic(_music, -1);
 }
 
 void				Graphics::openWindow(void)
@@ -151,6 +152,7 @@ void				Graphics::draw(Map &map)
 
 void				Graphics::closeWindow(void)
 {
+	Mix_CloseAudio();
 	glfwTerminate();
 	_window = NULL;
 }

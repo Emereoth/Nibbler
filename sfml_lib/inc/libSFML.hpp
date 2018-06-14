@@ -38,9 +38,6 @@ class Graphics : public AGraphics {
 		void				closeWindow(void) override;
 		void				changeMusic(void) override;
 
-		libName				name;
-
-
 };
 
 extern "C" {

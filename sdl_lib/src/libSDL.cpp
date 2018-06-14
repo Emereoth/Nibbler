@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libSDL.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/16 15:53:54 by acottier          #+#    #+#             */
-/*   Updated: 2018/06/13 18:54:49 by acottier         ###   ########.fr       */
+/*   Updated: 2018/06/14 13:39:01 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,18 +53,25 @@ void			Graphics::openWindow()
 
 void			Graphics::setMusic()
 {
-	initAudio();
-	_soundtrack = createAudio(MUSIC_PATH, 1, 64);
-	playSoundFromMemory(_soundtrack, 64);
+	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 1024)== -1)
+		throw std::runtime_error("Mix audio failed !");
+	_soundtrack = Mix_LoadMUS(MUSIC_PATH);
+	Mix_PlayMusic(_soundtrack, -1);
+	// initAudio();
+	// _soundtrack = createAudio(MUSIC_PATH, 1, 64);
+	// playSoundFromMemory(_soundtrack, 64);
 }
 
 void			Graphics::changeMusic()
 {
-	endAudio();
-	initAudio();
-	freeAudio(_soundtrack);
-	_soundtrack = createAudio(MUSIC_HARDCORE_PATH, 1, 64);
-	playMusicFromMemory(_soundtrack, 64);
+	Mix_FreeMusic(_soundtrack);
+	_soundtrack = Mix_LoadMUS(MUSIC_HARDCORE_PATH);
+	Mix_PlayMusic(_soundtrack, -1);
+	// endAudio();
+	// initAudio();
+	// freeAudio(_soundtrack);
+	// _soundtrack = createAudio(MUSIC_HARDCORE_PATH, 1, 64);
+	// playMusicFromMemory(_soundtrack, 64);
 }
 
 bool			Graphics::isOpen(void) const
@@ -157,8 +164,10 @@ Graphics::Graphics(size_t width, size_t height, float squareSize)
 
 void		Graphics::closeWindow(void)
 {
-	freeAudio(_soundtrack);
-	endAudio();
+	// freeAudio(_soundtrack);
+	// endAudio();
+	Mix_FreeMusic(_soundtrack);
+	Mix_CloseAudio();
 	SDL_DestroyWindow(_window);
 	_window = NULL;
 	for (std::map<sprite, SDL_Surface *>::iterator ii = _surfaceMap.begin() ; ii != _surfaceMap.end() ; ii++)
