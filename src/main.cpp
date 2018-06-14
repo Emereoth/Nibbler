@@ -114,6 +114,10 @@ namespace {
 					width = std::stoi(size);
 					getline(stream, size, 'x');
 					height = std::stoi(size);
+					if (width > 1980)
+						width = 1980;
+					if (height > 1080)
+						height = 1080;
 					if ((squareSize = (width > height ? height / 62.0f : width / 62.0f)) < 10)
 						throw Error::WindowTooSmall();
 				}
@@ -136,6 +140,7 @@ namespace {
 
 	std::string			Opt::getPathLib(std::string const &opt)
 	{
+		std::cout << opt << std::endl;
 		if (!opt.compare("opengl"))
 			return (std::string("openGL_lib/opengl.so"));
 		else if (!opt.compare("sfml"))
