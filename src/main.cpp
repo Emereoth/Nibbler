@@ -9,6 +9,7 @@
 #include <fcntl.h>
 #include <dlfcn.h>
 #include <unistd.h>
+#include <cstdlib>
 
 namespace {
 
@@ -140,12 +141,14 @@ namespace {
 
 	std::string			Opt::getPathLib(std::string const &opt)
 	{
+		std::string		home(std::getenv("HOME"));
+
 		if (!opt.compare("opengl"))
-			return (std::string("openGL_lib/opengl.so"));
+			return (home + std::string("/nibbler/openGL_lib/opengl.so"));
 		else if (!opt.compare("sfml"))
-			return (std::string("sfml_lib/sfml.so"));
+			return (home + std::string("/nibbler/sfml_lib/sfml.so"));
 		else if (!opt.compare("sdl"))
-			return (std::string("sdl_lib/SDL.so"));
+			return (home + std::string("/nibbler/sdl_lib/SDL.so"));
 		throw Error::optNotFound();
 	}
 
