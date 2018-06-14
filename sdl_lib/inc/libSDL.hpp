@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libSDL.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/16 15:53:55 by acottier          #+#    #+#             */
-/*   Updated: 2018/06/14 16:35:00 by acottier         ###   ########.fr       */
+/*   Updated: 2018/06/14 17:06:58 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ class Graphics : public AGraphics
 			virtual const char *what() const throw()
 			{
 				std::ostringstream	stream;
-				stream << "SDL couldn't create window " << SDL_GetError();
+				stream << "SDL couldn't create window.";
 				return (stream.str().c_str());
 			}
 		};

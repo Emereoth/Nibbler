@@ -6,7 +6,7 @@
 /*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/14 17:26:49 by rvievill          #+#    #+#             */
-/*   Updated: 2018/06/14 16:05:05 by rvievill         ###   ########.fr       */
+/*   Updated: 2018/06/14 16:49:50 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,17 +76,13 @@ void			Graphics::changeMusic()
 void				Graphics::openWindow(void)
 {
 	if (!glfwInit())
-	{
-	    std::cerr << "Failed to initialize GLEW\n" << std::endl;
-		return ;
-	}
+		throw std::runtime_error("Failed to initialize GLEW");
 	glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 	_window = glfwCreateWindow(_width, _height, "Nibbler (OpenGL)", NULL, NULL);
 	if (_window == NULL)
 	{
-    	std::cerr << "Failed to open GLFW _window." << std::endl;
+		throw std::runtime_error("OpenGL failed to open window.");
     	glfwTerminate();
-		return ;
 	}
 	glfwMakeContextCurrent(_window);
 	glfwSetKeyCallback(_window, keyCallback);

@@ -6,7 +6,7 @@
 /*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/14 14:34:38 by rvievill          #+#    #+#             */
-/*   Updated: 2018/06/14 13:18:41 by rvievill         ###   ########.fr       */
+/*   Updated: 2018/06/14 16:46:41 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ class Graphics : public AGraphics {
 
 		GLFWwindow					*_window;
 		std::map<sprite, GLuint>	_texture;
-		// Audio						*_soundtrack;
 		Mix_Music 					*_music;
 
 

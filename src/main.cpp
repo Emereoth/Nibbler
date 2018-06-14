@@ -140,7 +140,6 @@ namespace {
 
 	std::string			Opt::getPathLib(std::string const &opt)
 	{
-		std::cout << opt << std::endl;
 		if (!opt.compare("opengl"))
 			return (std::string("openGL_lib/opengl.so"));
 		else if (!opt.compare("sfml"))
@@ -167,7 +166,6 @@ int main(int ac, char **av)
 		Map						map;
 		unsigned int			seed;
 
-		std::cout << opt.lib << std::endl;
 		read(open("/dev/urandom", O_RDONLY), &seed, sizeof(seed));
 		srand(seed);
 		nibbler.run(map);

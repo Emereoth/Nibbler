@@ -34,13 +34,3 @@ fclean: clean
 	rm -rf $(NAME)
 
 re: fclean all
-
-# install:
-# 	brew install sdl2
-# 	brew install sdl2_image
-
-# uninstall:
-# 	brew uninstall sdl2_image
-# 	brew uninstall sdl2
-
-reinstall: uninstall install
