@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libSDL.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/16 15:53:54 by acottier          #+#    #+#             */
-/*   Updated: 2018/06/14 13:39:01 by rvievill         ###   ########.fr       */
+/*   Updated: 2018/06/14 16:35:34 by acottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,12 @@
 void			Graphics::openWindow()
 {
 	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) < 0 || ! ( IMG_Init(IMG_INIT_PNG) & IMG_INIT_PNG) )
-	{
-		closeWindow();
 		throw SDL_InitFail();
-	}
 	if ( !(IMG_Init(IMG_INIT_PNG) & IMG_INIT_PNG) )
-	{
-		closeWindow();
 		throw IMG_InitFail();
-	}
 	_window = SDL_CreateWindow("Nibbler (SDL)", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, _width, _height, SDL_WINDOW_MOUSE_FOCUS);
+	if (!_window)
+		throw SDL_WindowFail();
 	_surfaceMap = 
 	{
 		{ sprite::HEAD_UP , loadSurface("texture/headUp.png", _window) } ,

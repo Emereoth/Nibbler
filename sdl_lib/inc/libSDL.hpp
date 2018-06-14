@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libSDL.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/16 15:53:55 by acottier          #+#    #+#             */
-/*   Updated: 2018/06/14 14:29:37 by rvievill         ###   ########.fr       */
+/*   Updated: 2018/06/14 16:35:00 by acottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,17 @@ class Graphics : public AGraphics
 		void		closeWindow(void) override;
 		void		changeMusic(void) override;
 		
+		class SDL_WindowFail : public std::exception
+		{
+			public:
+			virtual const char *what() const throw()
+			{
+				std::ostringstream	stream;
+				stream << "SDL couldn't create window " << SDL_GetError();
+				return (stream.str().c_str());
+			}
+		};
+
 		class SDL_InitFail : public std::exception
 		{
 			public:
