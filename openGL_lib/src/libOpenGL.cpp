@@ -6,7 +6,7 @@
 /*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/14 17:26:49 by rvievill          #+#    #+#             */
-/*   Updated: 2018/06/14 13:38:32 by rvievill         ###   ########.fr       */
+/*   Updated: 2018/06/14 15:48:29 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,7 @@ void				Graphics::draw(Map &map)
 
 	glClear(GL_COLOR_BUFFER_BIT);
 	infoForm.sizeY = 2.0f / 62.0f;
-	infoForm.sizeX = _squareSize / (_width / 2);
+	infoForm.sizeX = _squareSize / (_width > _height ? _width : _height / 2);
 	infoForm.posX = -(infoForm.sizeX * 31);
 	infoForm.posY = 1;
 	for (size_t i = 0; i < 62 * 62; i++)
