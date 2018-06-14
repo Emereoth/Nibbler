@@ -4,7 +4,7 @@ HPATH = inc/
 SFML = sfml_lib
 SDL = sdl_lib
 OPENGL = openGL_lib
-LINK_DYLIB = -Wl,-rpath $(SFML)/SFML/lib
+LINK_DYLIB = -Wl,-rpath $${HOME}/nibbler/$(SFML)/SFML/lib
 CFLAGS = -Wall -Werror -Wextra -std=c++11 -fsanitize=address
 CPATH = src/
 OPATH = obj/

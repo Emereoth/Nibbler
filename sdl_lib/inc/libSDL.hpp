@@ -6,7 +6,7 @@
 /*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/16 15:53:55 by acottier          #+#    #+#             */
-/*   Updated: 2018/06/14 17:06:58 by rvievill         ###   ########.fr       */
+/*   Updated: 2018/06/14 19:15:54 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include <SDL_mixer.h>
-// #include <audio.hpp>
 #include <sstream>
 #include "../../inc/Api.class.hpp"
 
@@ -35,6 +34,8 @@ class Graphics : public AGraphics
 		void		draw(Map &map) override;
 		void		closeWindow(void) override;
 		void		changeMusic(void) override;
+		std::string	getPathNibbler() override;
+
 		
 		class SDL_WindowFail : public std::exception
 		{
@@ -114,6 +115,7 @@ class Graphics : public AGraphics
 		SDL_Window						*_window;
 		std::map<sprite, SDL_Surface *>	_surfaceMap;
 		Mix_Music						*_soundtrack;
+		std::string						_pathNibbler;
 };
 
 extern "C"

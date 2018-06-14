@@ -6,7 +6,7 @@
 /*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/14 17:26:49 by rvievill          #+#    #+#             */
-/*   Updated: 2018/06/14 16:49:50 by rvievill         ###   ########.fr       */
+/*   Updated: 2018/06/14 19:13:05 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ Graphics::Graphics(size_t width, size_t height, float squareSize)
 	_width = width;
 	_height = height;
 	_squareSize = squareSize;
+	_pathNibbler = getPathNibbler();
 }
 
 Graphics::~Graphics(void)
@@ -57,19 +58,32 @@ Graphics::~Graphics(void)
 	return ;
 }
 
+std::string				Graphics::getPathNibbler()
+{
+	std::string		pathApp(getwd(NULL));
+	int				size = pathApp.find("nibbler") + 7;
+
+	return (pathApp.substr(0, size) + "/");
+}
+
+
 void				Graphics::setMusic()
 {
+	std::string		music = _pathNibbler + MUSIC_PATH;
+
 	SDL_Init(SDL_INIT_AUDIO);
 	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 1024)== -1)
 		throw std::runtime_error("Mix audio failed !");
-	_music = Mix_LoadMUS(MUSIC_PATH);
+	_music = Mix_LoadMUS(music.c_str());
 	Mix_PlayMusic(_music, -1);
 }
 
 void			Graphics::changeMusic()
 {
+	std::string		music = _pathNibbler + MUSIC_HARDCORE_PATH;
+	
 	Mix_FreeMusic(_music);
-	_music = Mix_LoadMUS(MUSIC_HARDCORE_PATH);
+	_music = Mix_LoadMUS(music.c_str());
 	Mix_PlayMusic(_music, -1);
 }
 
@@ -156,14 +170,16 @@ void				Graphics::closeWindow(void)
 GLuint				Graphics::loadTexture(const char *texturePath)
 {
 	GLuint			tex;
-	
+	std::string		path = _pathNibbler + texturePath;
+
+	std::cout << path << std::endl;
     glGenTextures(1, &tex); 
 	glBindTexture(GL_TEXTURE_2D, tex);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR); //Les textures proche sont lissées
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	tex = SOIL_load_OGL_texture // load an image file directly as a new OpenGL texture 
 	(
-		texturePath,
+		path.c_str(),
 		SOIL_LOAD_AUTO,
 		SOIL_CREATE_NEW_ID,
 		SOIL_FLAG_MIPMAPS | SOIL_FLAG_INVERT_Y | SOIL_FLAG_NTSC_SAFE_RGB | SOIL_FLAG_COMPRESS_TO_DXT

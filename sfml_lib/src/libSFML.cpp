@@ -7,22 +7,23 @@ Graphics::Graphics(size_t width, size_t height, float squareSize)
 	_height = height;
 	_width = width;
 	_squareSize = squareSize;
-	loadTexture(sprite::HEAD_UP, "./texture/headUp.png");
-	loadTexture(sprite::HEAD_DOWN, "./texture/headDown.png");
-	loadTexture(sprite::HEAD_LEFT, "./texture/headLeft.png");
-	loadTexture(sprite::HEAD_RIGHT, "./texture/headRight.png");
-	loadTexture(sprite::BODY_H, "./texture/bodyH.png");
-	loadTexture(sprite::BODY_V, "./texture/bodyV.png");
-	loadTexture(sprite::TAIL_UP, "./texture/tailUp.png");
-	loadTexture(sprite::TAIL_DOWN, "./texture/tailDown.png");
-	loadTexture(sprite::TAIL_LEFT, "./texture/tailLeft.png");
-	loadTexture(sprite::TAIL_RIGHT, "./texture/tailRight.png");
-	loadTexture(sprite::BODY_UP_LEFT, "./texture/bodyUpLeft.png");
-	loadTexture(sprite::BODY_UP_RIGHT, "./texture/bodyUpRight.png");
-	loadTexture(sprite::BODY_DOWN_LEFT, "./texture/bodyDownLeft.png");
-	loadTexture(sprite::BODY_DOWN_RIGHT, "./texture/bodyDownRight.png");
-	loadTexture(sprite::WALL, "./texture/wall.png");
-	loadTexture(sprite::FOOD, "./texture/apple.png");
+	_pathNibbler = getPathNibbler();
+	loadTexture(sprite::HEAD_UP, "texture/headUp.png");
+	loadTexture(sprite::HEAD_DOWN, "texture/headDown.png");
+	loadTexture(sprite::HEAD_LEFT, "texture/headLeft.png");
+	loadTexture(sprite::HEAD_RIGHT, "texture/headRight.png");
+	loadTexture(sprite::BODY_H, "texture/bodyH.png");
+	loadTexture(sprite::BODY_V, "texture/bodyV.png");
+	loadTexture(sprite::TAIL_UP, "texture/tailUp.png");
+	loadTexture(sprite::TAIL_DOWN, "texture/tailDown.png");
+	loadTexture(sprite::TAIL_LEFT, "texture/tailLeft.png");
+	loadTexture(sprite::TAIL_RIGHT, "texture/tailRight.png");
+	loadTexture(sprite::BODY_UP_LEFT, "texture/bodyUpLeft.png");
+	loadTexture(sprite::BODY_UP_RIGHT, "texture/bodyUpRight.png");
+	loadTexture(sprite::BODY_DOWN_LEFT, "texture/bodyDownLeft.png");
+	loadTexture(sprite::BODY_DOWN_RIGHT, "texture/bodyDownRight.png");
+	loadTexture(sprite::WALL, "texture/wall.png");
+	loadTexture(sprite::FOOD, "texture/apple.png");
 	_eventMap[sf::Keyboard::Escape] = key::ESCAPE;
 	_eventMap[sf::Keyboard::Up] = key::UP;
 	_eventMap[sf::Keyboard::Left] = key::LEFT;
@@ -32,11 +33,18 @@ Graphics::Graphics(size_t width, size_t height, float squareSize)
 	_eventMap[sf::Keyboard::Num1] = key::ONE;
 	_eventMap[sf::Keyboard::Num2] = key::TWO;
 	_eventMap[sf::Keyboard::Num3] = key::THREE;
-	_music.openFromFile("music/tetris.wav");
 }
 
 Graphics::~Graphics(void)
 {
+}
+
+std::string				Graphics::getPathNibbler()
+{
+	std::string		pathApp(getwd(NULL));
+	int				size = pathApp.find("nibbler") + 7;
+
+	return (pathApp.substr(0, size) + "/");
 }
 
 void				Graphics::openWindow(void)
@@ -70,8 +78,10 @@ key					Graphics::keyPress(void)
 
 void				Graphics::loadTexture(sprite sprite, const char *texturePath)
 {
+	std::string		tex(_pathNibbler + texturePath);
+
 	_texture.setSmooth(true);
-	_texture.loadFromFile(texturePath);
+	_texture.loadFromFile(tex.c_str());
 	_textureList[sprite] = _texture;
 }
 
@@ -120,13 +130,18 @@ void				Graphics::draw(Map &map)
 
 void				Graphics::runSound(void)
 {
+	std::string		music = _pathNibbler + MUSIC_PATH;
+	
+	_music.openFromFile(music.c_str());
 	_music.setLoop(true);
 	_music.play();
 }
 
 void				Graphics::changeMusic(void)
 {
-	_music.openFromFile("music/tetris_hard.wav");
+	std::string		music = _pathNibbler + MUSIC_HARDCORE_PATH;	
+
+	_music.openFromFile(music.c_str());
 	runSound();
 }
 
