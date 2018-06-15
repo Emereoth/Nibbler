@@ -81,7 +81,8 @@ void				Graphics::loadTexture(sprite sprite, const char *texturePath)
 	std::string		tex(_pathNibbler + texturePath);
 
 	_texture.setSmooth(true);
-	_texture.loadFromFile(tex.c_str());
+	// _texture.loadFromFile(tex.c_str());
+	_texture.loadFromFile(texturePath);
 	_textureList[sprite] = _texture;
 }
 

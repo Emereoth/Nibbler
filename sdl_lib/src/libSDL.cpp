@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libSDL.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/16 15:53:54 by acottier          #+#    #+#             */
-/*   Updated: 2018/06/15 12:51:55 by acottier         ###   ########.fr       */
+/*   Updated: 2018/06/15 13:00:29 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,7 +140,8 @@ SDL_Surface		*Graphics::loadSurface(const char *texturePath, SDL_Window * win)
 {
 	std::string	tex = _pathNibbler + texturePath;
 	SDL_Surface	*finalSurface = NULL;
-	SDL_Surface	*img_load = IMG_Load(tex.c_str());
+	// SDL_Surface	*img_load = IMG_Load(tex.c_str());
+	SDL_Surface	*img_load = IMG_Load(texturePath);
 
 
 	if (img_load == NULL)
