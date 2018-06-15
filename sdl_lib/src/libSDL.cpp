@@ -6,7 +6,7 @@
 /*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/16 15:53:54 by acottier          #+#    #+#             */
-/*   Updated: 2018/06/15 13:00:29 by rvievill         ###   ########.fr       */
+/*   Updated: 2018/06/15 13:10:09 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void			Graphics::setMusic()
 
 	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 1024)== -1)
 		throw std::runtime_error("Mix audio failed !");
-	_soundtrack = Mix_LoadMUS(music.c_str());
+	_soundtrack = Mix_LoadMUS(MUSIC_PATH);
 	Mix_PlayMusic(_soundtrack, -1);
 }
 
@@ -72,7 +72,7 @@ void			Graphics::changeMusic()
 	std::string		music = _pathNibbler + MUSIC_HARDCORE_PATH;
 
 	Mix_FreeMusic(_soundtrack);
-	_soundtrack = Mix_LoadMUS(music.c_str());
+	_soundtrack = Mix_LoadMUS(MUSIC_HARDCORE_PATH);
 	Mix_PlayMusic(_soundtrack, -1);
 }
 

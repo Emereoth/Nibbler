@@ -133,7 +133,7 @@ void				Graphics::runSound(void)
 {
 	std::string		music = _pathNibbler + MUSIC_PATH;
 	
-	_music.openFromFile(music.c_str());
+	_music.openFromFile(MUSIC_PATH);
 	_music.setLoop(true);
 	_music.play();
 }
@@ -142,7 +142,7 @@ void				Graphics::changeMusic(void)
 {
 	std::string		music = _pathNibbler + MUSIC_HARDCORE_PATH;	
 
-	_music.openFromFile(music.c_str());
+	_music.openFromFile(MUSIC_HARDCORE_PATH);
 	runSound();
 }
 
