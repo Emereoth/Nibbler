@@ -7,7 +7,7 @@ OPENGL = openGL_lib
 LINK_DYLIB = -Wl,-rpath $(SFML)/SFML/lib
 CFLAGS = -Wall -Werror -Wextra -std=c++11
 LINK_DYLIB = -Wl,-rpath $${HOME}/nibbler/$(SFML)/SFML/lib
-CFLAGS = -Wall -Werror -Wextra -std=c++11 -fsanitize=address
+CFLAGS = -Wall -Werror -Wextra -std=c++11
 CPATH = src/
 OPATH = obj/
 INC = $(addprefix -I, $(HPATH))
