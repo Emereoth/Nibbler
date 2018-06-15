@@ -53,12 +53,11 @@ install:
 	./install.sh
 	make -C sfml_lib install
 	make -C openGL_lib install
-	cd sdl_lib && make install
+	cd sdl_lib
 
 remove:
 	make -C openGL_lib remove
 	make -C sfml_lib remove
-	make -C sdl_lib uninstall
 	./uninstall.sh
 
 re: fclean all

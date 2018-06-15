@@ -6,7 +6,7 @@
 /*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 14:21:18 by acottier          #+#    #+#             */
-/*   Updated: 2018/06/15 12:03:33 by acottier         ###   ########.fr       */
+/*   Updated: 2018/06/15 12:11:46 by acottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,23 +52,21 @@ void                Pathfinder::run(int start)
 {
     _map.map[start] = sprite::FOOD;
     calculatePath(start, &_firstPath);
-    std::cout << "Path ONE done" << std::endl;
-    // std::cin.ignore();
+    // std::cout << "Path ONE done" << std::endl;
     if (_firstPath.size() == 0)
     {
-        _map.map[start] = sprite::PT_CROSS;
+        // _map.map[start] = sprite::PT_CROSS;
         return ;
     }
     calculatePath(start, &_secondPath);
-    // std::cin.ignore();
-    std::cout << "Path TWO done" << std::endl;
+    // std::cout << "Path TWO done" << std::endl;
     if (_secondPath.size() == 0)
     {
-        _map.map[start] = sprite::PT_CROSS;
+        // _map.map[start] = sprite::PT_CROSS;
         return ;
     };
         
-    std::cout << "Two valid paths found, authorizing spawn" << std::endl;
+    // std::cout << "Two valid paths found, authorizing spawn" << std::endl;
     isReachable = true;
     _firstPath.clear();
     _secondPath.clear();
@@ -93,16 +91,16 @@ void                Pathfinder::calculatePath(int start, std::deque<int> *path)
         _map.map[upTarget] = sprite::PT_CIRCLE_GREEN;
     if (downTarget != -1 && checkTarget(downTarget))
         _map.map[downTarget] = sprite::PT_CIRCLE_GREEN;
-    window->draw(_map);
-    std::cout << "rightTarget : " << rightTarget << std::endl << "leftTarget : " << leftTarget <<
-        std::endl << "downTarget : " << downTarget << std::endl << "upTarget : " << upTarget << std::endl;
-    usleep(800000);
+    // window->draw(_map);
+    // std::cout << "rightTarget : " << rightTarget << std::endl << "leftTarget : " << leftTarget <<
+        // std::endl << "downTarget : " << downTarget << std::endl << "upTarget : " << upTarget << std::endl;
+    // usleep(800000);
     if (nextStep(start + 1, path, 0, -1, rightTarget) || nextStep(start - 1, path, 0, -1, leftTarget)
         || nextStep(start + 62, path, 0, downTarget, -1) || nextStep(start - 62, path, 0, upTarget, -1))
         return ;
-    std::cout << "no path available" << std::endl;
-    for (size_t i = 0 ; i < (*path).size() ; i++)
-        _map.map[(*path)[i]] = sprite::PT_CIRCLE;
+    // std::cout << "no path available" << std::endl;
+    // for (size_t i = 0 ; i < (*path).size() ; i++)
+        // _map.map[(*path)[i]] = sprite::PT_CIRCLE;
     (*path).clear();
 }
 
@@ -126,7 +124,6 @@ bool                Pathfinder::nextStep(int coordinate, std::deque<int> *path, 
     // int                 startX = _start / 62;
     // int                 startY = _start % 62;
     bool                validPath = false;
-    std::vector<int>    deadEnds;
 
     std::cout << std::endl << std::endl << std::endl;
     // std::cout << "testing #" << coordinate << "(" << x << ", " << y << ")" << std::endl;
@@ -137,26 +134,26 @@ bool                Pathfinder::nextStep(int coordinate, std::deque<int> *path, 
         return (false);
     }
     if (coordinate < 0 || coordinate >= 62 * 62 ||
-        (_map.map[coordinate] != sprite::SOIL && _map.map[coordinate] != sprite::PT_CIRCLE_GREEN)
+        (_map.map[coordinate] != sprite::SOIL/* && _map.map[coordinate] != sprite::PT_CIRCLE_GREEN*/)
         || coordinate == _start || !checkAvailability(coordinate) )
     {
-        std::cout << "pixel #" << coordinate << " availability check: failed" << std::endl;
+        // std::cout << "pixel #" << coordinate << " availability check: failed" << std::endl;
         return (false);
     }
-    std::cout << "availability OK" << std::endl;
+    // std::cout << "availability OK" << std::endl;
     if ((x == xTarget / 62 || y == yTarget  % 62) && pathSize > _snakeSize)
     // if ( (x > startX + _sizeThreshold || x < startX - _sizeThreshold || y >= startY + _sizeThreshold || y <= startY - _sizeThreshold) 
     //     && pathSize > _snakeSize)
     {
-        std::cout << "path threshold reached, backtracking and adding pixels" << std::endl;
+        // std::cout << "path threshold reached, backtracking and adding pixels" << std::endl;
         (*path).push_front(coordinate);
         return (true);
     }
 
-    std::cout << "#" << coordinate << " added to current path" << std::endl;
+    // std::cout << "#" << coordinate << " added to current path" << std::endl;
     (*path).push_front(coordinate);
-    _map.map[coordinate] = sprite::PT_CIRCLE_GREEN;
-    window->draw(_map);
+    // _map.map[coordinate] = sprite::PT_CIRCLE_GREEN;
+    // window->draw(_map);
 
     std::map<int, int>              steps = createStepMap(coordinate, xTarget, yTarget);
     std::map<int, int>::iterator    ii = steps.begin();
@@ -164,7 +161,7 @@ bool                Pathfinder::nextStep(int coordinate, std::deque<int> *path, 
     while (!validPath && ii != steps.end())
     {
         usleep(500000);
-        std::cout << "exploring next best step of score " << (*ii).first << "(#" << (*ii).second << ")" << std::endl;
+        // std::cout << "exploring next best step of score " << (*ii).first << "(#" << (*ii).second << ")" << std::endl;
         validPath = nextStep((*ii).second, path, pathSize + 1, xTarget, yTarget);
         ii++;
     }
@@ -180,9 +177,9 @@ bool                Pathfinder::nextStep(int coordinate, std::deque<int> *path, 
     //     validPath = nextStep(coordinate - 62, path, pathSize + 1, target);
     // if (validPath)
     //     return (true);
-    std::cout << "all possiblities failed, removing pixel #" << coordinate << " from path" << std::endl;
+    // std::cout << "all possiblities failed, removing pixel #" << coordinate << " from path" << std::endl;
     (*path).pop_front();
-    _map.map[coordinate] = sprite::PT_CIRCLE;
+    // _map.map[coordinate] = sprite::PT_CIRCLE;
     return (false);
 }
 
