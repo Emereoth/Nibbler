@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Nibbler.class.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/02 13:59:48 by rvievill          #+#    #+#             */
-/*   Updated: 2018/06/15 13:24:37 by rvievill         ###   ########.fr       */
+/*   Updated: 2018/06/15 13:26:43 by acottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,12 @@ void				Nibbler::openLib(const char *pathLib, size_t width, size_t height, float
 void				Nibbler::run(Map &map)
 {
 	Snake			snake(map);
-	Pathfinder		pathfinder(map);
+	Pathfinder		pathfinder(window, map, _debug);
 	key				input;
 	time_t			lastRespawn;
 
 	window->openWindow();
-	pathfinder.spawnFood(snake);
+	// pathfinder.spawnFood(snake);
 	while (window->isOpen())
 	{
 		if (!_hardMode && snake.size == 10)
@@ -73,7 +73,7 @@ void				Nibbler::run(Map &map)
 			time(&lastRespawn);
 		}
 		Time::calculDeltaTime();
-		if (snake.eatFood || (_hardMode && difftime(time(NULL), lastRespawn) > 10))
+		if (snake.eatFood || (_hardMode && difftime(time(NULL), lastRespawn) > 10) || pathfinder.food == -1)
 		{
 			time(&lastRespawn);
 			pathfinder.spawnFood(snake);

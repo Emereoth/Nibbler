@@ -5,6 +5,14 @@
 		"__tree": "cpp",
 		"map": "cpp",
 		"__locale": "cpp",
-		"bitset": "cpp"
+		"bitset": "cpp",
+		"__config": "cpp",
+		"__nullptr": "cpp",
+		"exception": "cpp",
+		"initializer_list": "cpp",
+		"new": "cpp",
+		"stdexcept": "cpp",
+		"typeinfo": "cpp",
+		"algorithm": "cpp"
 	}
 }

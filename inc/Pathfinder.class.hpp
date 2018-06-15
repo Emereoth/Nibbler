@@ -6,7 +6,7 @@
 /*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 14:17:00 by acottier          #+#    #+#             */
-/*   Updated: 2018/06/15 12:15:49 by acottier         ###   ########.fr       */
+/*   Updated: 2018/06/15 15:32:58 by acottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,26 @@
 #include "Snake.class.hpp"
 #include <deque>
 
+enum targets
+{
+    DIR_RIGHT,
+    DIR_LEFT,
+    DIR_DOWN,
+    DIR_UP
+};
+
 class Pathfinder
 {
     public:
 
-        Pathfinder(/*AGraphics *window, */Map &map);
+        Pathfinder(AGraphics *window, Map &map, bool debug);
         ~Pathfinder();
 
         void                 spawnFood(Snake &snake);
 
-        bool                 isReachable;
+        bool                isReachable;
+        int                 food;
+        bool                debug;    
 
     private:
 
@@ -34,16 +44,17 @@ class Pathfinder
         Pathfinder          &operator=(Pathfinder & rhs) = default;
 
         void                run(int start);
+        void                clearPathDebug(std::deque<int> &path) const;
+        void                createTargetArray(std::array<int, 4> &targets) const;
         void                calculatePath(int start, std::deque<int> *path);
         bool                checkTarget(int target) const;
-        bool                nextStep(int coordinate, std::deque<int> *path, int pathSize, int xTarget, int yTarget) const;
-        std::map<int, int>  createStepMap(int coordinate, int xTarget, int yTarget) const;
-        int                 getStepValue(int coordinate, int xTarget, int yTarget) const;
+        bool                nextStep(int coordinate, std::deque<int> *path, int pathSize, std::array<int, 4> &targets) const;
+        std::map<int, int>  createStepMap(int coordinate, std::array<int, 4> &targets) const;
+        int                 getStepValue(int coordinate, std::array<int, 4> &targets) const;
         bool                checkAvailability(int coordinate) const;
 
-        // AGraphics           *window;
+        AGraphics           *window;
         Map                 &_map;
-        int                 _food;
         int                 _start;
         int                 _sizeThreshold;
         int                 _snakeSize;
