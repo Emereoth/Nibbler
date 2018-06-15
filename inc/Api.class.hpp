@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include "Map.class.hpp"
+#include <cstdlib>
 
 enum class key
 {
@@ -34,6 +35,7 @@ class AGraphics {
 		virtual void			draw(Map &map) = 0;
 		virtual void			closeWindow(void) = 0;
 		virtual void			changeMusic(void) = 0;
+		virtual std::string		getPathNibbler() = 0;
 
 		size_t					_height;
 		size_t					_width;

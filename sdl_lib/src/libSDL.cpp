@@ -6,7 +6,11 @@
 /*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/16 15:53:54 by acottier          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2018/06/15 11:00:21 by acottier         ###   ########.fr       */
+=======
+/*   Updated: 2018/06/14 19:17:19 by rvievill         ###   ########.fr       */
+>>>>>>> fd0520c59f395aaa3b23bfa637d7a38b2c2f837b
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,27 +53,31 @@ void			Graphics::openWindow()
 	setMusic();
 }
 
+std::string				Graphics::getPathNibbler()
+{
+	std::string		pathApp(getwd(NULL));
+	int				size = pathApp.find("nibbler") + 7;
+
+	return (pathApp.substr(0, size) + "/");
+}
+
 void			Graphics::setMusic()
 {
+	std::string		music = _pathNibbler + MUSIC_PATH;
+
 	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 1024)== -1)
 		throw std::runtime_error("Mix audio failed !");
-	_soundtrack = Mix_LoadMUS(MUSIC_PATH);
+	_soundtrack = Mix_LoadMUS(music.c_str());
 	Mix_PlayMusic(_soundtrack, -1);
-	// initAudio();
-	// _soundtrack = createAudio(MUSIC_PATH, 1, 64);
-	// playSoundFromMemory(_soundtrack, 64);
 }
 
 void			Graphics::changeMusic()
 {
+	std::string		music = _pathNibbler + MUSIC_HARDCORE_PATH;
+
 	Mix_FreeMusic(_soundtrack);
-	_soundtrack = Mix_LoadMUS(MUSIC_HARDCORE_PATH);
+	_soundtrack = Mix_LoadMUS(music.c_str());
 	Mix_PlayMusic(_soundtrack, -1);
-	// endAudio();
-	// initAudio();
-	// freeAudio(_soundtrack);
-	// _soundtrack = createAudio(MUSIC_HARDCORE_PATH, 1, 64);
-	// playMusicFromMemory(_soundtrack, 64);
 }
 
 bool			Graphics::isOpen(void) const
@@ -134,8 +142,9 @@ void			Graphics::draw(Map &map)
 
 SDL_Surface		*Graphics::loadSurface(const char *texturePath, SDL_Window * win)
 {
+	std::string	tex = _pathNibbler + texturePath;
 	SDL_Surface	*finalSurface = NULL;
-	SDL_Surface	*img_load = IMG_Load(texturePath);
+	SDL_Surface	*img_load = IMG_Load(tex.c_str());
 
 
 	if (img_load == NULL)
@@ -158,12 +167,11 @@ Graphics::Graphics(size_t width, size_t height, float squareSize)
 	_height = height;
 	_width = width;
 	_squareSize = squareSize;
+	_pathNibbler = getPathNibbler();
 }
 
 void		Graphics::closeWindow(void)
 {
-	// freeAudio(_soundtrack);
-	// endAudio();
 	Mix_FreeMusic(_soundtrack);
 	Mix_CloseAudio();
 	SDL_DestroyWindow(_window);

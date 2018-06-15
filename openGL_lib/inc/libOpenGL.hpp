@@ -6,7 +6,7 @@
 /*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/14 14:34:38 by rvievill          #+#    #+#             */
-/*   Updated: 2018/06/14 16:46:41 by rvievill         ###   ########.fr       */
+/*   Updated: 2018/06/14 19:12:39 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ class Graphics : public AGraphics {
 		void				closeWindow(void) override;
 		void				changeMusic(void) override;
 		void				setMusic(void);
+		std::string			getPathNibbler() override;
 
 		static key			keyUse;
 		
@@ -65,6 +66,7 @@ class Graphics : public AGraphics {
 		GLFWwindow					*_window;
 		std::map<sprite, GLuint>	_texture;
 		Mix_Music 					*_music;
+		std::string					_pathNibbler;
 
 
 };

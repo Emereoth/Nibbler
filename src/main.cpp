@@ -79,9 +79,21 @@ namespace {
 			std::string		getLib(int ac, char **av);
 			std::string		randLib();
 			std::string		getPathLib(std::string const &lib);
+			std::string		getPathNibbler();
+			
 
 			
 	};
+
+
+	std::string				Opt::getPathNibbler()
+	{
+		std::string		pathApp(getwd(NULL));
+		int				size = pathApp.find("nibbler") + 7;
+	
+		return (pathApp.substr(0, size) + "/");
+	}
+
 
 	Opt::~Opt() {};
 
@@ -140,12 +152,13 @@ namespace {
 
 	std::string			Opt::getPathLib(std::string const &opt)
 	{
+
 		if (!opt.compare("opengl"))
-			return (std::string("openGL_lib/opengl.so"));
+			return (getPathNibbler() + std::string("openGL_lib/opengl.so"));
 		else if (!opt.compare("sfml"))
-			return (std::string("sfml_lib/sfml.so"));
+			return (getPathNibbler() + std::string("sfml_lib/sfml.so"));
 		else if (!opt.compare("sdl"))
-			return (std::string("sdl_lib/SDL.so"));
+			return (getPathNibbler() + std::string("sdl_lib/SDL.so"));
 		throw Error::optNotFound();
 	}
 
@@ -156,7 +169,7 @@ namespace {
 		return (Opt(ac, av));
 	}
 }
-
+#include <unistd.h>
 int main(int ac, char **av)
 {
 	try

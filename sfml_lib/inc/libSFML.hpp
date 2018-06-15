@@ -7,6 +7,9 @@
 #include "../../inc/Api.class.hpp"
 #include <stdexcept>
 
+#define MUSIC_PATH "music/tetris.wav"
+#define MUSIC_HARDCORE_PATH "music/tetris_hard.wav"
+
 class Graphics : public AGraphics {
 
 	private:
@@ -19,6 +22,8 @@ class Graphics : public AGraphics {
 		void				runSound(void);
 		void				loadTexture(sprite sprite, const char *texturePath);
 		void				loadSprite(float posX, float posY, sprite texture);
+		std::string			getPathNibbler() override;
+
 
 		sf::RenderWindow						_window;
 		sf::Texture								_texture;
@@ -26,6 +31,7 @@ class Graphics : public AGraphics {
 		std::vector<sf::Sprite>					_spriteList;
 		sf::Music 								_music;
 		std::map<sf::Keyboard::Key, key>		_eventMap;
+		std::string								_pathNibbler;
 
 	public:
 
