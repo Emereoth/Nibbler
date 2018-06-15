@@ -6,7 +6,7 @@
 /*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 14:21:18 by acottier          #+#    #+#             */
-/*   Updated: 2018/06/15 12:15:06 by acottier         ###   ########.fr       */
+/*   Updated: 2018/06/15 13:04:09 by acottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,14 +83,14 @@ void                Pathfinder::calculatePath(int start, std::deque<int> *path)
     int     downTarget = ((start + _sizeThreshold * 62) % 62 == start % 62 ? start + _sizeThreshold * 62 : -1);
 
     _start = start;
-    if (rightTarget != -1 && checkTarget(rightTarget))
-        _map.map[rightTarget] = sprite::PT_CIRCLE_GREEN;
-    if (leftTarget != -1 && checkTarget(leftTarget))
-        _map.map[leftTarget] = sprite::PT_CIRCLE_GREEN;
-    if (upTarget != -1 && checkTarget(upTarget))
-        _map.map[upTarget] = sprite::PT_CIRCLE_GREEN;
-    if (downTarget != -1 && checkTarget(downTarget))
-        _map.map[downTarget] = sprite::PT_CIRCLE_GREEN;
+    // if (rightTarget != -1 && checkTarget(rightTarget))
+    //     _map.map[rightTarget] = sprite::PT_CIRCLE_GREEN;
+    // if (leftTarget != -1 && checkTarget(leftTarget))
+    //     _map.map[leftTarget] = sprite::PT_CIRCLE_GREEN;
+    // if (upTarget != -1 && checkTarget(upTarget))
+    //     _map.map[upTarget] = sprite::PT_CIRCLE_GREEN;
+    // if (downTarget != -1 && checkTarget(downTarget))
+    //     _map.map[downTarget] = sprite::PT_CIRCLE_GREEN;
     // window->draw(_map);
     // std::cout << "rightTarget : " << rightTarget << std::endl << "leftTarget : " << leftTarget <<
         // std::endl << "downTarget : " << downTarget << std::endl << "upTarget : " << upTarget << std::endl;
@@ -125,7 +125,6 @@ bool                Pathfinder::nextStep(int coordinate, std::deque<int> *path, 
     // int                 startY = _start % 62;
     bool                validPath = false;
 
-    std::cout << std::endl << std::endl << std::endl;
     // std::cout << "testing #" << coordinate << "(" << x << ", " << y << ")" << std::endl;
     // std::cout << "xTarget " << xTarget / 62 << " ,yTarget " << yTarget % 62 << std::endl; 
     if (xTarget == -1 && yTarget == -1)
@@ -160,7 +159,7 @@ bool                Pathfinder::nextStep(int coordinate, std::deque<int> *path, 
 
     while (!validPath && ii != steps.end())
     {
-        usleep(500000);
+        // usleep(500000);
         // std::cout << "exploring next best step of score " << (*ii).first << "(#" << (*ii).second << ")" << std::endl;
         validPath = nextStep((*ii).second, path, pathSize + 1, xTarget, yTarget);
         ii++;
