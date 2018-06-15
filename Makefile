@@ -4,13 +4,10 @@ HPATH = inc/
 SFML = sfml_lib
 SDL = sdl_lib
 OPENGL = openGL_lib
-<<<<<<< HEAD
 LINK_DYLIB = -Wl,-rpath $(SFML)/SFML/lib
 CFLAGS = -Wall -Werror -Wextra -std=c++11
-=======
 LINK_DYLIB = -Wl,-rpath $${HOME}/nibbler/$(SFML)/SFML/lib
 CFLAGS = -Wall -Werror -Wextra -std=c++11 -fsanitize=address
->>>>>>> fd0520c59f395aaa3b23bfa637d7a38b2c2f837b
 CPATH = src/
 OPATH = obj/
 INC = $(addprefix -I, $(HPATH))
