@@ -16,7 +16,7 @@ HFILES = inc/libSDL.hpp
 INC = $(addprefix -I, $(INCPATH))
 OBJ = $(addprefix $(OPATH), $(OFILES))
 
-.PHONY: all clean fclean re install uninstall reinstall
+.PHONY: all clean fclean re
 
 all: $(NAME)
 

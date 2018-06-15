@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libSDL.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/16 15:53:54 by acottier          #+#    #+#             */
-/*   Updated: 2018/06/14 17:06:21 by rvievill         ###   ########.fr       */
+/*   Updated: 2018/06/15 11:00:21 by acottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,10 @@ void			Graphics::openWindow()
 		{ sprite::BODY_DOWN_LEFT , loadSurface("texture/bodyDownLeft.png", _window) } ,
 		{ sprite::BODY_DOWN_RIGHT , loadSurface("texture/bodydownRight.png", _window) } ,
 		{ sprite::WALL , loadSurface("texture/wall.png", _window) } ,
-		{ sprite::FOOD , loadSurface("texture/apple.png", _window) }
+		{ sprite::FOOD , loadSurface("texture/apple.png", _window) },
+		{ sprite::PT_CIRCLE , loadSurface("texture/pathfinder_circle.png", _window) },
+		{ sprite::PT_CROSS , loadSurface("texture/pathfinder_cross.png", _window) },
+		{ sprite::PT_CIRCLE_GREEN , loadSurface("texture/pathfinder_greencircle.png", _window) }
 	};
 	setMusic();
 }

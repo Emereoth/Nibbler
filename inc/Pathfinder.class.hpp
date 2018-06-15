@@ -6,7 +6,7 @@
 /*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 14:17:00 by acottier          #+#    #+#             */
-/*   Updated: 2018/06/11 15:38:59 by acottier         ###   ########.fr       */
+/*   Updated: 2018/06/15 11:41:59 by acottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ class Pathfinder
 {
     public:
 
-        Pathfinder(Map &map);
+        Pathfinder(AGraphics *window, Map &map);
         ~Pathfinder();
 
         void                 spawnFood(Snake &snake);
@@ -35,9 +35,13 @@ class Pathfinder
 
         void                run(int start);
         void                calculatePath(int start, std::deque<int> *path);
-        bool                nextStep(int coordinate, std::deque<int> *path, int pathSize) const;
+        bool                checkTarget(int target) const;
+        bool                nextStep(int coordinate, std::deque<int> *path, int pathSize, int xTarget, int yTarget) const;
+        std::map<int, int>  createStepMap(int coordinate, int xTarget, int yTarget) const;
+        int                 getStepValue(int coordinate, int xTarget, int yTarget) const;
         bool                checkAvailability(int coordinate) const;
 
+        AGraphics           *window;
         Map                 &_map;
         int                 _food;
         int                 _start;

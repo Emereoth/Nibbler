@@ -6,7 +6,7 @@
 /*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/19 14:50:15 by rvievill          #+#    #+#             */
-/*   Updated: 2018/06/07 13:13:01 by acottier         ###   ########.fr       */
+/*   Updated: 2018/06/14 19:08:13 by acottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,10 @@ enum class	sprite
 	BODY_UP_RIGHT,
 	BODY_DOWN_LEFT,
 	BODY_DOWN_RIGHT,
-	FOOD
+	FOOD,
+	PT_CIRCLE,
+	PT_CROSS,
+	PT_CIRCLE_GREEN
 };
 
 class Map {
