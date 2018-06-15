@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Nibbler.class.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/02 13:59:48 by rvievill          #+#    #+#             */
-/*   Updated: 2018/06/15 12:15:35 by acottier         ###   ########.fr       */
+/*   Updated: 2018/06/15 13:24:37 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #include <fcntl.h>
 #include <dlfcn.h>
 
-Nibbler::Nibbler(const char *pathLib, size_t width, size_t height, float squareSize) :
+Nibbler::Nibbler(const char *pathLib, size_t width, size_t height, float squareSize, bool debug) :
 	manageInput {
 		{key::DOWN, &Nibbler::updateEntities},
 		{key::UP, &Nibbler::updateEntities},
@@ -29,8 +29,12 @@ Nibbler::Nibbler(const char *pathLib, size_t width, size_t height, float squareS
 		{key::TWO, &Nibbler::switchLib},
 		{key::THREE, &Nibbler::switchLib},
 		{key::ESCAPE, &Nibbler::closeLib}
-	} , _gameSpeed(8), _hardMode(false)
+	},
+	_gameSpeed(8),
+	_hardMode(false),
+	_debug(debug)
 {
+	(void)_debug;
 	openLib(pathLib, width, height, squareSize);
 }
 

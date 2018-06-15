@@ -68,6 +68,7 @@ namespace {
 			size_t			width;
 			size_t			height;
 			float			squareSize;
+			bool			debug;
 			std::string		lib;
 
 		private:
@@ -97,7 +98,7 @@ namespace {
 
 	Opt::~Opt() {};
 
-	Opt::Opt() : width(1920), height(1080), squareSize(1080 / 62.0f), lib(randLib()) {};
+	Opt::Opt() : width(1920), height(1080), squareSize(1080 / 62.0f), debug(false), lib(randLib()) {};
 
 	Opt::Opt(int ac, char **av)
 	{
@@ -115,6 +116,8 @@ namespace {
 		{
 			if (std::regex_match(av[i], match, reg))
 			{
+				if (!match[2].str().compare("debug"))
+					debug = true;
 				if (!match[2].str().compare("lib"))
 					lib = getPathLib(match[5].str());
 				else if (!match[2].str().compare("size"))
@@ -175,10 +178,11 @@ int main(int ac, char **av)
 	try
 	{
 		Opt						opt = getOpt(ac, av);
-		Nibbler					nibbler(opt.lib.c_str(), opt.width, opt.height, opt.squareSize);
+		Nibbler					nibbler(opt.lib.c_str(), opt.width, opt.height, opt.squareSize, opt.debug);
 		Map						map;
 		unsigned int			seed;
 
+		std::cout << opt.debug << std::endl;
 		read(open("/dev/urandom", O_RDONLY), &seed, sizeof(seed));
 		srand(seed);
 		nibbler.run(map);

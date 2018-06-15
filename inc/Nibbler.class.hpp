@@ -6,7 +6,7 @@
 /*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/02 13:39:31 by rvievill          #+#    #+#             */
-/*   Updated: 2018/06/14 18:44:32 by rvievill         ###   ########.fr       */
+/*   Updated: 2018/06/15 13:24:04 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,11 @@ class Nibbler {
 		std::map<key, bool (Nibbler::*)(Snake &, key)>		manageInput;
 		float												_gameSpeed;
 		bool												_hardMode;
+		bool												_debug;
 
 	public:
 
-		explicit Nibbler(const char *pathLib, size_t width, size_t height, float squareSize);
+		explicit Nibbler(const char *pathLib, size_t width, size_t height, float squareSize, bool debug);
 		~Nibbler();
 
 		void			run(Map &map);
