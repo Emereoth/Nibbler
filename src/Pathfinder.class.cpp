@@ -6,14 +6,14 @@
 /*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 14:21:18 by acottier          #+#    #+#             */
-/*   Updated: 2018/06/15 12:11:46 by acottier         ###   ########.fr       */
+/*   Updated: 2018/06/15 12:15:06 by acottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/Pathfinder.class.hpp"
 #include <vector>
 
-Pathfinder::Pathfinder(AGraphics *window, Map &map) :isReachable(false),  window(window), _map(map), _food(-1), _sizeThreshold(15)
+Pathfinder::Pathfinder(/*AGraphics *window, */Map &map) :isReachable(false),  /*window(window),*/ _map(map), _food(-1), _sizeThreshold(15)
 {
 }
 

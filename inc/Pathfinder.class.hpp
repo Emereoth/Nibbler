@@ -6,7 +6,7 @@
 /*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 14:17:00 by acottier          #+#    #+#             */
-/*   Updated: 2018/06/15 11:41:59 by acottier         ###   ########.fr       */
+/*   Updated: 2018/06/15 12:15:49 by acottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ class Pathfinder
 {
     public:
 
-        Pathfinder(AGraphics *window, Map &map);
+        Pathfinder(/*AGraphics *window, */Map &map);
         ~Pathfinder();
 
         void                 spawnFood(Snake &snake);
@@ -41,7 +41,7 @@ class Pathfinder
         int                 getStepValue(int coordinate, int xTarget, int yTarget) const;
         bool                checkAvailability(int coordinate) const;
 
-        AGraphics           *window;
+        // AGraphics           *window;
         Map                 &_map;
         int                 _food;
         int                 _start;
