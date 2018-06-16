@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Pathfinder.class.cpp                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 14:21:18 by acottier          #+#    #+#             */
-/*   Updated: 2018/06/15 16:46:21 by acottier         ###   ########.fr       */
+/*   Updated: 2018/06/16 12:24:34 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,19 @@ Pathfinder::~Pathfinder()
 */
 void				Pathfinder::spawnFood(Snake &snake)
 {
-	int			foodPos;
+	int			foodPos = -1;
 
-    std::cout << "spawning food" << std::endl;
+	if (debug)
+    	std::cout << "spawning food" << std::endl;
     _snakeSize = snake.size;
     if (food != -1)
         _map.map[food] = sprite::SOIL;
 	while (!isReachable)
 	{
-        std::cout << "random placement loop" << std::endl;
+		if (foodPos != -1)
+			_map.map[foodPos] = sprite::SOIL;
+		if (debug)
+        	std::cout << "random placement loop" << std::endl;
 		foodPos = (rand() % (61 * 61)) + 1;
 		if (_map.map[foodPos] == sprite::SOIL)
             run(foodPos);
@@ -43,7 +47,10 @@ void				Pathfinder::spawnFood(Snake &snake)
 	_map.map[foodPos] = sprite::FOOD;
 	food = foodPos;
 	snake.eatFood = false;
-    std::cout << "food spawned" << std::endl;
+	if (debug)
+    	std::cout << "food spawned" << std::endl;
+	clearPathDebug(_firstPath);
+	clearPathDebug(_secondPath);
 }
 
 /*
@@ -51,7 +58,8 @@ void				Pathfinder::spawnFood(Snake &snake)
 */
 void                Pathfinder::run(int start)
 {
-    _map.map[start] = sprite::FOOD;
+	if (debug)
+    	_map.map[start] = sprite::FOOD;
     calculatePath(start, &_firstPath);
     if (debug)
       std::cout << "Path ONE done" << std::endl;
@@ -103,8 +111,11 @@ void                Pathfinder::createTargetArray(std::array<int, 4> &targets) c
     targets[DIR_UP] = (_start - (_sizeThreshold * 62)) > 0 && (_start - (_sizeThreshold * 62)) < 62*62
                             ? (_start - (_sizeThreshold * 62)) : -1;
 
-    std::cout << "start" << _start << std::endl;
-    usleep(1000000);
+	if (debug)
+	{
+		std::cout << "start" << _start << std::endl;
+		usleep(1000000);
+	}
     return ;
 }
 
@@ -128,10 +139,10 @@ void                Pathfinder::calculatePath(int start, std::deque<int> *path)
       if (checkTarget(targets[DIR_DOWN]))
           _map.map[targets[DIR_DOWN]] = sprite::PT_CIRCLE_GREEN;
         window->draw(_map);
-    }
     std::cout << "targets[DIR_RIGHT] : " << targets[DIR_RIGHT] << std::endl << "targets[DIR_LEFT] : " << targets[DIR_LEFT] <<
         std::endl << "targets[DIR_DOWN] : " << targets[DIR_DOWN] << std::endl << "targets[DIR_UP] : " << targets[DIR_UP] << std::endl;
-    // usleep(800000);
+    usleep(800000);
+    }
     if (nextStep(start + 1, path, 0, targets) || nextStep(start - 1, path, 0, targets)
         || nextStep(start + 62, path, 0, targets) || nextStep(start - 62, path, 0, targets))
     {
@@ -189,7 +200,7 @@ bool                Pathfinder::nextStep(int coordinate, std::deque<int> *path, 
         return (false);
     }
     // std::cout << "availability OK" << std::endl;
-    if ((x == targets[DIR_LEFT] || x == targets[DIR_RIGHT] || y == targets[DIR_DOWN] || y == targets[DIR_UP])
+    if ((x == targets[DIR_LEFT] / 62 || x == targets[DIR_RIGHT] / 62 || y == targets[DIR_DOWN] % 62 || y == targets[DIR_UP] % 62)
         && pathSize > _snakeSize)
     // if ( (x > startX + _sizeThreshold || x < startX - _sizeThreshold || y >= startY + _sizeThreshold || y <= startY - _sizeThreshold) 
     //     && pathSize > _snakeSize)
@@ -213,8 +224,10 @@ bool                Pathfinder::nextStep(int coordinate, std::deque<int> *path, 
     while (!validPath && ii != steps.end())
     {
         if (debug)
-            usleep(100000);
-        std::cout << "exploring next best step of score " << (*ii).first << "(#" << (*ii).second << ")" << std::endl;
+		{
+            usleep(1000000);
+        	std::cout << "exploring next best step of score " << (*ii).first << "(#" << (*ii).second << ")" << std::endl;
+		}
         validPath = nextStep((*ii).second, path, pathSize + 1, targets);
         ii++;
     }
@@ -262,7 +275,8 @@ std::map<int, int>  Pathfinder::createStepMap(int coordinate, std::array<int, 4>
         }
         i++;
     }
-    std::cout << "current target: " << i << std::endl;
+	if (debug)
+    	std::cout << "current target: " << i << std::endl;
     return (res);
 }
 
@@ -280,7 +294,7 @@ int                 Pathfinder::getStepValue(int coordinate, std::array<int, 4> 
     {
         if (targets[i] != -1)
         {
-            distance = std::abs(targets[i] / 62 - coordinate / 62) + std::abs(targets[i] % 62 - coordinate % 62);
+            distance = std::abs((targets[i] / 62) - (coordinate / 62)) + std::abs((targets[i] % 62) - (coordinate % 62));
             if (distance < smallestDistance)
                 smallestDistance = distance;
         }
