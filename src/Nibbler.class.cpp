@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Nibbler.class.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/02 13:59:48 by rvievill          #+#    #+#             */
-/*   Updated: 2018/06/18 15:54:39 by acottier         ###   ########.fr       */
+/*   Updated: 2018/06/18 17:10:10 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,21 @@ Nibbler::Nibbler(const char *pathLib, size_t width, size_t height, float squareS
 	},
 	_gameSpeed(8),
 	_hardMode(false),
-	_debug(debug)
+	_debug(debug),
+	_pathNibbler(getPathNibbler())
 {
 	(void)_debug;
 	openLib(pathLib, width, height, squareSize);
 }
 
 Nibbler::~Nibbler() {}
+
+std::string				Nibbler::getPathNibbler()
+{
+	std::string		pathApp(std::getenv("HOME"));
+
+	return (pathApp + "/Library/nibbler/");
+}
 
 void				Nibbler::openLib(const char *pathLib, size_t width, size_t height, float squareSize)
 {
@@ -101,17 +109,20 @@ bool				Nibbler::closeLib(Snake &snake, key key)
 
 bool				Nibbler::switchLib(Snake &snake, key key)
 {
-	int				name = static_cast<int>(key);
+int					name = static_cast<int>(key);
+	std::string		lib;
 
 	if (window->name != name)
 	{
 		closeLib(snake, key);
 		if (name == 0)
-			openLib("sfml_lib/sfml.so", window->_width, window->_height, window->_squareSize);
+			lib = _pathNibbler + "sfml_lib/sfml.so";
 		else if (name == 1)
-			openLib("sdl_lib/SDL.so", window->_width, window->_height, window->_squareSize);
+			lib = _pathNibbler + "sdl_lib/SDL.so";
 		else if (name == 2)
-			openLib("opengl_lib/openGL.so", window->_width, window->_height, window->_squareSize);
+			lib = _pathNibbler + "openGL_lib/openGL.so";
+		std::cout << lib << std::endl;
+		openLib(lib.c_str(), window->_width, window->_height, window->_squareSize);
 		window->openWindow();
 		if (_hardMode)
 		{

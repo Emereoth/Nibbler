@@ -6,7 +6,7 @@
 /*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/02 13:39:31 by rvievill          #+#    #+#             */
-/*   Updated: 2018/06/15 13:24:04 by rvievill         ###   ########.fr       */
+/*   Updated: 2018/06/18 17:09:51 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,14 @@ class Nibbler {
 		bool					updateEntities(Snake &snake, key key);
 		bool					closeLib(Snake &snake, key key);
 		void					openLib(const char *pathLib, size_t width, size_t height, float squareSize);
+		std::string				getPathNibbler();
+
 
 		std::map<key, bool (Nibbler::*)(Snake &, key)>		manageInput;
 		float												_gameSpeed;
 		bool												_hardMode;
 		bool												_debug;
+		std::string											_pathNibbler;
 
 	public:
 
