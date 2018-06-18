@@ -154,11 +154,11 @@ namespace {
 	{
 
 		if (!opt.compare("opengl"))
-			return (_pathNibbler + std::string("openGL_lib/opengl.so"));
+			return (getPathNibbler() + std::string("openGL_lib/opengl.so"));
 		else if (!opt.compare("sfml"))
-			return (_pathNibbler + std::string("sfml_lib/sfml.so"));
+			return (getPathNibbler() + std::string("sfml_lib/sfml.so"));
 		else if (!opt.compare("sdl"))
-			return (_pathNibbler + std::string("sdl_lib/SDL.so"));
+			return (getPathNibbler() + std::string("sdl_lib/SDL.so"));
 		throw Error::optNotFound();
 	}
 
