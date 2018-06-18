@@ -6,7 +6,7 @@
 /*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 14:21:18 by acottier          #+#    #+#             */
-/*   Updated: 2018/06/18 14:30:01 by acottier         ###   ########.fr       */
+/*   Updated: 2018/06/18 14:35:03 by acottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -258,8 +258,6 @@ int                 Pathfinder::getStepValue(int coordinate, std::array<int, 4> 
     int             i;
     int             closestTarget;
 
-    std::cout << std::endl;
-    std::cout << coordinate << std::endl;
     for (i = 0 ; i < 4 ; i++)
     {
         if (targets[i] != -1)

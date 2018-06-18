@@ -6,7 +6,7 @@
 /*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/16 15:53:54 by acottier          #+#    #+#             */
-/*   Updated: 2018/06/16 15:38:07 by acottier         ###   ########.fr       */
+/*   Updated: 2018/06/18 14:37:00 by acottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,12 +59,12 @@ std::string				Graphics::getPathNibbler()
 
 void			Graphics::setMusic()
 {
-	// std::string		music = _pathNibbler + MUSIC_PATH;
+	std::string		music = _pathNibbler + MUSIC_PATH;
 
-	// if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 1024)== -1)
-	// 	throw std::runtime_error("Mix audio failed !");
-	// _soundtrack = Mix_LoadMUS(MUSIC_PATH);
-	// Mix_PlayMusic(_soundtrack, -1);
+	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 1024)== -1)
+		throw std::runtime_error("Mix audio failed !");
+	_soundtrack = Mix_LoadMUS(MUSIC_PATH);
+	Mix_PlayMusic(_soundtrack, -1);
 }
 
 void			Graphics::changeMusic()
