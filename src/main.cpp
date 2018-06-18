@@ -1,14 +1,13 @@
 #include <iostream>
-#include "../inc/Api.class.hpp"
-#include "../inc/Map.class.hpp"
-#include "../inc/Nibbler.class.hpp"
+#include "Api.class.hpp"
+#include "Map.class.hpp"
+#include "Nibbler.class.hpp"
 #include <regex>
 #include <sstream>
 #include <string>
 #include <unistd.h>
 #include <fcntl.h>
 #include <dlfcn.h>
-#include <unistd.h>
 
 namespace {
 
@@ -86,13 +85,11 @@ namespace {
 			
 	};
 
-
 	std::string				Opt::getPathNibbler()
 	{
-		std::string		pathApp(getwd(NULL));
-		int				size = pathApp.find("nibbler") + 7;
+		std::string		pathApp(std::getenv("HOME"));
 	
-		return (pathApp.substr(0, size) + "/");
+		return (pathApp + "/Library/nibbler/");		
 	}
 
 
@@ -172,7 +169,7 @@ namespace {
 		return (Opt(ac, av));
 	}
 }
-#include <unistd.h>
+
 int main(int ac, char **av)
 {
 	try

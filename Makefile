@@ -24,7 +24,7 @@ HFILES = inc/Api.class.hpp
 
 OBJ = $(addprefix $(OPATH), $(OFILES))
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re install remove rebuild
 
 all: $(NAME)
 

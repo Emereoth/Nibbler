@@ -6,7 +6,7 @@
 /*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/14 17:26:49 by rvievill          #+#    #+#             */
-/*   Updated: 2018/06/15 13:10:17 by rvievill         ###   ########.fr       */
+/*   Updated: 2018/06/18 15:49:42 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,9 @@ Graphics::~Graphics(void)
 
 std::string				Graphics::getPathNibbler()
 {
-	std::string		pathApp(getwd(NULL));
-	int				size = pathApp.find("nibbler") + 7;
-
-	return (pathApp.substr(0, size) + "/");
+	std::string		pathApp(std::getenv("HOME"));
+	
+	return (pathApp + "/Library/nibbler/");
 }
 
 
@@ -178,8 +177,8 @@ GLuint				Graphics::loadTexture(const char *texturePath)
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	tex = SOIL_load_OGL_texture // load an image file directly as a new OpenGL texture 
 	(
-		// path.c_str(),
-		texturePath,
+		path.c_str(),
+		// texturePath,
 		SOIL_LOAD_AUTO,
 		SOIL_CREATE_NEW_ID,
 		SOIL_FLAG_MIPMAPS | SOIL_FLAG_INVERT_Y | SOIL_FLAG_NTSC_SAFE_RGB | SOIL_FLAG_COMPRESS_TO_DXT

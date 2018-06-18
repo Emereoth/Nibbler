@@ -41,10 +41,9 @@ Graphics::~Graphics(void)
 
 std::string				Graphics::getPathNibbler()
 {
-	std::string		pathApp(getwd(NULL));
-	int				size = pathApp.find("nibbler") + 7;
-
-	return (pathApp.substr(0, size) + "/");
+	std::string		pathApp(std::getenv("HOME"));
+	
+	return (pathApp + "/Library/nibbler/");		
 }
 
 void				Graphics::openWindow(void)
@@ -81,8 +80,8 @@ void				Graphics::loadTexture(sprite sprite, const char *texturePath)
 	std::string		tex(_pathNibbler + texturePath);
 
 	_texture.setSmooth(true);
-	// _texture.loadFromFile(tex.c_str());
-	_texture.loadFromFile(texturePath);
+	_texture.loadFromFile(tex.c_str());
+	// _texture.loadFromFile(texturePath);
 	_textureList[sprite] = _texture;
 }
 
@@ -143,7 +142,7 @@ void				Graphics::changeMusic(void)
 	std::string		music = _pathNibbler + MUSIC_HARDCORE_PATH;	
 
 	_music.openFromFile(MUSIC_HARDCORE_PATH);
-	runSound();
+	_music.play();
 }
 
 void				Graphics::closeWindow(void)
