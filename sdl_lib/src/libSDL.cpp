@@ -6,7 +6,7 @@
 /*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/16 15:53:54 by acottier          #+#    #+#             */
-/*   Updated: 2018/06/18 15:26:32 by acottier         ###   ########.fr       */
+/*   Updated: 2018/06/18 15:43:43 by acottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,10 +98,14 @@ key				Graphics::keyPress(void)
 	};
 
 	SDL_PumpEvents();
+	SDL_FlushEvent(SDL_KEYDOWN);
 	while (SDL_PollEvent(&currentEvent))
 	{
 		if (res == key::NO && SDL_KEYDOWN && eventMap.find(currentEvent.key.keysym.sym) != eventMap.end())
+		{
 			res = eventMap[currentEvent.key.keysym.sym];
+			SDL_PumpEvents();
+		}
 		else if (res == key::NO && currentEvent.type == SDL_WINDOWEVENT && currentEvent.window.event == SDL_WINDOWEVENT_CLOSE)
 			res = key::ESCAPE;
 	}
