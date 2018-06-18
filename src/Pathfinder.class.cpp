@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   Pathfinder.class.cpp                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 14:21:18 by acottier          #+#    #+#             */
-/*   Updated: 2018/06/16 12:24:34 by rvievill         ###   ########.fr       */
+/*   Updated: 2018/06/18 14:30:01 by acottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/Pathfinder.class.hpp"
 #include <vector>
+
+#define MAP_SIZE 3844
 
 Pathfinder::Pathfinder(AGraphics *window, Map &map, bool debug) :isReachable(false), food(-1), debug(debug), window(window), _map(map), _sizeThreshold(15)
 {
@@ -26,19 +28,13 @@ Pathfinder::~Pathfinder()
 */
 void				Pathfinder::spawnFood(Snake &snake)
 {
-	int			foodPos = -1;
+	int			foodPos;
 
-	if (debug)
-    	std::cout << "spawning food" << std::endl;
     _snakeSize = snake.size;
     if (food != -1)
         _map.map[food] = sprite::SOIL;
 	while (!isReachable)
 	{
-		if (foodPos != -1)
-			_map.map[foodPos] = sprite::SOIL;
-		if (debug)
-        	std::cout << "random placement loop" << std::endl;
 		foodPos = (rand() % (61 * 61)) + 1;
 		if (_map.map[foodPos] == sprite::SOIL)
             run(foodPos);
@@ -47,10 +43,6 @@ void				Pathfinder::spawnFood(Snake &snake)
 	_map.map[foodPos] = sprite::FOOD;
 	food = foodPos;
 	snake.eatFood = false;
-	if (debug)
-    	std::cout << "food spawned" << std::endl;
-	clearPathDebug(_firstPath);
-	clearPathDebug(_secondPath);
 }
 
 /*
@@ -58,8 +50,7 @@ void				Pathfinder::spawnFood(Snake &snake)
 */
 void                Pathfinder::run(int start)
 {
-	if (debug)
-    	_map.map[start] = sprite::FOOD;
+    _map.map[start] = sprite::FOOD;
     calculatePath(start, &_firstPath);
     if (debug)
       std::cout << "Path ONE done" << std::endl;
@@ -104,18 +95,13 @@ void                Pathfinder::createTargetArray(std::array<int, 4> &targets) c
 {
     targets[DIR_RIGHT] = (_start + _sizeThreshold) / 62 == _start / 62 ? (_start + _sizeThreshold) : -1;
     targets[DIR_LEFT] = (_start - _sizeThreshold) / 62 == _start / 62 ? (_start - _sizeThreshold) : -1;
-    // targets[DIR_DOWN] = (_start + _sizeThreshold) * 62 % 62 == _start % 62 ? (_start + _sizeThreshold) * 62 / 62 : -1;
-    // targets[DIR_UP] = (_start - _sizeThreshold) * 62 % 62 == _start % 62 ? (_start - _sizeThreshold) * 62 / 62 : -1;
     targets[DIR_DOWN] = (_start + (_sizeThreshold * 62)) > 0 && (_start + (_sizeThreshold * 62)) < 62*62
                             ? (_start + (_sizeThreshold * 62)) : -1;
     targets[DIR_UP] = (_start - (_sizeThreshold * 62)) > 0 && (_start - (_sizeThreshold * 62)) < 62*62
                             ? (_start - (_sizeThreshold * 62)) : -1;
 
-	if (debug)
-	{
-		std::cout << "start" << _start << std::endl;
-		usleep(1000000);
-	}
+    if (debug)
+        usleep(1000000);
     return ;
 }
 
@@ -130,18 +116,17 @@ void                Pathfinder::calculatePath(int start, std::deque<int> *path)
     createTargetArray(targets);
     if (debug)
     {
-      if (checkTarget(targets[DIR_RIGHT]))
+      if (checkTargetValidity(targets[DIR_RIGHT]))
           _map.map[targets[DIR_RIGHT]] = sprite::PT_CIRCLE_GREEN;
-      if (checkTarget(targets[DIR_LEFT]))
+      if (checkTargetValidity(targets[DIR_LEFT]))
           _map.map[targets[DIR_LEFT]] = sprite::PT_CIRCLE_GREEN;
-      if (checkTarget(targets[DIR_UP]))
+      if (checkTargetValidity(targets[DIR_UP]))
           _map.map[targets[DIR_UP]] = sprite::PT_CIRCLE_GREEN;
-      if (checkTarget(targets[DIR_DOWN]))
+      if (checkTargetValidity(targets[DIR_DOWN]))
           _map.map[targets[DIR_DOWN]] = sprite::PT_CIRCLE_GREEN;
         window->draw(_map);
-    std::cout << "targets[DIR_RIGHT] : " << targets[DIR_RIGHT] << std::endl << "targets[DIR_LEFT] : " << targets[DIR_LEFT] <<
+        std::cout << "targets[DIR_RIGHT] : " << targets[DIR_RIGHT] << std::endl << "targets[DIR_LEFT] : " << targets[DIR_LEFT] <<
         std::endl << "targets[DIR_DOWN] : " << targets[DIR_DOWN] << std::endl << "targets[DIR_UP] : " << targets[DIR_UP] << std::endl;
-    usleep(800000);
     }
     if (nextStep(start + 1, path, 0, targets) || nextStep(start - 1, path, 0, targets)
         || nextStep(start + 62, path, 0, targets) || nextStep(start - 62, path, 0, targets))
@@ -167,9 +152,9 @@ void                Pathfinder::calculatePath(int start, std::deque<int> *path)
 /*
 *   Checks if target is a valid pixel
 */
-bool                Pathfinder::checkTarget(int target) const
+bool                Pathfinder::checkTargetValidity(int target) const
 {
-    if (target != -1 && target <= 62 * 62 && _map.map[target] == sprite::SOIL)
+    if (target != -1 && target <= MAP_SIZE && _map.map[target] == sprite::SOIL && target / 62 != 0 && target / 62 != 61 && target % 62 != 0 && target % 62 != 61)
         return (true);
     return (false);
 }
@@ -179,33 +164,19 @@ bool                Pathfinder::checkTarget(int target) const
 */
 bool                Pathfinder::nextStep(int coordinate, std::deque<int> *path, int pathSize, std::array<int, 4> &targets) const
 {
-    int                 x = coordinate / 62;
-    int                 y = coordinate % 62;
-    // int                 startX = _start / 62;
-    // int                 startY = _start % 62;
+    int                 x = coordinate % 62;
+    int                 y = coordinate / 62;
     bool                validPath = false;
 
-    // std::cout << "testing #" << coordinate << "(" << x << ", " << y << ")" << std::endl;
-    // std::cout << "xTarget " << xTarget / 62 << " ,yTarget " << yTarget % 62 << std::endl; 
     if (targets[DIR_RIGHT] ==  -1 && targets[DIR_LEFT] == -1 && targets[DIR_DOWN] == -1 && targets[DIR_UP] == -1)
-    {
-        // std::cout << "Invalid target." << std::endl;
         return (false);
-    }
     if (coordinate < 0 || coordinate >= 62 * 62 ||
         (_map.map[coordinate] != sprite::SOIL && _map.map[coordinate] != sprite::PT_CIRCLE_GREEN)
         || coordinate == _start || !checkAvailability(coordinate) )
-    {
-        // std::cout << "pixel #" << coordinate << " availability check: failed" << std::endl;
         return (false);
-    }
-    // std::cout << "availability OK" << std::endl;
-    if ((x == targets[DIR_LEFT] / 62 || x == targets[DIR_RIGHT] / 62 || y == targets[DIR_DOWN] % 62 || y == targets[DIR_UP] % 62)
-        && pathSize > _snakeSize)
-    // if ( (x > startX + _sizeThreshold || x < startX - _sizeThreshold || y >= startY + _sizeThreshold || y <= startY - _sizeThreshold) 
-    //     && pathSize > _snakeSize)
+    
+    if (targetReached(x, y, targets) && pathSize > _snakeSize)
     {
-        // std::cout << "path threshold reached, backtracking and adding pixels" << std::endl;
         (*path).push_front(coordinate);
         return (true);
     }
@@ -213,70 +184,66 @@ bool                Pathfinder::nextStep(int coordinate, std::deque<int> *path, 
     (*path).push_front(coordinate);
     if (debug)
     {
-        // std::cout << "#" << coordinate << " added to current path" << std::endl;
         _map.map[coordinate] = sprite::PT_CIRCLE_GREEN;
         window->draw(_map);
     }
 
-    std::map<int, int>              steps = createStepMap(coordinate, targets);
-    std::map<int, int>::iterator    ii = steps.begin();
+    std::multimap<int, int>              steps = createStepMap(coordinate, targets);
+    std::multimap<int, int>::iterator    ii = steps.begin();
+    int                                  i = 0;
 
+    std::array<std::string, 4>          lol = {{"RIGHT", "LEFT", "DOWN", "UP"}};
     while (!validPath && ii != steps.end())
     {
         if (debug)
-		{
+        {
+            std::cout << "exploring next best step of score " << (*ii).first << "(#" << (*ii).second << ") : " << lol[i] << std::endl;
             usleep(1000000);
-        	std::cout << "exploring next best step of score " << (*ii).first << "(#" << (*ii).second << ")" << std::endl;
-		}
+        }
         validPath = nextStep((*ii).second, path, pathSize + 1, targets);
         ii++;
+        i++;
     }
     if (validPath)
-        return (true)
-;
-    // validPath = nextStep(coordinate + 1, path, pathSize + 1, target);
-    // if (!validPath)
-    //     validPath = nextStep(coordinate - 1, path, pathSize + 1, target);
-    // if (!validPath)
-    //     validPath = nextStep(coordinate + 62, path, pathSize + 1, target);
-    // if (!validPath)
-    //     validPath = nextStep(coordinate - 62, path, pathSize + 1, target);
-    // if (validPath)
-    //     return (true);
-    // std::cout << "all possiblities failed, removing pixel #" << coordinate << " from path" << std::endl;
+        return (true);
     (*path).pop_front();
-    // if (debug)
-    //     _map.map[coordinate] = sprite::PT_CIRCLE;
+    return (false);
+}
+
+/*
+*   Checks if path has reached one of the four targets
+*/
+bool                       Pathfinder::targetReached(int x, int y, std::array<int, 4> &targets) const
+{
+    if (debug)
+    {
+        std::cout << "Checking PATH_DONE conditions" << std::endl;
+        std::cout << "Required x values: " << targets[DIR_LEFT] % 62 << " | " << targets[DIR_RIGHT] % 62 << std::endl;
+        std::cout << "Required y values: " << targets[DIR_DOWN] / 62 << " | " << targets[DIR_UP] / 62 << std::endl;
+        std::cout << "Current coord values: x -> " << x << " | y -> " << y << std::endl;
+    }
+    if ((targets[DIR_LEFT] != -1 && x == targets[DIR_LEFT] % 62) || (targets[DIR_RIGHT] != -1 && x == targets[DIR_RIGHT] % 62)
+         || (targets[DIR_DOWN] != -1 && y == targets[DIR_DOWN] / 62) || (targets[DIR_UP] != -1 && y == targets[DIR_UP] / 62))
+        return (true);
     return (false);
 }
 
 /*
 *   Create maps classing different steps in order of efficiency
 */
-std::map<int, int>  Pathfinder::createStepMap(int coordinate, std::array<int, 4> &targets) const
+std::multimap<int, int>  Pathfinder::createStepMap(int coordinate, std::array<int, 4> &targets) const
 {
-    std::map<int, int, std::less<int>>  res = 
+    std::multimap<int, int, std::less<int>>  res = 
     {
         {getStepValue(coordinate + 1, targets), coordinate + 1},
         {getStepValue(coordinate - 1, targets), coordinate - 1},
         {getStepValue(coordinate + 62, targets), coordinate + 62},
         {getStepValue(coordinate - 62, targets), coordinate - 62}
     };
-    int                                 i = 0;
-    int                                 smallStep = INT_MAX;
-    int                                 currentTarget = -1;
+    std::array<std::string, 4>          lol = {{"RIGHT", "LEFT", "DOWN", "UP"}};
 
-    for (std::map<int, int>::iterator ii = res.begin() ; ii != res.end() ; ii++)
-    {
-        if (smallStep > (*ii).first)
-        {
-            smallStep = (*ii).first;
-            currentTarget =i;
-        }
-        i++;
-    }
-	if (debug)
-    	std::cout << "current target: " << i << std::endl;
+    if (debug)
+        usleep(1000000);
     return (res);
 }
 
@@ -285,20 +252,35 @@ std::map<int, int>  Pathfinder::createStepMap(int coordinate, std::array<int, 4>
 */
 int                 Pathfinder::getStepValue(int coordinate, std::array<int, 4> &targets) const
 {
-    // int     xValue = std::abs((target / 62) - (coordinate / 62));
-    // int     yValue = std::abs((target % 62) - (coordinate % 62));
     int             smallestDistance = INT_MAX;
     int             distance;
+    std::array<std::string, 4>          lol = {{"RIGHT", "LEFT", "DOWN", "UP"}};
+    int             i;
+    int             closestTarget;
 
-    for (int i = 0 ; i < 4 ; i++)
+    std::cout << std::endl;
+    std::cout << coordinate << std::endl;
+    for (i = 0 ; i < 4 ; i++)
     {
         if (targets[i] != -1)
         {
-            distance = std::abs((targets[i] / 62) - (coordinate / 62)) + std::abs((targets[i] % 62) - (coordinate % 62));
+            // std::cout << "Target " << lol[i] << ":" << std::endl;
+            // if (i < 2)
+            //     std::cout << "vertical distance: " << std::abs(targets[i] / 62 - coordinate / 62) << std::endl;
+            // else
+            //     std::cout << "horizontal distance: " << std::abs(targets[i] % 62 - coordinate % 62) << std::endl;
+            if (i < 2)
+                distance = std::abs(targets[i] % 62 - coordinate % 62);
+            else
+                distance = std::abs(targets[i] / 62 - coordinate / 62);
             if (distance < smallestDistance)
+            {
                 smallestDistance = distance;
+                closestTarget = i;
+            }
         }
     }
+    // std::cout << "coordinate " << coordinate << " : registering new optimized target " << lol[closestTarget] << " with a distance score of " << smallestDistance << std::endl;
     return (smallestDistance);
     // if (xTarget != -1)
     //     return (std::abs(xTarget / 62 - coordinate / 62));

@@ -13,6 +13,9 @@
 		"new": "cpp",
 		"stdexcept": "cpp",
 		"typeinfo": "cpp",
-		"algorithm": "cpp"
+		"algorithm": "cpp",
+		"memory": "cpp",
+		"regex": "cpp",
+		"utility": "cpp"
 	}
 }

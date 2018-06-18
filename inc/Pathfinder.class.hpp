@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Pathfinder.class.hpp                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 14:17:00 by acottier          #+#    #+#             */
-/*   Updated: 2018/06/16 11:53:25 by rvievill         ###   ########.fr       */
+/*   Updated: 2018/06/18 13:41:26 by acottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,15 +43,16 @@ class Pathfinder
         Pathfinder(Pathfinder & src) = default;
         Pathfinder          &operator=(Pathfinder & rhs) = default;
 
-        void                run(int start);
-        void                clearPathDebug(std::deque<int> &path) const;
-        void                createTargetArray(std::array<int, 4> &targets) const;
-        void                calculatePath(int start, std::deque<int> *path);
-        bool                checkTarget(int target) const;
-        bool                nextStep(int coordinate, std::deque<int> *path, int pathSize, std::array<int, 4> &targets) const;
-        std::map<int, int>  createStepMap(int coordinate, std::array<int, 4> &targets) const;
-        int                 getStepValue(int coordinate, std::array<int, 4> &targets) const;
-        bool                checkAvailability(int coordinate) const;
+        void                    run(int start);
+        void                    clearPathDebug(std::deque<int> &path) const;
+        void                    createTargetArray(std::array<int, 4> &targets) const;
+        void                    calculatePath(int start, std::deque<int> *path);
+        bool                    checkTargetValidity(int target) const;
+        bool                    nextStep(int coordinate, std::deque<int> *path, int pathSize, std::array<int, 4> &targets) const;
+        bool                    targetReached(int x, int y, std::array<int, 4> &targets) const;
+        std::multimap<int, int> createStepMap(int coordinate, std::array<int, 4> &targets) const;
+        int                     getStepValue(int coordinate, std::array<int, 4> &targets) const;
+        bool                    checkAvailability(int coordinate) const;
 
         AGraphics           *window;
         Map                 &_map;
