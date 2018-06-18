@@ -81,7 +81,6 @@ void				Graphics::loadTexture(sprite sprite, const char *texturePath)
 
 	_texture.setSmooth(true);
 	_texture.loadFromFile(tex.c_str());
-	// _texture.loadFromFile(texturePath);
 	_textureList[sprite] = _texture;
 }
 
@@ -132,7 +131,7 @@ void				Graphics::runSound(void)
 {
 	std::string		music = _pathNibbler + MUSIC_PATH;
 	
-	_music.openFromFile(MUSIC_PATH);
+	_music.openFromFile(music.c_str());
 	_music.setLoop(true);
 	_music.play();
 }
@@ -141,7 +140,7 @@ void				Graphics::changeMusic(void)
 {
 	std::string		music = _pathNibbler + MUSIC_HARDCORE_PATH;	
 
-	_music.openFromFile(MUSIC_HARDCORE_PATH);
+	_music.openFromFile(music.c_str());
 	_music.play();
 }
 
