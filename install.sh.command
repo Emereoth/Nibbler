@@ -1,9 +1,16 @@
 #!/bin/bash
 
-#cd "$(dirname -- "$0")"
-cd ~/Library/
-git clone https://github.com/Emereoth/Nibbler.git nibbler
-cd nibbler
+NAME="${PWD##*/}"
+
+cd ..
+if [ $NAME != "nibbler" ]
+	then
+		cp $NAME nibbler
+fi
+mv nibbler ~/Library/
+cd ~/Library/nibbler
+#git clone https://github.com/Emereoth/Nibbler.git nibbler
+# cd nibbler
 make install
 make
 ./setup.sh snake snake.png
