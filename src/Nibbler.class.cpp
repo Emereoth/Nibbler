@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Nibbler.class.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/02 13:59:48 by rvievill          #+#    #+#             */
-/*   Updated: 2018/06/18 15:25:58 by acottier         ###   ########.fr       */
+/*   Updated: 2018/06/18 15:37:35 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void				Nibbler::run(Map &map)
 			time(&lastRespawn);
 		}
 		Time::calculDeltaTime();
-		if (snake.eatFood || (_hardMode && difftime(time(NULL), lastRespawn) > 10) || pathfinder.food == -1)
+		if (snake.eatFood || (_hardMode && difftime(time(NULL), lastRespawn) > 8) || pathfinder.food == -1)
 		{
 			time(&lastRespawn);
 			pathfinder.spawnFood(snake);

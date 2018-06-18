@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libSDL.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/16 15:53:54 by acottier          #+#    #+#             */
-/*   Updated: 2018/06/18 15:43:43 by acottier         ###   ########.fr       */
+/*   Updated: 2018/06/18 15:49:57 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,9 @@ void			Graphics::openWindow()
 
 std::string				Graphics::getPathNibbler()
 {
-	std::string		pathApp(getwd(NULL));
-	int				size = pathApp.find("nibbler") + 7;
-
-	return (pathApp.substr(0, size) + "/");
+	std::string		pathApp(std::getenv("HOME"));
+	
+	return (pathApp + "/Library/nibbler/");
 }
 
 void			Graphics::setMusic()
@@ -144,8 +143,8 @@ SDL_Surface		*Graphics::loadSurface(const char *texturePath, SDL_Window * win)
 {
 	std::string	tex = _pathNibbler + texturePath;
 	SDL_Surface	*finalSurface = NULL;
-	// SDL_Surface	*img_load = IMG_Load(tex.c_str());
-	SDL_Surface	*img_load = IMG_Load(texturePath);
+	SDL_Surface	*img_load = IMG_Load(tex.c_str());
+	// SDL_Surface	*img_load = IMG_Load(texturePath);
 
 
 	if (img_load == NULL)
