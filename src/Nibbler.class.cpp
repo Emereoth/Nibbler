@@ -6,7 +6,7 @@
 /*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/02 13:59:48 by rvievill          #+#    #+#             */
-/*   Updated: 2018/06/18 15:25:58 by acottier         ###   ########.fr       */
+/*   Updated: 2018/06/18 15:51:08 by acottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void				Nibbler::openLib(const char *pathLib, size_t width, size_t height, float
 void				Nibbler::run(Map &map)
 {
 	Snake			snake(map);
-	Pathfinder		pathfinder(window, map, _debug);
+	Pathfinder		pathfinder(map);
 	key				input;
 	time_t			lastRespawn;
 

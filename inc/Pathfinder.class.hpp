@@ -6,7 +6,7 @@
 /*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 14:17:00 by acottier          #+#    #+#             */
-/*   Updated: 2018/06/18 13:41:26 by acottier         ###   ########.fr       */
+/*   Updated: 2018/06/18 15:51:00 by acottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,13 @@ class Pathfinder
 {
     public:
 
-        Pathfinder(AGraphics *window, Map &map, bool debug);
+        Pathfinder(Map &map);
         ~Pathfinder();
 
         void                 spawnFood(Snake &snake);
 
         bool                isReachable;
         int                 food;
-        bool                debug;    
 
     private:
 
@@ -54,7 +53,6 @@ class Pathfinder
         int                     getStepValue(int coordinate, std::array<int, 4> &targets) const;
         bool                    checkAvailability(int coordinate) const;
 
-        AGraphics           *window;
         Map                 &_map;
         int                 _start;
         int                 _sizeThreshold;
