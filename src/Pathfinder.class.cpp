@@ -6,7 +6,7 @@
 /*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 14:21:18 by acottier          #+#    #+#             */
-/*   Updated: 2018/06/18 15:25:19 by acottier         ###   ########.fr       */
+/*   Updated: 2018/06/18 15:30:58 by acottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ void				Pathfinder::spawnFood(Snake &snake)
 */
 void                Pathfinder::run(int start)
 {
-    _map.map[start] = sprite::FOOD;
     calculatePath(start, &_firstPath);
     if (debug)
       std::cout << "Path ONE done" << std::endl;
