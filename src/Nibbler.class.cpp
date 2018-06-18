@@ -6,7 +6,7 @@
 /*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/02 13:59:48 by rvievill          #+#    #+#             */
-/*   Updated: 2018/06/15 13:26:43 by acottier         ###   ########.fr       */
+/*   Updated: 2018/06/18 15:25:58 by acottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ void				Nibbler::run(Map &map)
 	time_t			lastRespawn;
 
 	window->openWindow();
-	// pathfinder.spawnFood(snake);
 	while (window->isOpen())
 	{
 		if (!_hardMode && snake.size == 10)
