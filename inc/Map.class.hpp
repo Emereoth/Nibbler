@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Map.class.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acottier <acottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rvievill <rvievill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/19 14:50:15 by rvievill          #+#    #+#             */
-/*   Updated: 2018/06/14 19:08:13 by acottier         ###   ########.fr       */
+/*   Updated: 2018/06/18 13:24:34 by rvievill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ class Map {
 		explicit 							Map(const Map &src) = delete;
 		Map									&operator=(const Map &rhs) = delete;
 
+		void								generateBasicMap();
 		std::array<size_t, 2>				generateItem(size_t (&zoneStart)[2], bool preset);
 		std::array<size_t, 2>				generatePreset(void);
 		std::array<size_t, 2>				preset1(void);
